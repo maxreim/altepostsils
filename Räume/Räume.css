@@ -1,0 +1,79 @@
+html, body {margin: 0px; padding: 0px; height: 100%; text-align: center;}
+a {text-decoration: none;}
+li {list-style-type: none;}
+
+h1, h2, h3, a{font-family: 'Roboto', sans-serif; font-weight: 500; color: #494949; text-transform: uppercase;}
+h2 {color: #5d7177}
+h3 {font-size: 40px; padding-top: 8%; margin-bottom: 5px;}
+p {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
+
+li, .button, img {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms;}
+
+
+
+/* Seitenleiste**********************************************/
+
+header {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#logo img{
+    width: 320px;
+    float: left;
+    margin: 10px 0 0 40px;
+}
+
+header nav {
+    float: right;
+    margin: 10px 50px 0 0;
+}
+
+header nav ul li {
+    float: left;
+    margin-left: 25px
+}
+
+header nav ul li a {
+    font-size: 16px;
+}
+
+header nav ul li:hover {
+    opacity: 0.5;
+}
+
+/* Startseite**********************************************/
+
+
+#räume h3 {
+    font-size: 45px;
+}
+
+#startseite p {
+    width: 80%;
+    margin: 0 auto 0 auto;
+    font-size: 20px;
+}
+
+.bilder {
+    width: 900px;
+    margin: 0 auto 0 auto;
+}
+
+.bilder img {
+    width: 360px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.grossebilder img {
+    width: 900px;
+    height: auto;
+    border-radius: 5px;
+}

@@ -1,0 +1,375 @@
+html, body {margin: 0px; padding: 0px; height: 100%; text-align: center;}
+section {min-height: 100%;}
+a {text-decoration: none;}
+li {list-style-type: none;}
+
+h1, h2, h3, a{font-family: 'Roboto', sans-serif; font-weight: 500; color: #494949; text-transform: uppercase;}
+h2 {color: #5d7177}
+h3 {font-size: 40px; padding-top: 8%; margin-bottom: 5px;}
+p {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
+
+li, .button, img {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms;}
+
+/* Seitenleiste**********************************************/
+
+header {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#logo img{
+    width: 320px;
+    float: left;
+    margin: 10px 0 0 40px;
+}
+
+header nav {
+    float: right;
+    margin: 10px 50px 0 0;
+}
+
+header nav ul li {
+    float: left;
+    margin-left: 25px
+}
+
+header nav ul li a {
+    font-size: 16px;
+}
+
+header nav ul li:hover {
+    opacity: 0.5;
+}
+
+/* Startseite**********************************************/
+
+#startseite {
+    background: url(../jpg/Sils.jpg);
+    background-position: center center;
+    background-size: cover;
+        background-attachment: fixed;
+}
+
+#startseite h1 {
+    margin: 220px auto 0 auto;
+    font-size: 110px;
+}
+
+#startseite h2 {
+    font-size: 30px;
+    margin: 0 auto 0 auto;
+}
+
+#startseite img {
+    width: 32px;
+    margin-top: 150px;
+    opacity: 0.7;
+}
+
+
+/* Haus**********************************************/
+
+#haus h3 {
+    font-size: 45px;
+}
+
+#haus img {
+    width: 400px;
+}
+
+#haus h2 {
+    font-size: 30px;
+}
+
+#haus p {
+    width: 80%;
+    margin: 0 auto 0 auto;
+    font-size: 20px;
+}
+
+
+/* Räume**********************************************/
+
+#räume {
+    background-color: #f0f0f0;
+}
+
+#räume h3 {
+    font-size: 45px;
+}
+
+#zimmer {
+    width: 900px;
+    margin: 0 auto 0 auto;
+}
+
+#zimmer ul {
+    padding: 0;
+}
+
+#zimmer ul li {
+    width: 33.3%;
+    float: left;
+    margin-bottom: 15px;
+}
+
+#zimmer img {
+    width: 280px;
+    height: 170px;
+    border-radius: 5px;
+}
+
+#zimmer img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/* belegungsplan**********************************************/
+
+#belegungsplan h3 {
+    font-size: 45px;
+}
+
+#belegungsplan iframe {
+    width: 800px;
+    height: 600px;
+}
+
+
+/* Preise**********************************************/
+
+#preise {
+    background-color: #f0f0f0;
+}
+
+#preise h3 {
+    font-size: 45px;
+}
+
+.mietpreise img {
+    width: 1200px;
+    height: auto;
+}
+
+/* kontakt**********************************************/
+
+#kontakt h3 {
+    font-size: 45px;
+}
+
+#kontakt p {
+    width: 80%;
+    margin: 0 auto 0 auto;
+    font-size: 20px;
+}
+
+form input:first-child {
+    margin-top: 10px;
+}
+
+form input {
+    width: 56%;
+    height: 30px;
+}
+
+.input_text {
+    color: #494949;
+    padding: left 10px;
+}
+
+form textarea{
+    width: 56%;
+    height: 200px;
+    resize: none;
+}
+
+form input, textarea {
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 2px solid;
+    border-color: #494949;
+    outline: none;
+}
+
+::-webkit-input-placeholder{color: #999999}
+::-moz-placeholder{color: #999999}
+:-ms-input-placeholder{color: #999999}
+:-moz-placeholder{color: #999999}
+
+.button {
+    background-color: #f0f0f0;
+    color: #494949;
+    width: 56%;
+    height: 32px;
+}
+
+.button:hover {
+    background-color: #494949;
+    color: #f0f0f0;
+}
+
+/* impressum**********************************************/
+
+footer  {
+    width: 100%;
+    height: 70px;
+    background-color: #3f3f3f;
+}
+
+footer p {
+    font-size: 15px;
+    color: #f0f0f0;
+    padding-top: 30px;
+}
+
+footer a {
+    font-size: 15px;
+    color: #f0f0f0;
+    padding-top: 30px; 
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Tablet**********************************************/
+
+@media screen and (max-width: 1200px){ 
+    header {
+        height: auto;
+    }
+
+    header nav {
+        margin-top: -10px;
+    }
+
+    header nav ul li {
+        font-size: 12px;
+    }
+
+    #logo img {
+        width: auto;
+        height: 20px;
+        float: left;
+        margin: 2px 0 0 40px;
+    }
+
+    .mietpreise img {
+        width: auto;
+        height: 300px;
+    }
+}
+
+/* Handy**********************************************/
+
+@media screen and (max-width: 960px){ 
+
+    header nav ul li {
+        display: none;
+    }
+
+    #startseite h1 {
+        font-size: 80px;
+    }
+
+    #haus h3 {
+        font-size: 35px;
+    }
+
+    #haus img {
+        width: 200px;
+        height: auto;
+    }
+
+    #haus p {
+        width: 500px;
+        font-size: 17px;
+    }
+
+    #zimmer ul li {
+        width: 50%;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .mietpreise img {
+        width: auto;
+        height: 200px;
+    }
+
+    #belegungsplan iframe {
+        width: 600px;
+        height: 600px;
+    }
+
+    #belegungsplan {
+        background-color: #f0f0f0;
+    }
+
+    #preise {
+        background-color: white;
+    }
+
+    #kontakt {
+        background-color: #f0f0f0;
+    }
+
+    #räume {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 660px){ 
+
+    #startseite h1 {
+        font-size: 70px;
+    }
+
+    #haus p {
+        width: 400px;
+        font-size: 17px;
+    }
+
+    #belegungsplan h3 {
+        font-size: 20px;
+    }
+
+    .mietpreise img {
+        width: auto;
+        height: 100px;
+    }
+
+    #belegungsplan iframe {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 500px){ 
+
+    #startseite h1 {
+        font-size: 60px;
+    }
+
+    #räume {
+        display: none;
+    }
+
+    #hausbild img {
+        width: 200px;
+    }
+
+    #belegungsplan iframe {
+        width: 300px;
+        height: 400px;
+    }
+}
