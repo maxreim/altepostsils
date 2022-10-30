@@ -80,7 +80,7 @@ header nav ul li:hover {
 }
 
 #haus img {
-    width: 400px;
+    width: 30%;
 }
 
 #haus h2 {
@@ -138,7 +138,7 @@ header nav ul li:hover {
 }
 
 #belegungsplan iframe {
-    width: 800px;
+    width: 70%;
     height: 600px;
 }
 
@@ -285,33 +285,8 @@ footer a:hover {
         display: none;
     }
 
-    #startseite h1 {
-        font-size: 80px;
-    }
-
-    #haus h3 {
-        font-size: 35px;
-    }
-
-    #haus img {
-        width: 200px;
-        height: auto;
-    }
-
-    #haus p {
-        width: 500px;
-        font-size: 17px;
-    }
-
-    #zimmer ul li {
-        width: 50%;
-        float: left;
-        margin-bottom: 15px;
-    }
-
-    #belegungsplan iframe {
-        width: 600px;
-        height: 600px;
+    #räume {
+        display: none;
     }
 
     #belegungsplan {
@@ -322,73 +297,92 @@ footer a:hover {
         background-color: white;
     }
 
-    #kontakt {
-        background-color: #f0f0f0;
+    #kontakt{
+        background-color: #f0f0f0;   
     }
 
-    #räume {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 660px){ 
-
-    #startseite h1 {
-        font-size: 70px;
-    }
-
-    #haus p {
-        width: 400px;
-        font-size: 17px;
-    }
-
-    #belegungsplan h3 {
-        font-size: 20px;
-    }
-
-    #belegungsplan iframe {
-        width: 400px;
-        height: 400px;
-    }
-
-    .mietpreise img {
-        width: 0px;
-        height: auto;
-    }
-    
-    .mietpreise2 img {
+    form input {
         width: 80%;
-        height: auto;
     }
-    
+
+    form textarea{
+        width: 80%;
+    }
+
+    .button {
+        width: 80%;
+    }
+
+
+
+    h1 {
+        font-size: ?px;
+    }
+
+    h2 {
+        font-size: ?px;
+    }
+
+    h3 {
+        font-size: ?px;
+    }
+
+    p {
+        font-size: ?px;
+    }
+
+    #haus img {
+        width: ?%;
+    }
+
 }
 
 @media screen and (max-width: 500px){ 
 
-    #startseite h1 {
-        font-size: 60px;
-    }
-
     #räume {
         display: none;
     }
 
-    #hausbild img {
-        width: 200px;
+    #belegungsplan {
+        background-color: #f0f0f0;
     }
 
-    #belegungsplan iframe {
-        width: 300px;
-        height: 400px;
+    #preise {
+        background-color: white;
+    }
+
+    #kontakt{
+        background-color: #f0f0f0;   
     }
 
     .mietpreise img {
         width: 0px;
-        height: auto;
     }
     
     .mietpreise2 img {
         width: 80%;
         height: auto;
+    }
+
+
+
+    h1 {
+        font-size: ?px;
+    }
+
+    h2 {
+        font-size: ?px;
+    }
+
+    h3 {
+        font-size: ?px;
+    }
+
+    p {
+        font-size: ?px;
+    }
+
+    #haus img {
+        width: ?%;
     }
 }
