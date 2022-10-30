@@ -151,6 +151,7 @@ p {
     width: 80%;
     margin: 0 auto 0 auto;
     font-size: 20px;
+    color: black;
 }
 
 form input:first-child {
@@ -359,7 +360,6 @@ footer a:hover {
 
     p {
         font-size: 15px;
-        color: black;
     }
 
     #haus img {
