@@ -154,7 +154,7 @@ header nav ul li:hover {
 }
 
 .mietpreise img {
-    width: 1200px;
+    width: 80%;
     height: auto;
 }
 
@@ -328,15 +328,6 @@ footer a:hover {
 
     #räume {
         display: none;
-    }
-
-    .mietpreise img {
-        width: 80%;
-        height: auto;
-    }
-    
-    .mietpreise2 img {
-        width: 0px;
     }
 }
 
