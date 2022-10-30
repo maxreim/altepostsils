@@ -56,12 +56,12 @@ header nav ul li:hover {
         background-attachment: fixed;
 }
 
-#startseite h1 {
+h1 {
     margin: 220px auto 0 auto;
     font-size: 110px;
 }
 
-#startseite h2 {
+ h2 {
     font-size: 30px;
     margin: 0 auto 0 auto;
 }
@@ -75,7 +75,7 @@ header nav ul li:hover {
 
 /* Haus**********************************************/
 
-#haus h3 {
+h3 {
     font-size: 45px;
 }
 
@@ -83,14 +83,9 @@ header nav ul li:hover {
     width: 30%;
 }
 
-#haus h2 {
-    font-size: 30px;
-}
-
 #haus p {
     width: 80%;
     margin: 0 auto 0 auto;
-    font-size: 20px;
 }
 
 
@@ -98,10 +93,6 @@ header nav ul li:hover {
 
 #räume {
     background-color: #f0f0f0;
-}
-
-#räume h3 {
-    font-size: 45px;
 }
 
 #zimmer {
@@ -133,10 +124,6 @@ header nav ul li:hover {
 
 /* belegungsplan**********************************************/
 
-#belegungsplan h3 {
-    font-size: 45px;
-}
-
 #belegungsplan iframe {
     width: 70%;
     height: 600px;
@@ -147,10 +134,6 @@ header nav ul li:hover {
 
 #preise {
     background-color: #f0f0f0;
-}
-
-#preise h3 {
-    font-size: 45px;
 }
 
 .mietpreise img {
@@ -164,11 +147,7 @@ header nav ul li:hover {
 
 /* kontakt**********************************************/
 
-#kontakt h3 {
-    font-size: 45px;
-}
-
-#kontakt p {
+p {
     width: 80%;
     margin: 0 auto 0 auto;
     font-size: 20px;
@@ -316,23 +295,23 @@ footer a:hover {
 
 
     h1 {
-        font-size: ?px;
+        font-size: 10px;
     }
 
     h2 {
-        font-size: ?px;
+        font-size: 10px;
     }
 
     h3 {
-        font-size: ?px;
+        font-size: 10px;
     }
 
     p {
-        font-size: ?px;
+        font-size: 10px;
     }
 
     #haus img {
-        width: ?%;
+        width: 10%;
     }
 
 }
@@ -367,22 +346,22 @@ footer a:hover {
 
 
     h1 {
-        font-size: ?px;
+        font-size: 50px;
     }
 
     h2 {
-        font-size: ?px;
+        font-size: 20px;
     }
 
     h3 {
-        font-size: ?px;
+        font-size: 30px;
     }
 
     p {
-        font-size: ?px;
+        font-size: 15px;
     }
 
     #haus img {
-        width: ?%;
+        width: 70%;
     }
 }
