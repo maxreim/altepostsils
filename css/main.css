@@ -158,6 +158,10 @@ header nav ul li:hover {
     height: auto;
 }
 
+.mietpreise2 img {
+    width: 0px;
+}
+
 /* kontakt**********************************************/
 
 #kontakt h3 {
@@ -264,8 +268,12 @@ footer a:hover {
     }
 
     .mietpreise img {
-        width: auto;
-        height: 300px;
+        width: 80%;
+        height: auto;
+    }
+    
+    .mietpreise2 img {
+        width: 0px;
     }
 }
 
@@ -301,11 +309,6 @@ footer a:hover {
         margin-bottom: 15px;
     }
 
-    .mietpreise img {
-        width: auto;
-        height: 200px;
-    }
-
     #belegungsplan iframe {
         width: 600px;
         height: 600px;
@@ -326,6 +329,15 @@ footer a:hover {
     #räume {
         display: none;
     }
+
+    .mietpreise img {
+        width: 80%;
+        height: auto;
+    }
+    
+    .mietpreise2 img {
+        width: 0px;
+    }
 }
 
 @media screen and (max-width: 660px){ 
@@ -343,15 +355,21 @@ footer a:hover {
         font-size: 20px;
     }
 
-    .mietpreise img {
-        width: auto;
-        height: 100px;
-    }
-
     #belegungsplan iframe {
         width: 400px;
         height: 400px;
     }
+
+    .mietpreise img {
+        width: 0px;
+        height: auto;
+    }
+    
+    .mietpreise2 img {
+        width: 80%;
+        height: auto;
+    }
+    
 }
 
 @media screen and (max-width: 500px){ 
@@ -371,5 +389,15 @@ footer a:hover {
     #belegungsplan iframe {
         width: 300px;
         height: 400px;
+    }
+
+    .mietpreise img {
+        width: 0px;
+        height: auto;
+    }
+    
+    .mietpreise2 img {
+        width: 80%;
+        height: auto;
     }
 }
