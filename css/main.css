@@ -53,7 +53,7 @@ header nav ul li:hover {
     background: url(../jpg/Sils.jpg);
     background-position: center center;
     background-size: cover;
-        background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 h1 {
