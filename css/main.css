@@ -61,7 +61,7 @@ h1 {
     font-size: 110px;
 }
 
- h2 {
+h2 {
     font-size: 30px;
     margin: 0 auto 0 auto;
 }
@@ -80,7 +80,7 @@ h3 {
 }
 
 #haus img {
-    width: 30%;
+    width: 45%;
 }
 
 #haus p {
@@ -192,7 +192,7 @@ form input, textarea {
 .button {
     background-color: #f0f0f0;
     color: #494949;
-    width: 56%;
+    width: 58%;
     height: 32px;
 }
 
@@ -225,7 +225,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Tablet**********************************************/
+/* seitenleiste**********************************************/
 
 @media screen and (max-width: 1200px){ 
     header {
@@ -246,18 +246,7 @@ footer a:hover {
         float: left;
         margin: 2px 0 0 40px;
     }
-
-    .mietpreise img {
-        width: 80%;
-        height: auto;
-    }
-    
-    .mietpreise2 img {
-        width: 0px;
-    }
 }
-
-/* Handy**********************************************/
 
 @media screen and (max-width: 960px){ 
 
@@ -265,75 +254,73 @@ footer a:hover {
         display: none;
     }
 
-    #räume {
-        display: none;
-    }
+}
 
-    #belegungsplan {
-        background-color: #f0f0f0;
-    }
+/* algemein**********************************************/
 
-    #preise {
-        background-color: white;
-    }
+@media screen and (max-width: 1000px){ 
 
-    #kontakt{
-        background-color: #f0f0f0;   
-    }
+p {
+    font-size: 15px;
+}
 
-    form input {
-        width: 90%;
-    }
+h1 {
+    font-size: 80px;
+}
 
-    form textarea{
-        width: 90%;
-    }
+h2 {
+    font-size: 25px;
+}
 
-    .button {
-        width: 90%;
-    }
-
-
-
-    h1 {
-        font-size: 10px;
-    }
-
-    h2 {
-        font-size: 10px;
-    }
-
-    h3 {
-        font-size: 10px;
-    }
-
-    p {
-        font-size: 10px;
-    }
-
-    #haus img {
-        width: 10%;
-    }
+h3 {
+    font-size: 40px;
+}
 
 }
 
+@media screen and (max-width: 600px){ 
+
+    p {
+        font-size: 12px;
+    }
+    
+    h1 {
+        font-size: 50px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    h3 {
+        font-size: 30px;
+    }
+    
+}
+
+/* räume**********************************************/
+
+@media screen and (max-width: 1000px){ 
+
+    #zimmer {
+        width: 100%;
+        margin: 0 auto 0 auto;
+    }
+    
+    #zimmer ul li {
+        width: 100%;
+        float: none;
+    }
+    
+    #zimmer img {
+        width: 55%;
+        height: auto;
+    }   
+}
+
+/* kosten**********************************************/
+
 @media screen and (max-width: 500px){ 
-
-    #räume {
-        display: none;
-    }
-
-    #belegungsplan {
-        background-color: #f0f0f0;
-    }
-
-    #preise {
-        background-color: white;
-    }
-
-    #kontakt{
-        background-color: #f0f0f0;   
-    }
 
     .mietpreise img {
         width: 0px;
@@ -343,26 +330,24 @@ footer a:hover {
         width: 80%;
         height: auto;
     }
+}
 
+/* kontakt**********************************************/
 
+@media screen and (max-width: 500px){ 
 
-    h1 {
-        font-size: 50px;
+    form input {
+        width: 80%;
+        height: 30px;
     }
 
-    h2 {
-        font-size: 20px;
+    form textarea{
+        width: 80%;
+        height: 200px;
     }
 
-    h3 {
-        font-size: 30px;
-    }
-
-    p {
-        font-size: 15px;
-    }
-
-    #haus img {
-        width: 70%;
+    .button {
+        width: 82%;
+        height: 32px;
     }
 }
