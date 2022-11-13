@@ -265,6 +265,22 @@ footer a:hover {
         display: none;
     }
 
+    #räume {
+        display: none;
+    }
+
+    #belegungsplan {
+        background-color: #f0f0f0;
+    }
+
+    #preise {
+        background-color: white;
+    }
+
+    #kontakt{
+        background-color: #f0f0f0;   
+    }
+
     form input {
         width: 90%;
     }
@@ -276,28 +292,48 @@ footer a:hover {
     .button {
         width: 90%;
     }
+
+
+
+    h1 {
+        font-size: 10px;
+    }
+
+    h2 {
+        font-size: 10px;
+    }
+
+    h3 {
+        font-size: 10px;
+    }
+
+    p {
+        font-size: 10px;
+    }
+
+    #haus img {
+        width: 10%;
+    }
+
 }
 
 @media screen and (max-width: 500px){ 
-    
-    #zimmer ul li {
-        width: 50%;
-        float: none;
 
+    #räume {
+        display: none;
     }
 
-    #zimmer ul li :last-child {
-        padding-bottom: 20%;
+    #belegungsplan {
+        background-color: #f0f0f0;
     }
 
-    #zimmer img {
-        width: 30%;
-        height: auto;
+    #preise {
+        background-color: white;
     }
 
-
-
-
+    #kontakt{
+        background-color: #f0f0f0;   
+    }
 
     .mietpreise img {
         width: 0px;
@@ -307,7 +343,9 @@ footer a:hover {
         width: 80%;
         height: auto;
     }
-    
+
+
+
     h1 {
         font-size: 50px;
     }
