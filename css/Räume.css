@@ -160,22 +160,22 @@ footer a:hover {
     
     }
     
-    @media screen and (max-width: 600px){ 
+@media screen and (max-width: 600px){ 
     
-        p {
-            font-size: 16px;
-        }
-        
-        h1 {
-            font-size: 50px;
-        }
-        
-        h2 {
-            font-size: 18px;
-        }
-        
-        h3 {
-            font-size: 30px;
-        }
-        
+    p {
+        font-size: 16px;
     }
+        
+    h1 {
+       font-size: 50px;
+    }
+        
+    h2 {
+        font-size: 18px;
+    }
+        
+    h3 {
+        font-size: 30px;
+    }
+        
+}
