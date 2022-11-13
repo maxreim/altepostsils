@@ -53,12 +53,13 @@ header nav ul li:hover {
 
 #räume h3 {
     font-size: 45px;
+    text-align: center;
 }
 
 #startseite p {
-    width: 80%;
     margin: 0 auto 0 auto;
     font-size: 20px;
+    text-align: center;
 }
 
 #bildunterschrift {
@@ -107,4 +108,35 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* seitenleiste**********************************************/
+
+@media screen and (max-width: 1200px){ 
+    header {
+        height: auto;
+    }
+
+    header nav {
+        margin-top: -10px;
+    }
+
+    header nav ul li {
+        font-size: 12px;
+    }
+
+    #logo img {
+        width: auto;
+        height: 20px;
+        float: left;
+        margin: 2px 0 0 40px;
+    }
+}
+
+@media screen and (max-width: 960px){ 
+
+    header nav ul li {
+        display: none;
+    }
+
 }
