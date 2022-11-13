@@ -1,11 +1,12 @@
 html, body {margin: 0px; padding: 0px; height: 100%; text-align: center;}
+section {min-height: 100%;}
 a {text-decoration: none;}
 li {list-style-type: none;}
 
 h1, h2, h3, a{font-family: 'Roboto', sans-serif; font-weight: 500; color: #494949; text-transform: uppercase;}
 h2 {color: #5d7177}
 h3 {font-size: 40px; padding-top: 8%; margin-bottom: 5px;}
-p, #bildunterschrift {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
+p {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
 
 li, .button, img {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms;}
 
@@ -32,7 +33,7 @@ header {
 
 header nav {
     float: right;
-    margin: 10px 50px 0 0;
+    margin: 25px 50px 0 0;
 }
 
 header nav ul li {
@@ -53,24 +54,12 @@ header nav ul li:hover {
 
 #räume h3 {
     font-size: 45px;
-    text-align: center;
 }
 
 #startseite p {
     margin: 0 auto 0 auto;
     font-size: 20px;
-    text-align: center;
-}
-
-.bilder {
-    width: 900px;
-    margin: 0 auto 0 auto;
-}
-
-.bilder img {
-    width: 360px;
-    height: auto;
-    border-radius: 5px;
+    width: 100%;
 }
 
 .grossebilder img {
@@ -79,28 +68,30 @@ header nav ul li:hover {
     border-radius: 5px;
 }
 
-/* impressum**********************************************/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
 
-footer  {
+.container{
     width: 100%;
-    height: 70px;
-    background-color: #3f3f3f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 8%;
 }
 
-footer p {
-    font-size: 15px;
-    color: #f0f0f0;
-    padding-top: 30px;
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
 }
 
-footer a {
-    font-size: 15px;
-    color: #f0f0f0;
-    padding-top: 30px; 
-}
-
-footer a:hover {
-    text-decoration: underline;
+.gallery img{
+    width: 100%;
+    border-radius: 4px
 }
 
 /* seitenleiste**********************************************/

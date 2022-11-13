@@ -6,6 +6,7 @@
 
         <title>Ferienhaus Posta Veglia Sils</title>
 
+        <link rel="stylesheet" href="lightbox.css">
         <link rel="stylesheet" type="text/css" href="../css/Räume.css">
         <link href="https: //fonts.googleapis.com/css2?family=Roboto+Slab & display Familie= Roboto:wght@100;500 & ">
     </head>
@@ -33,13 +34,23 @@
                 <h3>Küche</h3><br>
                 <p>
                     Die grosse Küche kombiniert den ursprünglichen Charme einer alten Engadiner Küche mit modernem Komfort (Elektroherd, Geschirrspüler, Waschmaschine). Mit einem grossen Tisch und genügend Raum ist sie ideal für eine grosse Familie oder Freunde, die  gemeinsam kochen und dazu noch gern einen Apéro geniessen.
-                </p><br>
-                <br>
-                <div class="bilder">
-                    <img src="../jpg/Küche/Feuerstelle.JPG">
-                    <img src="../jpg/Küche/Küchenimpressionen.JPG">
-                    <img src="../jpg/Küche/Küche.JPG">
+                </p>
+                <div class="container">
+                    <div class="gallery">
+                        <a href="../jpg/Küche/Feuerstelle.JPG" data-lightbox="Küche" data-title="Ofen von Küche aus">
+                            <img src="../jpg/Küche/Feuerstelle.JPG">
+                        </a>
+            
+                        <a href="../jpg/Küche/Küchenimpressionen.JPG" data-lightbox="Küche" data-title="Küchenimpressionen">
+                            <img src="../jpg/Küche/Küchenimpressionen.JPG">
+                        </a>
+            
+                        <a href="../jpg/Küche/Küche.JPG" data-lightbox="Küche" data-title="Küche mit Glaskeramik-Kochfeld">
+                            <img src="../jpg/Küche/Küche.JPG">
+                        </a>
+                    </div>
                 </div>
             </section>
+            <script src="lightbox-plus-jquery.js"></script>
     </body>
 </html>
