@@ -62,13 +62,6 @@ header nav ul li:hover {
     text-align: center;
 }
 
-#bildunterschrift {
-    width: 80%;
-    margin: 0 auto 0 auto;
-    font-size: 20px;
-    display: inline-block; 
-}
-
 .bilder {
     width: 900px;
     margin: 0 auto 0 auto;
@@ -140,3 +133,49 @@ footer a:hover {
     }
 
 }
+
+/* algemein**********************************************/
+
+@media screen and (max-width: 1000px){ 
+
+    .bilder {
+        width: 100%;
+    }
+
+    p {
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        font-size: 25px;
+    }
+    
+    h3 {
+        font-size: 40px;
+    }
+    
+    }
+    
+    @media screen and (max-width: 600px){ 
+    
+        p {
+            font-size: 16px;
+        }
+        
+        h1 {
+            font-size: 50px;
+        }
+        
+        h2 {
+            font-size: 18px;
+        }
+        
+        h3 {
+            font-size: 30px;
+        }
+        
+    }
