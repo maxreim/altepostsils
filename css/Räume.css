@@ -5,7 +5,7 @@ li {list-style-type: none;}
 h1, h2, h3, a{font-family: 'Roboto', sans-serif; font-weight: 500; color: #494949; text-transform: uppercase;}
 h2 {color: #5d7177}
 h3 {font-size: 40px; padding-top: 8%; margin-bottom: 5px;}
-p {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
+p, #bildunterschrift {font-family: 'Roboto', sans-serif; font-weight: 100; color: #494949;}
 
 li, .button, img {transition: all 300ms; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms;}
 
@@ -61,6 +61,13 @@ header nav ul li:hover {
     font-size: 20px;
 }
 
+#bildunterschrift {
+    width: 80%;
+    margin: 0 auto 0 auto;
+    font-size: 20px;
+    display: inline-block; 
+}
+
 .bilder {
     width: 900px;
     margin: 0 auto 0 auto;
@@ -76,4 +83,28 @@ header nav ul li:hover {
     width: 900px;
     height: auto;
     border-radius: 5px;
+}
+
+/* impressum**********************************************/
+
+footer  {
+    width: 100%;
+    height: 70px;
+    background-color: #3f3f3f;
+}
+
+footer p {
+    font-size: 15px;
+    color: #f0f0f0;
+    padding-top: 30px;
+}
+
+footer a {
+    font-size: 15px;
+    color: #f0f0f0;
+    padding-top: 30px; 
+}
+
+footer a:hover {
+    text-decoration: underline;
 }

@@ -265,22 +265,6 @@ footer a:hover {
         display: none;
     }
 
-    #räume {
-        display: none;
-    }
-
-    #belegungsplan {
-        background-color: #f0f0f0;
-    }
-
-    #preise {
-        background-color: white;
-    }
-
-    #kontakt{
-        background-color: #f0f0f0;   
-    }
-
     form input {
         width: 90%;
     }
@@ -318,10 +302,23 @@ footer a:hover {
 }
 
 @media screen and (max-width: 500px){ 
+    
+    #zimmer ul li {
+        width: 50%;
+        float: none;
 
-    #räume {
-        display: none;
     }
+
+    #zimmer ul li :last-child {
+        padding-bottom: 20%;
+    }
+
+    #zimmer img {
+        width: 30%;
+        height: auto;
+    }
+
+
 
     #belegungsplan {
         background-color: #f0f0f0;
