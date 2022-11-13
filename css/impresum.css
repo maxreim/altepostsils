@@ -57,3 +57,80 @@ header nav ul li:hover {
 #räume h3 {
     font-size: 45px;
 }
+
+/* seitenleiste**********************************************/
+
+@media screen and (max-width: 1200px){ 
+    header {
+        height: auto;
+    }
+
+    header nav {
+        margin-top: -10px;
+    }
+
+    header nav ul li {
+        font-size: 12px;
+    }
+
+    #logo img {
+        width: auto;
+        height: 20px;
+        float: left;
+        margin: 2px 0 0 40px;
+    }
+}
+
+@media screen and (max-width: 960px){ 
+
+    header nav ul li {
+        display: none;
+    }
+
+}
+
+/* algemein**********************************************/
+
+@media screen and (max-width: 1000px){ 
+
+    .bilder {
+        width: 100%;
+    }
+
+    p {
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        font-size: 25px;
+    }
+    
+    h3 {
+        font-size: 40px;
+    }
+    
+    }
+    
+@media screen and (max-width: 600px){ 
+    
+    p {
+        font-size: 16px;
+    }
+        
+    h1 {
+       font-size: 50px;
+    }
+        
+    h2 {
+        font-size: 18px;
+    }
+        
+    h3 {
+        font-size: 30px;
+    }
+        
+}
