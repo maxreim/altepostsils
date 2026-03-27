@@ -1,0 +1,36 @@
+[build]
+  publish = "."
+
+[[headers]]
+  # Setzen sicherer Header für alle Pfade
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  # Keine Cache-Zwischenspeicherung für HTML (immer revalidieren)
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Langes Caching für CSS
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Langes Caching für JS
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Langes Caching für Bilder
+  for = "/jpg/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

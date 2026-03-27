@@ -1,200 +1,446 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="de">
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E79C7DV0BE');
+    </script>
+    <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.">
+    <meta name="keywords"
+        content="Ferienhaus, Sils, mieten, Ferien, Engadin, Alte Post, Baselgia, Schweizer Berge, Gruppenhaus, Engadinerhaus">
+    <meta name="theme-color" content="#f5f5f0">
+    <meta property="og:title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
+    <meta property="og:description"
+        content="Mieten Sie unser historisches Engadinerhaus in Sils-Baselgia für erholsame Ferien im Engadin. Platz für bis zu 9 Personen.">
+    <meta property="og:image" content="https://altepostsils.ch/jpg/Haus.jpg">
+    <meta property="og:url" content="https://altepostsils.ch">
 
-            gtag('config', 'G-E79C7DV0BE');
-        </script>
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VacationRental",
+      "name": "Ferienhaus Posta Veglia",
+      "description": "Historisches, denkmalgeschütztes Engadinerhaus für 7 bis 9 Personen in Sils-Baselgia, Engadin.",
+      "url": "https://altepostsils.ch",
+      "image": "https://altepostsils.ch/jpg/Haus.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sils-Baselgia",
+        "addressRegion": "Graubünden",
+        "postalCode": "7515",
+        "addressCountry": "CH"
+      },
+      "telephone": "+41 79 891 00 30",
+      "email": "info@altepostsils.ch"
+    }
+    </script>
+    <title>Ferienhaus Posta Veglia mieten | Sils im Engadin</title>
+    <link rel="preload" as="image" href="jpg/Sils.jpg">
 
-        <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="Keywords" content="ferienhaus, sils, mieten, ferien, engadin, alte post, baselgia" />
-        <meta name="Laguage" content="de" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://calendar.google.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/app.js" defer></script>
+</head>
 
-        <title>Ferienhaus Posta Veglia Sils</title>
+<body>
+    <nav class="navbar">
+        <a href="#home" class="logo">Posta Veglia</a>
+        <div class="mobile-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="#home">Startseite</a></li>
+            <li><a href="#haus">Das Haus</a></li>
+            <li><a href="#raeume">Räume</a></li>
+            <li><a href="#belegungsplan">Belegungsplan</a></li>
+            <li><a href="#preise">Preise</a></li>
+            <li><a href="#standort">Standort</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
 
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <link rel="stylesheet" type="text/php" href="kontaktformular.php">
-        <link href="https: //fonts.googleapis.com/css2?family=Roboto+Slab & display Familie= Roboto:wght@100;500 & ">
-    </head>
-
-    <!--Seitenleiste--------------------------------->
-
-    <body>
-        <header>
-            <div id="logo">
-                <a href="#startseite"><img src="jpg/Logo.jpg" alt="Logo"></a>
-            </div>
-
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#startseite">Startseite</a></li>
-                    <li><a href="#haus">das Haus</a></li>
-                    <li><a href="#räume">Räume</a></li>
-                    <li><a href="#belegungsplan">Belegungsplan</a></li>
-                    <li><a href="#preise">Preise</a></li>
-                    <li><a href="#Standort">Standort</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <!--Startseite------------------------------->
-
-        <section id="startseite">
-            <hr>
+    <header id="home" class="hero">
+        <img src="jpg/Sils.jpg" alt="Landschaft Sils" class="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
             <h1>Ferienhaus</h1>
-            <h2>Posta Veglia in Sils-Baselgia</h2>
-            <a href="#kontakt">
-                <img src="jpg/Pfeil.jpg" alt="Pfeil">
-            </a>
-        </section>
+            <p>Posta Veglia in Sils-Baselgia</p>
+            <a href="#haus" class="btn">Haus Entdecken</a>
+        </div>
+    </header>
 
-        <!--Haus----------------------------------------->
-
+    <main>
+        <!-- Das Haus -->
         <section id="haus">
-            <h3>das Haus</h3>
-            <br>
-            <div id="hausbild">
-                <img src="jpg/Haus.jpg"  alt="Haus"><br> <br>
+            <div class="container reveal">
+                <h2>Posta Veglia</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Das Haus Posta Veglia (Baujahr 1792) steht unter Denkmalschutz. Wir haben es nur vorsichtig
+                            und
+                            mit Respekt gegenüber der alten Bausubstanz modernisiert. Die mit Arvenholz getäferte
+                            Wohnstube
+                            wird von der Küche her mit einem alten Engadinerofen geheizt.</p>
+                        <p>Eine kleine Holztreppe führt zu den darüberliegenden Schlafzimmern. Die historische Küche mit
+                            Steinboden und einem Schüttstein aus Granit wurde mit modernen Geräten ausgerüstet, aber
+                            baulich
+                            nicht verändert.</p>
+                        <p>Die modernen Badezimmer bieten auch bei voller Belegung den erwünschten Komfort. Sieben bis
+                            maximal neun Personen können in diesem historischen Ambiente gemütliche, erholsame Ferien
+                            verbringen.</p>
+                    </div>
+                    <div class="about-img">
+                        <img src="jpg/Haus.jpg" alt="Haus Posta Veglia">
+                    </div>
+                </div>
             </div>
-            <h2>Posta Veglia</h2> <br>
-            <p>Das Haus Posta Veglia (Baujahr 1792) steht unter Denkmalschutz. Wir haben es nur vorsichtig und mit Respekt gegenüber der alten Bausubstanz modernisiert.  Die mit Arvenholz getäferte Wohnstube wird  von der Küche her mit einem alten Engadinerofen geheizt. Eine kleine Holztreppe führt zu den darüberliegenden Schlafzimmern. Die  historische Küche mit Steinboden und einem Schüttstein aus Granit wurde mit modernen Geräten ausgerüstet, aber baulich nicht verändert. Die modernen Badezimmer bieten auch bei voller Belegung den erwünschten Komfort. Sieben bis maximal neun Personen  können in diesem historischen Ambiente gemütliche, erholsame Ferien verbringen.</p>
         </section>
 
-        <!--Räume----------------------------------------->
+        <!-- Räume -->
+        <section id="raeume" class="rooms-section">
+            <div class="container reveal">
+                <h2>Räume</h2>
+                <div class="rooms-grid">
+                    <div class="room-card" data-room="wohnzimmer">
+                        <img src="jpg/simbole/Whonzimmer.jpg" alt="Wohnzimmer & Sonnenstube" class="room-card-img"
+                            loading="lazy" decoding="async" onerror="this.src='jpg/Wohnzimmer/Stube mit Buffet.JPG'">
+                        <div class="room-card-content">
+                            <h3>Wohnzimmer & Sonnenstube</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
 
-        <section id="räume">
-            <h3>Räume</h3>
-            <br>
+                    <div class="room-card" data-room="kueche">
+                        <img src="jpg/simbole/küche.jpg" alt="Küche" class="room-card-img" loading="lazy"
+                            decoding="async" onerror="this.src='jpg/Küche/Küche.JPG'">
+                        <div class="room-card-content">
+                            <h3>Küche</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
 
-            
-            <div id="zimmer">
-                <ul>
-                    <a href="html/Wohnzimmer.html"><li><img src="jpg/simbole/Whonzimmer.jpg" alt="Whonzimmer"></li></a>
-                    <a href="html/Schlafzimmer.html"><li><img src="jpg/simbole/Einzelzimmer.jpg" alt="Schlafzimmer"></li></a>
-                    <a href="html/WC.html"><li><img src="jpg/simbole/Badezimmer.jpg" alt="Badezimmer"></li></a>
-                    <a href="html/Küche.html"><li><img src="jpg/simbole/küche.jpg" alt="küche"></li></a>
-                    <a href="html/Gang.html"><li><img src="jpg/simbole/Gang.jpg" alt="Gang"></li></a>
-                    <a href="html/Algemein.html"><li><img src="jpg/simbole/Garten.jpg" alt="Garten"></li></a>
-                </ul>
-            </div><br><br>
+                    <div class="room-card" data-room="schlafzimmer">
+                        <img src="jpg/simbole/Einzelzimmer.jpg" alt="Schlafzimmer" class="room-card-img" loading="lazy"
+                            decoding="async" onerror="this.src='jpg/Schlafzimmer/Balkenzimmer Bett.JPG'">
+                        <div class="room-card-content">
+                            <h3>Schlafzimmer</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="bad">
+                        <img src="jpg/simbole/Badezimmer.jpg" alt="Badezimmer" class="room-card-img" loading="lazy"
+                            decoding="async" onerror="this.src='jpg/WC/Badezimmer.JPG'">
+                        <div class="room-card-content">
+                            <h3>Badezimmer</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="gang">
+                        <img src="jpg/simbole/Gang.jpg" alt="Gang & Garten" class="room-card-img" loading="lazy"
+                            decoding="async" onerror="this.src='jpg/Restliches/Gang unten ohne Tischtennis.JPG'">
+                        <div class="room-card-content">
+                            <h3>Gang & Garten</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
+
+                    <div class="room-card" data-room="allgemein">
+                        <img src="jpg/simbole/Garten.jpg" alt="Restliche Ausstattung" class="room-card-img"
+                            loading="lazy" decoding="async" onerror="this.src='jpg/zimmerplan.jpg'">
+                        <div class="room-card-content">
+                            <h3>Restliche Ausstattung</h3>
+                            <span class="btn-link">Bilder ansehen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 4rem;">360° Fotos</h2>
+                <div class="iframe-container" style="height: 500px">
+                    <iframe title="360 Grad Ansicht"
+                        src="https://www.google.com/maps/embed?pb=!4v1774641212934!6m8!1m7!1sCAoSHENJQUJJaENFTkl0WWNEUnlYOS1QWmdfT19LZC0.!2m2!1d46.43367832694378!2d9.755390836848854!3f184.62093289723!4f-4.479118947454424!5f0.7820865974627469"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
         </section>
 
-        <!--Belegundsplan-------------------------------------------->
-
+        <!-- Belegungsplan -->
         <section id="belegungsplan">
-            <h3>Belegungsplan</h3>
-            <br>
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FZurich&title=Ferienhaus%20Posta%20Veglia%20Sils&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showTitle=1&src=cG9zdGEudmVnbGlhLnNlZ2xAZ21haWwuY29t&color=%23039BE5" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
-        </section>
-
-        <!--Preise-------------------------------------------->
-
-        <section id="preise">
-            <h3>Mietkosten pro Woche</h3>
-            <br>
-            <div class="computer">
-                <p>Die Posta Veglia kann grundsätzlich von Samstag bis Samstag gemietet werden. In der Saison 4 sind auch kürzere Aufenthalte und andere Anreisetage möglich. Je nach Kalenderjahr können die Saisons leicht varieren. Für die Woche mit Ostermontag gilt der Tarif Saison 1 Winter.</p>
-                <br>
-                <table>
-                    <tr>
-                        <th>Saison 1 Winter</th>
-                        <th>Saison 1 Sommer</th>
-                        <th>Saison 2 Winter</th>
-                        <th>Saison 2 Sommer</th>
-                        <th>Saison 3</th>
-                        <th>Saison 4</th>
-                    </tr>
-                    <tr>
-                        <td>KW 1/ 5-Ostern/ 51-53</td>
-                        <td>KW 27-37</td>
-                        <td>KW 2-4</td>
-                        <td>KW 38-42</td>
-                        <td>KW 23-26</td>
-                        <td>KW Ostern-22/ 43-50</td>
-                    </tr>
-                    <tr>
-                        <td>Weihnachten/ Neujahr/ Februar/ März bis Ostern</td>
-                        <td>Juli/ August bis Mitte September</td>
-                        <td>Januar</td>
-                        <td>Mitte September bis ca. 20. Oktober</td>
-                        <td>Juni</td>
-                        <td>Ostern bis Ende Juni/ ca. 20. Oktober bis Weihnachten</td>
-                    </tr>
-                    <tr>
-                        <td>CHF 2'030.-</td>
-                        <td>CHF 1'950.-</td>
-                        <td>CHF 1'830.-</td>
-                        <td>CHF 1'790.-</td>
-                        <td>CHF 1'640.-</td>
-                        <td>CHF 1'440.-</td>
-                    </tr>
-                </table>
-                <br>
-                <p>Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und varieren je nach Saison zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine Kaution von CHF 300.- zu leisten (CHF 400.- für 14 Tage).</p>
-            </div>
-
-            <div class="Handy">
-                <img src="jpg/Tabelle Mietpreise Hochformat.JPG" alt="Preise">
-				<br>
+            <div class="container reveal">
+                <h2>Belegungsplan</h2>
+                <div class="iframe-container">
+                    <iframe title="Belegungsplan Kalender" loading="lazy"
+                        src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FZurich&showPrint=0&showTabs=0&showTitle=0&src=cG9zdGEudmVnbGlhLnNlZ2xAZ21haWwuY29t&color=%23cba052"
+                        height="600" style="border:0" frameborder="0" scrolling="no"></iframe>
+                </div>
             </div>
         </section>
-        <br>
 
-        <!--Standort-------------------------------------------->
+        <!-- Preise -->
+        <section id="preise" class="pricing-section section-white">
+            <div class="container reveal">
+                <h2>Preise</h2>
+                <div class="pricing-notes">
+                    <p>Die Posta Veglia kann grundsätzlich von Samstag bis Samstag gemietet werden. In der Saison 4 sind
+                        auch kürzere Aufenthalte und andere Anreisetage möglich. Je nach Kalenderjahr können die Saisons
+                        leicht varieren. Für die Woche mit Ostermontag gilt der Tarif Saison 1 Winter.</p>
+                </div>
 
-        <section id="Standort">
-            <h3>Standort</h3>
-            <h2>des Hauses Posta Veglia</h2>
-            <br>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.980043835413!2d9.755170167771885!3d46.43389929369027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784810d9064bed5%3A0x81d7535b224a1e03!2sAltepostsils!5e0!3m2!1sde!2sch!4v1684768783455!5m2!1sde!2sch" width="70%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="pricing-table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Saison 1 Winter</th>
+                                <th>Saison 1 Sommer</th>
+                                <th>Saison 2 Winter</th>
+                                <th>Saison 2 Sommer</th>
+                                <th>Saison 3</th>
+                                <th>Saison 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KW 1/ 5-Ostern/ 51-53</td>
+                                <td>KW 27-37</td>
+                                <td>KW 2-4</td>
+                                <td>KW 38-42</td>
+                                <td>KW 23-26</td>
+                                <td>KW Ostern-22/ 43-50</td>
+                            </tr>
+                            <tr>
+                                <td>Weihnachten/ Neujahr/<br>Februar/ März bis Ostern</td>
+                                <td>Juli/ August bis<br>Mitte September</td>
+                                <td>Januar</td>
+                                <td>Mitte September bis<br>ca. 20. Oktober</td>
+                                <td>Juni</td>
+                                <td>Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CHF 2'030.-</strong></td>
+                                <td><strong>CHF 1'950.-</strong></td>
+                                <td><strong>CHF 1'830.-</strong></td>
+                                <td><strong>CHF 1'790.-</strong></td>
+                                <td><strong>CHF 1'640.-</strong></td>
+                                <td><strong>CHF 1'440.-</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <img src="jpg/Tabelle Mietpreise Hochformat.JPG" alt="Preis Tabelle" class="mobile-pricing-img"
+                    loading="lazy" decoding="async">
+
+                <div class="pricing-notes mt-4">
+                    <p>Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und
+                        zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à
+                        CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und varieren je nach Saison
+                        zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine Kaution von CHF
+                        300.- zu leisten (CHF 400.- für 14 Tage).</p>
+                </div>
+            </div>
         </section>
 
-
-        <!--Kontakt-------------------------------------------->
-
-        <section id="kontakt">
-            <h3>Kontakt</h3>
-            <br>
-            <p> Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage zum Haus oder zur Umgebung? Dann füllen Sie bitte das untenstehende Fomular aus.</p> <br>
-            <p>Seraina Steinlin</p>
-            <p>info@altepostsils.ch</p>
-            <p>079 891 00 30
-            <br><br>
-            <div class="container">
-                <form action="https://formsubmit.co/posta.veglia.segl@gmail.com" method="POST">
-                    <input type="name" name="Vorname Name" placeholder="Vorname, Name" required><br>
-                    <input type="adresse" name="Adresse" placeholder="Adresse" required><br>
-                    <input type="plzort" name="PLZ ORT" placeholder="PLZ" required><br>
-                    <input type="ort" name="Ort" placeholder="Ort" required><br>
-                    <input type="email" name="Email" placeholder="Email" required><br>
-                    <input type="telefon" name="Telefon" placeholder="Telefon" required><br>
-                    <input type="datumtart" name="Datum Start" placeholder="Datum Start"><br>
-                    <input type="datumende" name="Datum Ende" placeholder="Datum Ende"><br>
-                    <textarea class="input_text" name="text" tabindex="3" placeholder="Nachricht"></textarea><br>
-                    <input class="button" type="submit">
-                    <input type="hidden" name="_next" value="https://altepostsils.netlify.app/html/thanks">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_cc" value=" flurin.max.meier@gmx.ch ">
-                </form>
-              </div><br>
+        <!-- Standort -->
+        <section id="standort">
+            <div class="container reveal">
+                <h2>Standort</h2>
+                <div class="iframe-container" style="height: 500px">
+                    <iframe title="Standort Karte"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.980043835413!2d9.755170167771885!3d46.43389929369027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784810d9064bed5%3A0x81d7535b224a1e03!2sAltepostsils!5e0!3m2!1sde!2sch!4v1684768783455!5m2!1sde!2sch"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
         </section>
 
-        <!--impressum--------------------------------------------->
+        <!-- Kontakt -->
+        <section id="kontakt" class="section-white">
+            <div class="container reveal">
+                <h2>Kontakt</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Haben Sie eine Frage?</h3>
+                        <p>Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage zum Haus oder zur Umgebung?
+                            Dann
+                            füllen Sie bitte das Kontaktformular aus.</p>
+                        <br>
+                        <p><strong>Seraina Steinlin</strong></p>
+                        <p>info@altepostsils.ch</p>
+                        <p>079 891 00 30</p>
+                    </div>
+                    <div class="contact-form">
+                        <form action="https://formsubmit.co/posta.veglia.segl@gmail.com" method="POST">
+                            <!-- Honeypot zur Spam-Vermeidung -->
+                            <input type="text" name="_honey" style="display:none">
 
-        <footer>
-            <p>
-                &copy; 2022 Posta Veglia
-                <a href="html/impressum.html">impressum</a>
-            </p>
-        </footer>
-    </body>
+                            <div class="form-group">
+                                <input type="text" name="Name" placeholder="Vorname, Name" class="form-control"
+                                    autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="Adresse" placeholder="Adresse" class="form-control"
+                                    autocomplete="street-address" required>
+                            </div>
+                            <div style="display: flex; gap: 1rem;" class="form-group">
+                                <input type="text" name="PLZ" placeholder="PLZ" class="form-control" style="width: 30%;"
+                                    autocomplete="postal-code" required>
+                                <input type="text" name="Ort" placeholder="Ort" class="form-control" style="width: 70%;"
+                                    autocomplete="address-level2" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="Email" placeholder="E-Mail" class="form-control"
+                                    autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="Telefon" placeholder="Telefon" class="form-control"
+                                    autocomplete="tel" required>
+                            </div>
+                            <div style="display: flex; gap: 1rem;" class="form-group">
+                                <input type="text" name="Anreise" placeholder="Anreise (Datum)" class="form-control"
+                                    onfocus="(this.type='date')"
+                                    onblur="(this.value==''?this.type='text':this.type='date')">
+                                <input type="text" name="Abreise" placeholder="Abreise (Datum)" class="form-control"
+                                    onfocus="(this.type='date')"
+                                    onblur="(this.value==''?this.type='text':this.type='date')">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="Nachricht" placeholder="Ihre Nachricht" class="form-control" rows="5"
+                                    required></textarea>
+                            </div>
+                            <input type="hidden" name="_subject" value="Neue Anfrage über Webseite (altepostsils.ch)">
+                            <input type="hidden" name="_next" value="https://altepostsils.ch">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_cc" value="flurin.max.meier@gmx.ch">
+                            <button type="submit" class="btn">Nachricht Senden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ferienhaus Posta Veglia | <a href="impressum.html">Impressum</a></p>
+        </div>
+    </footer>
+
+    <!-- Hidden Templates for Modals -->
+    <template id="content-wohnzimmer">
+        <h2>Wohnzimmer & Sonnenstube</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Die mit Arvenholz getäferte Wohnstube wird von der Küche her mit einem alten Engadiner Kachelofen
+                geheizt. Der lange Esstisch mit Eckbank und ein zweiter Tisch beim Ofen bieten Platz für maximal 12
+                Personen. Ein Sofa und zwei Lehnstühle laden zum entspannten Lesen ein. Eine Durchreiche erleichtert die
+                Verbindung zur Küche und eine kleine Holztreppe führt zu den darüber liegenden Schlafzimmern.</p>
+            <p>Im ersten Stock befindet sich eine Liegeveranda mit grossen Fenstern, einem Sofa und zwei Liegestühlen.
+                Diese wird nicht beheizt, bietet aber in der wärmeren Jahreszeit eine zusätzlichen schönen
+                Aufenthaltsraum.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/Wohnzimmer/Ofen.jpg" alt="Ofen in Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/Wohnzimmer/Esstisch.JPG" alt="Esstisch in Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/Wohnzimmer/Stube mit Buffet.JPG" alt="Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/Wohnzimmer/Sonnenstube.jpeg" alt="Sonnenstube" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <template id="content-kueche">
+        <h2>Küche</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Die grosse Küche kombiniert den ursprünglichen Charme einer alten Engadiner Küche mit modernem Komfort
+                (Elektroherd, Geschirrspüler, Waschmaschine). Mit einem grossen Tisch und genügend Raum ist sie ideal
+                für eine grosse Familie oder Freunde, die gemeinsam kochen und dazu noch gern einen Apéro geniessen.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/Küche/Feuerstelle.JPG" alt="Ofen von Küche aus" loading="lazy" decoding="async">
+            <img src="jpg/Küche/Küchenimpressionen.JPG" alt="Küchenimpressionen" loading="lazy" decoding="async">
+            <img src="jpg/Küche/Küche.JPG" alt="Küche mit Glaskeramik-Kochfeld" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <template id="content-schlafzimmer">
+        <h2>Schlafzimmer</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Das Haus verfügt über drei Doppel- und ein Einzelschlafzimmer sowie ein kleines Kinderzimmer. Auch diese
+                sind im ursprünglichen, für ein Engadiner Haus typischen Zustand belassen. Für die kleinen Gäste stehen
+                zudem mehrere Kinderbetten zur Verfügung.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/Schlafzimmer/Appenzellerzimmer.JPG" alt="Zimmer mit Bad" loading="lazy" decoding="async">
+            <img src="jpg/Schlafzimmer/Balkenzimmer Bett.JPG" alt="Balkenzimmer" loading="lazy" decoding="async">
+            <img src="jpg/Schlafzimmer/Einzelzimmer.JPG" alt="Einzelzimmer" loading="lazy" decoding="async">
+            <img src="jpg/Schlafzimmer/Zimmer ob Stube.JPG" alt="Schlafzimmer" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <template id="content-bad">
+        <h2>Badezimmer</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Zwei moderne Badezimmer – eines mit Badewanne/WC, das andere mit Dusche/WC sowie ein separates WC mit
+                vorgelagertem Doppellavabo bieten den nötigen Komfort auch bei grosser Belegung.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/WC/Duschezimmer.JPG" alt="Duschezimmer" loading="lazy" decoding="async">
+            <img src="jpg/WC/Waschstelle mit WC.JPG" alt="Lavabo mit WC" loading="lazy" decoding="async">
+            <img src="jpg/WC/Badezimmer.JPG" alt="Badezimmer" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <template id="content-gang">
+        <h2>Gang & Garten</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Wie bei alten Engadinerhäusern üblich ist der Sulér – die Eingangshalle – sehr geräumig und bietet neben
+                der Garderobe auch Platz für einen Tischtennistisch oder andere Spiele. Im kleinen, umzäunten Garten
+                kann man in der warmen Jahreszeit draussen an der Sonne sitzen. Gartenmöbel und ein Grill sind
+                vorhanden.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/Restliches/Gang unten ohne Tischtennis.JPG" alt="Gang" loading="lazy" decoding="async">
+            <img src="jpg/Restliches/Gang unten mit Tischtennis.JPG" alt="Gang mit Tischtennis" loading="lazy"
+                decoding="async">
+            <img src="jpg/Restliches/Garten.jpg" alt="Garten" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <template id="content-allgemein">
+        <h2>Restliche Ausstattung</h2>
+        <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>Das Wohnzimmer ist das Kernstück des Hauses. Der Kachelofen wird von der Küche aus mit Holz geheizt.
+                Dieser Ofen bringt auch Wärme in die beiden darüber liegenden Schlafräume. Die übrigen Schlafräume
+                werden bei Bedarf mit Elektrostrahlern beheizt.</p>
+            <p>Im grossen Tenn wird das Holz für die Heizung gelagert. Drei Fahrräder und ein Tischtennistisch sind im
+                Haus vorhanden. Zusätzlich ist eine Garage und ein Aussenstellplatz vorhanden.</p>
+        </div>
+        <div class="modal-gallery">
+            <img src="jpg/zimmerplan.jpg" alt="Zimmerplan" loading="lazy" decoding="async">
+        </div>
+    </template>
+
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close">✕</div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>

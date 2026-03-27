@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://altepostsils.ch/sitemap.xml
