@@ -84,6 +84,41 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === modalOverlay) closeModal();
         });
 
+        // Facade Pattern for Iframes (Maps & Calendar)
+        const lazyIframes = document.querySelectorAll('.iframe-container[data-src]');
+
+        const loadIframe = (container) => {
+            const src = container.getAttribute('data-src');
+            if (!src) return;
+
+            const title = container.getAttribute('data-title') || 'Iframe Content';
+            const height = container.getAttribute('data-height') || '500';
+            const allow = container.getAttribute('data-allow') || '';
+
+            container.innerHTML = `
+            <iframe title="${title}"
+                src="${src}"
+                width="100%" height="${height}"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                ${allow ? `allow="${allow}"` : ''}
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        `;
+            container.classList.add('loaded');
+        };
+
+        const iframeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadIframe(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '200px' });
+
+        lazyIframes.forEach(container => {
+            iframeObserver.observe(container);
+        });
+
         // Custom Lightbox for modal images
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';

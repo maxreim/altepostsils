@@ -1,6 +1,7 @@
 :root {
     /* Premium Alpine Color Palette */
-    --clr-gold: #cba052;
+    --clr-gold: #b3883a;
+    /* Darkened from #cba052 for WCAG AA (4.5:1 on white) */
     --clr-gold-light: #e6c888;
     --clr-wood-dark: #2c241b;
     --clr-wood-med: #4a3f35;
@@ -622,6 +623,7 @@ footer {
 footer a {
     color: var(--clr-gold);
     margin-left: 1rem;
+    text-decoration: underline;
 }
 
 /* Utilities */
@@ -706,10 +708,12 @@ footer a {
     }
 
     .pricing-table-wrap {
-        display: none;
+        display: block;
+        padding: 1rem;
+        margin: 1rem 0;
     }
 
     .mobile-pricing-img {
-        display: block;
+        display: none;
     }
 }

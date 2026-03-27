@@ -3,12 +3,14 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-E79C7DV0BE');
+        window.addEventListener('load', function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-E79C7DV0BE');
+        });
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +68,8 @@
             <p><strong>Posta Veglia</strong><br>
                 Via da Baselgia 10<br>
                 7515 Sils im Engadin</p>
-            <p>Email: <a href="mailto:info@altepostsils.ch" style="color:var(--clr-gold)">info@altepostsils.ch</a></p>
+            <p>Email: <a href="mailto:info@altepostsils.ch"
+                    style="color:var(--clr-gold); text-decoration: underline;">info@altepostsils.ch</a></p>
             <p>Vertreten durch Seraina Steinlin</p>
 
             <h2>Copyright</h2>
