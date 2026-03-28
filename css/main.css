@@ -637,13 +637,20 @@ textarea.form-control {
 /* Footer */
 footer {
     background: var(--clr-wood-dark);
-    color: var(--clr-stone-mid);
+    color: #f5f5f0;
+    /* helles Grau/Weiss – WCAG 4.5:1+ auf dunklem Hintergrund */
     text-align: center;
     padding: 3rem 5%;
 }
 
+footer p {
+    color: #f5f5f0;
+    margin-bottom: 0;
+}
+
 footer a {
-    color: var(--clr-gold);
+    color: #f0c060;
+    /* heller Gold-Ton – WCAG 4.5:1 auf #2c241b */
     margin-left: 1rem;
     text-decoration: underline;
 }

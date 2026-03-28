@@ -2,14 +2,17 @@
 <html lang="de">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
+    <!-- Google Analytics – nach dem Page-Load geladen, kein Render-Blocking -->
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E79C7DV0BE');
         window.addEventListener('load', function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-E79C7DV0BE');
+            var s = document.createElement('script');
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE';
+            s.async = true;
+            document.head.appendChild(s);
         });
     </script>
     <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
@@ -47,14 +50,22 @@
     }
     </script>
     <title>Ferienhaus Posta Veglia mieten | Sils im Engadin</title>
-    <link rel="preload" as="image" href="jpg/Sils.webp">
+    <link rel="preload" as="image" href="jpg/Sils.webp"
+        imagesrcset="jpg/Sils-400w.webp 400w, jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w"
+        imagesizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 1626px">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.google.com">
-    <link
+    <!-- Google Fonts geladen asynchron, um Render-Blocking zu vermeiden -->
+    <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet">
+    </noscript>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/app.js" defer></script>
 </head>
@@ -75,8 +86,9 @@
     </nav>
 
     <header id="home" class="hero">
-        <img src="jpg/Sils.webp" srcset="jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w" sizes="100vw"
-            alt="Landschaft Sils" class="hero-bg" width="1626" height="1084">
+        <img src="jpg/Sils.webp" srcset="jpg/Sils-400w.webp 400w, jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w"
+            sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 100vw" alt="Landschaft Sils" class="hero-bg"
+            width="1626" height="1084" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Ferienhaus Posta Veglia</h1>
