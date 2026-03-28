@@ -590,7 +590,14 @@ section {
     max-width: 90%;
     max-height: 90vh;
     object-fit: contain;
+    transform: scale(0.9);
+    transition: var(--trans-smooth);
 }
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
 
 .lightbox-close {
     position: absolute;
@@ -679,6 +686,29 @@ th {
     border-left: 4px solid var(--clr-gold);
     font-size: 0.95rem;
 }
+
+/* Season Highlighting */
+[data-season].current-season {
+    background-color: var(--clr-season-active);
+    position: relative;
+}
+
+th[data-season].current-season::after {
+    content: '★ Aktuell';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    background: var(--clr-gold);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+
+
 
 /* Contact */
 .contact-grid {
@@ -774,13 +804,14 @@ textarea.form-control {
     margin-bottom: 2rem;
 }
 
-width: 20px;
-height: 20px;
-border: 2px solid var(--clr-white);
-border-bottom-color: transparent;
-border-radius: 50%;
-display: inline-block;
-animation: rotation 1s linear infinite;
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--clr-white);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
@@ -985,3 +1016,37 @@ footer a {
         padding: 1rem;
         margin: 1rem 0;
     }
+
+    /* Stacked Form Fields on Mobile */
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+
+    .form-row .form-control {
+        width: 100% !important;
+    }
+
+    /* Back to Top Overlap Fix */
+    .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+/* Form Row Helper */
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.plz-field {
+    width: 30%;
+}
+
+.ort-field {
+    width: 70%;
+}

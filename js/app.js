@@ -15,39 +15,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const backToTop = document.querySelector('.back-to-top');
 
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-        updateScrollProgress();
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                updateScrollProgress();
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                if (backToTop) {
+                    if (window.scrollY > 500) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                }
+
+                // Active Section Tracking
+                const sections = document.querySelectorAll('section, header');
+                let current = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Scroll Reveal
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < window.innerHeight - 100) {
+                        reveal.classList.add('active');
+                    }
+                });
+
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
-
-        // Back to top button visibility
-        if (backToTop) {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-
-        // Active Section Tracking
-        const sections = document.querySelectorAll('section, header');
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
     }, { passive: true });
 
     // Mobile menu toggle
@@ -78,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-    window.addEventListener('scroll', revealOnScroll, { passive: true });
     revealOnScroll();
 
     // Setup Modals
@@ -211,10 +225,61 @@ document.addEventListener('DOMContentLoaded', () => {
     lazyIframes.forEach(c => iframeObserver.observe(c));
 
 
+    // Price & Season Logic
+    const getEaster = (year) => {
+        const f = Math.floor, G = year % 19, C = f(year / 100),
+            H = (C - f(C / 4) - f((8 * C + 13) / 25) + 19 * G + 15) % 30,
+            I = H - f(H / 28) * (1 - f(H / 28) * f(29 / (H + 1)) * f((21 - G) / 11)),
+            J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
+            L = I - J, month = 3 + f((L + 40) / 44), day = L + 28 - 31 * f(month / 4);
+        return new Date(year, month - 1, day);
+    };
+
+    const getSeason = (date) => {
+        const year = date.getFullYear();
+        const month = date.getMonth(); // 0-11
+        const day = date.getDate();
+        const easter = getEaster(year);
+        const dayOfYear = (Date.UTC(year, month, day) - Date.UTC(year, 0, 0)) / 86400000;
+        const easterDayOfYear = (Date.UTC(year, easter.getMonth(), easter.getDate()) - Date.UTC(year, 0, 0)) / 86400000;
+
+        // Simplified season logic based on the house rules
+        if (dayOfYear <= 7 || dayOfYear >= 355 || (dayOfYear >= 32 && month < 3 && date.getTime() < easter.getTime())) return 'S1W'; // KW 1, 5-Ostern, 51-53
+        if (dayOfYear > 7 && dayOfYear < 32) return 'S2W'; // KW 2-4
+        if (date >= easter && month <= 4) return 'S4'; // Ostern bis Ende Mai (~KW 22)
+        if (month === 5) return 'S3'; // Juni (KW 23-26)
+        if (month >= 6 && month <= 7) return 'S1S'; // Juli/August
+        if (month === 8 && day <= 15) return 'S1S'; // Bis Mitte Sep (KW 27-37)
+        if ((month === 8 && day > 15) || (month === 9 && day <= 20)) return 'S2S'; // Mitte Sep - 20. Okt (KW 38-42)
+        if ((month === 9 && day > 20) || (month === 10) || (month === 11 && day < 21)) return 'S4'; // 20. Okt - Weihnachten (KW 43-50)
+        return 'S4';
+    };
+
+    const seasonRates = { S1W: 2030, S1S: 1950, S2W: 1830, S2S: 1790, S3: 1640, S4: 1440 };
+
+    // Highlight Current Season
+    const currentSeason = getSeason(new Date());
+    document.querySelectorAll(`[data-season="${currentSeason}"]`).forEach(el => el.classList.add('current-season'));
+
+
     // Form Submission (Decoupled from Modals)
     const form = document.querySelector('#kontakt form');
     if (form) {
+        const dateIn = form.querySelector('input[name="Anreise"]');
+        const dateOut = form.querySelector('input[name="Abreise"]');
+
         form.onsubmit = (e) => {
+            const lang = window.i18n ? window.i18n.getLang() : 'de';
+            const t = window.translations?.[lang] || window.translations['de'];
+            // Date Validation
+            if (dateIn && dateOut && dateIn.value && dateOut.value) {
+                if (new Date(dateOut.value) <= new Date(dateIn.value)) {
+                    e.preventDefault();
+                    alert(t.date_error);
+                    return;
+                }
+            }
+
             e.preventDefault();
             const btn = form.querySelector('button');
             const originalBtnText = btn.innerHTML;
@@ -225,9 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fetch(form.action, {
                 method: "POST",
-                headers: {
-                    'Accept': 'application/json'
-                },
+                headers: { 'Accept': 'application/json' },
                 body: formData
             })
                 .then(r => {
@@ -238,25 +301,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         return r.json().then(errData => {
                             console.error('FormSubmit Error Response:', errData);
                             throw new Error(errData.message || 'Submission failed');
-                        }).catch(() => {
-                            throw new Error('Submission failed');
-                        });
+                        }).catch(() => { throw new Error('Submission failed'); });
                     }
                 })
                 .catch((err) => {
                     console.error('Form Submission Error:', err);
                     const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
-
-                    // Remove existing error if any
                     const existingError = form.querySelector('.form-feedback.error');
                     if (existingError) existingError.remove();
-
-                    // Create and insert new error
                     const errorDiv = document.createElement('div');
                     errorDiv.className = 'form-feedback error';
                     errorDiv.innerHTML = errorMsg;
                     form.prepend(errorDiv);
-
                     btn.disabled = false;
                     btn.innerHTML = originalBtnText;
                 });

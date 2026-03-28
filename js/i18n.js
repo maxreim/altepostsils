@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLang = 'de';
-    let currentLang = localStorage.getItem('lang') || defaultLang;
+    
+    // Get language from URL parameters
+    const getLangFromURL = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('lang');
+    };
+
+    const urlLang = getLangFromURL();
+    let currentLang = urlLang || localStorage.getItem('lang') || defaultLang;
+
+    // If urlLang is set, save it to localStorage for future visits
+    if (urlLang && translations[urlLang]) {
+        localStorage.setItem('lang', urlLang);
+    }
 
     // Apply translations
     const applyTranslations = (lang, root = document) => {
@@ -60,6 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lang && translations[lang]) {
                     currentLang = lang;
                     localStorage.setItem('lang', lang);
+                    
+                    // Update URL with selected language without reloading
+                    const newUrl = new URL(window.location.href);
+                    if (lang === defaultLang) {
+                        newUrl.searchParams.delete('lang');
+                    } else {
+                        newUrl.searchParams.set('lang', lang);
+                    }
+                    window.history.pushState({ lang }, "", newUrl);
+                    
                     applyTranslations(lang);
                 }
             });

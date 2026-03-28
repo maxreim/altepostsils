@@ -47,9 +47,8 @@ const translations = {
         preise_m4: "Mitte September bis<br>ca. 20. Oktober",
         preise_m5: "Juni",
         preise_m6: "Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten",
-        preise_p2: "Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und varieren je nach Saison zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine Kaution von CHF 300.- zu leisten (CHF 400.- für 14 Tage).",
+        preise_p2: "Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und variieren je nach Saison zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine Kaution von CHF 300.- zu leisten (CHF 400.- für 14 Tage).",
         standort_title: "Standort",
-        standort_bewertung: "Unsere Gäste bewerten die Posta Veglia auf Google Maps mit <strong>4.9 von 5 Sternen</strong> (basierend auf 4 Bewertungen).",
         kontakt_title: "Kontakt",
         kontakt_q_title: "Haben Sie eine Frage?",
         kontakt_q_text: "Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage zum Haus oder zur Umgebung? Dann füllen Sie bitte das Kontaktformular aus.",
@@ -78,7 +77,8 @@ const translations = {
         form_success: "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
         form_error: "Entschuldigung, es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.",
         map_interact: "Klicken zum Interagieren",
-        btn_directions: "Route planen / Auf Google Maps ansehen"
+        btn_directions: "Route planen / Auf Google Maps ansehen",
+        date_error: "Abreise muss nach Anreise liegen."
     },
     en: {
         nav_home: "Home",
@@ -130,13 +130,12 @@ const translations = {
         preise_m6: "Easter until end of June/<br>approx. Oct 20 until Christmas",
         preise_p2: "The rental price includes the costs for firewood, bed linen, visitor's taxes, internet, and two parking spaces. Not included are the electricity costs and the final cleaning at CHF 250.-. The electricity costs are billed according to consumption and vary depending on the season between CHF 50.- and 250.-. In addition, a deposit of CHF 300.- must be paid when signing the contract (CHF 400.- for 14 days).",
         standort_title: "Location",
-        standort_bewertung: "Our guests rate Posta Veglia on Google Maps with <strong>4.9 out of 5 stars</strong> (based on 4 reviews).",
         kontakt_title: "Contact",
         kontakt_q_title: "Do you have a question?",
         kontakt_q_text: "Would you like to rent Posta Veglia? Do you have a question about the house or the surroundings? Then please fill out the contact form.",
         ph_name: "First Name, Last Name",
         ph_adresse: "Address",
-        ph_plz: "Zip",
+        ph_plz: "Zip code",
         ph_ort: "City",
         ph_email: "E-Mail",
         ph_telefon: "Phone",
@@ -159,7 +158,8 @@ const translations = {
         form_success: "Thank you! Your message has been sent successfully.",
         form_error: "Sorry, there was a problem sending your message. Please try again later.",
         map_interact: "Click to interact",
-        btn_directions: "Plan route / View on Google Maps"
+        btn_directions: "Plan route / View on Google Maps",
+        date_error: "Departure must be after arrival."
     },
     fr: {
         nav_home: "Accueil",
@@ -211,7 +211,6 @@ const translations = {
         preise_m6: "Pâques jusqu'à fin juin/<br>env. 20 octobre à Noël",
         preise_p2: "Le prix de la location comprend les frais de bois de chauffage, les draps, les taxes de séjour, l'accès Internet et deux places de parking. Ne sont pas inclus les frais d'électricité et le nettoyage final à 250 CHF. Les frais d'électricité sont facturés selon la consommation et varient selon la saison entre 50 et 250 CHF. De plus, une caution de 300 CHF doit être versée lors de la signature du contrat (400 CHF pour 14 jours).",
         standort_title: "Emplacement",
-        standort_bewertung: "Nos clients évaluent Posta Veglia sur Google Maps avec <strong>4.9 sur 5 étoiles</strong> (sur la base de 4 avis).",
         kontakt_title: "Contact",
         kontakt_q_title: "Avez-vous une question ?",
         kontakt_q_text: "Souhaitez-vous louer la Posta Veglia ? Avez-vous une question concernant la maison ou les environs ? Veuillez remplir le formulaire de contact.",
@@ -225,22 +224,23 @@ const translations = {
         ph_abreise: "Départ (Date)",
         ph_nachricht: "Votre Message",
         btn_senden: "Envoyer le message",
-        modal_wz_p1: "Le salon, lambrissé de pin cembro, est chauffé de la cuisine par un ancien poêle en faïence engadinois. La longue table à manger avec banquette d'angle et une deuxième table près du poêle peuvent accueillir jusqu'à 12 personnes au maximum. Un canapé et deux fauteuils invitent à la lecture. Un passe-plat facilite la liaison avec la cuisine et un petit escalier en bois mène aux chambres au-dessus.",
+        modal_wz_p1: "Le salon, lambrissé de pin cembro, est chauffé depuis la cuisine par un ancien poêle en faïence engadinois. La longue table à manger avec banquette d'angle et une deuxième table près du poêle peuvent accueillir jusqu'à 12 personnes au maximum. Un canapé et deux fauteuils invitent à la lecture. Un passe-plat facilite la liaison avec la cuisine et un petit escalier en bois mène aux chambres au-dessus.",
         modal_wz_p2: "Au premier étage se trouve une véranda avec de grandes fenêtres, un canapé et deux chaises longues. Celle-ci n'est pas chauffée, mais offre un beau salon supplémentaire à la belle saison.",
         modal_ku_p1: "La grande cuisine allie le charme d'origine d'une ancienne cuisine engadinoise au confort moderne (cuisinière électrique, lave-vaisselle, lave-linge). Avec une grande table et suffisamment d'espace, elle est idéale pour une grande famille ou pour des amis qui cuisinent ensemble et aiment prendre l'apéritif.",
         modal_sz_p1: "La maison dispose de trois chambres doubles et d'une simple, ainsi que d'une petite chambre d'enfants. Ces dernières ont également été conservées dans leur état d'origine. Plusieurs lits pour enfants sont à disposition.",
         modal_bad_p1: "Deux salles de bains modernes - l'une avec baignoire/WC, l'autre avec douche/WC, ainsi qu'un WC séparé avec lavabo double, offrent le confort nécessaire même en cas de forte occupation.",
         modal_ga_p1: "Comme c'est souvent le cas dans les anciennes maisons engadinoises, le Sulér - le hall d'entrée - est très spacieux et offre de la place pour une table de ping-pong ou d'autres jeux. Dans le petit jardin clôturé, vous pouvez vous asseoir dehors au soleil. Des meubles de jardin et un barbecue sont disponibles.",
-        modal_al_p1: "Le salon est le cœur de the maison. Le poêle en faïence est chauffé au bois depuis the cuisine. Ce poêle apporte également de the chaleur aux deux chambres situées au-dessus. Les autres chambres sont chauffées avec des radiateurs électriques si nécessaire.",
-        modal_al_p2: "Le bois pour the chauffage est stocké dans the grande grange. Trois vélos et une table de ping-pong sont disponibles dans the maison. Il y a aussi un garage et une place de parking extérieure.",
-        seo_title: "Louer the maison de vacances Posta Veglia | Sils-Baselgia, Engadine",
-        seo_description: "Louez the maison de vacances Posta Veglia à Sils-Baselgia (Engadine). Maison engadinoise historique protégée pour 7 à 9 personnes. Idéal pour des vacances relaxantes.",
-        og_title: "Louer the maison de vacances Posta Veglia | Sils-Baselgia",
-        og_description: "Découvrez the charme authentique de l'Engadine dans the maison de vacances historique Posta Veglia. Jusqu'à 9 personnes à Sils-Baselgia. Réservez dès maintenant !",
+        modal_al_p1: "Le salon est le cœur de la maison. Le poêle en faïence est chauffé au bois depuis la cuisine. Ce poêle apporte également de la chaleur aux deux chambres situées au-dessus. Les autres chambres sont chauffées avec des radiateurs électriques si nécessaire.",
+        modal_al_p2: "Le bois pour le chauffage est stocké dans la grande grange. Trois vélos et une table de ping-pong sont disponibles dans la maison. Il y a aussi un garage et une place de parking extérieure.",
+        seo_title: "Louer la maison de vacances Posta Veglia | Sils-Baselgia, Engadine",
+        seo_description: "Louez la maison de vacances Posta Veglia à Sils-Baselgia (Engadine). Maison engadinoise historique protégée pour 7 à 9 personnes. Idéal pour des vacances relaxantes.",
+        og_title: "Louer la maison de vacances Posta Veglia | Sils-Baselgia",
+        og_description: "Découvrez le charme authentique de l'Engadine dans la maison de vacances historique Posta Veglia. Jusqu'à 9 personnes à Sils-Baselgia. Réservez dès maintenant !",
         form_success: "Merci ! Votre message a été envoyé avec succès.",
         form_error: "Désolé, un problème est survenu lors de l'envoi. Veuillez réessayer plus tard.",
         map_interact: "Cliquez pour interagir",
-        btn_directions: "Planifier l'itinéraire / Voir sur Google Maps"
+        btn_directions: "Planifier l'itinéraire / Voir sur Google Maps",
+        date_error: "Le départ doit être après l'arrivée."
     },
     it: {
         nav_home: "Home",
@@ -292,7 +292,6 @@ const translations = {
         preise_m6: "Pasqua fino a fine giugno/<br>circa 20 ottobre a Natale",
         preise_p2: "Il prezzo di affitto include i costi per la legna da ardere, la biancheria da letto, le tasse di soggiorno, internet e due posti auto. Non sono inclusi i costi dell'elettricità e la pulizia finale a CHF 250.-. I costi dell'elettricità vengono fatturati a consumo e variano a seconda della stagione tra CHF 50.- e 250.-. Inoltre, al momento della firma del contratto deve essere versata una caparra di CHF 300.- (CHF 400.- per 14 giorni).",
         standort_title: "Posizione",
-        standort_bewertung: "I nostri ospiti valutano Posta Veglia su Google Maps con <strong>4.9 su 5 stelle</strong> (su 4 recensioni).",
         kontakt_title: "Contatto",
         kontakt_q_title: "Hai una domanda?",
         kontakt_q_text: "Ti piacerebbe affittare la Posta Veglia? Hai una domanda sulla casa o sui dintorni? Compila il modulo di contatto.",
@@ -302,8 +301,8 @@ const translations = {
         ph_ort: "Città",
         ph_email: "E-Mail",
         ph_telefon: "Telefono",
-        ph_anreise: "Arrivo (Date)",
-        ph_abreise: "Partenza (Date)",
+        ph_anreise: "Arrivo (Data)",
+        ph_abreise: "Partenza (Data)",
         ph_nachricht: "Il tuo messaggio",
         btn_senden: "Invia messaggio",
         modal_wz_p1: "Il soggiorno rivestito in legno di cembro è riscaldato dalla cucina tramite un'antica stufa in maiolica engadinese. Il lungo tavolo da pranzo con panca ad angolo e un secondo tavolo vicino alla stufa offrono spazio per un massimo di 12 persone. Un divano e due poltrone invitano alla lettura. Un passavivande facilita il collegamento con la cucina e una piccola scala in legno conduce alle camere da letto soprastanti.",
@@ -321,7 +320,8 @@ const translations = {
         form_success: "Grazie! Il tuo messaggio è stato inviato con successo.",
         form_error: "Spiacenti, c'è stato un problema con l'invio. Riprova più tardi.",
         map_interact: "Clicca per interagire",
-        btn_directions: "Pianifica percorso / Visualizza su Google Maps"
+        btn_directions: "Pianifica percorso / Visualizza su Google Maps",
+        date_error: "La partenza deve essere dopo l'arrivo."
     },
     rm: {
         nav_home: "Chasa",
@@ -373,7 +373,6 @@ const translations = {
         preise_m6: "Pasca fin la fin da zercladur/<br>var. 20 october fin Nadal",
         preise_p2: "En il pretsch da fittanza èn cumpigliads ils custs per laina per stgaudar, lenzolas, taxas da cura, internet e dus plazs da parcar. Betg includids èn ils custs da current per l'electricitad e la nettegiada finala da CHF 250.-. Ils custs d'electricitad vegnan quintads giu tenor consum ed varieschan tut tenor stagiun tranter CHF 50.- e 250.-. Ultra da quai sto vegnir prestà in deposit da CHF 300.- a chaschun da la suttascripziun dal contract (CHF 400.- per 14 dis).",
         standort_title: "Posiziun",
-        standort_bewertung: "Noss osps valiteschan la Posta Veglia sin Google Maps cun <strong>4.9 da 5 stailas</strong> (sin basa da 4 recensiuns).",
         kontakt_title: "Contact",
         kontakt_q_title: "Avais vus ina dumonda?",
         kontakt_q_text: "Vulais vus gugent fittar la Posta Veglia? Avais vus ina dumonda davart la chasa u il conturn? Lura emplenida per plaschair il formular da contact.",
@@ -401,7 +400,8 @@ const translations = {
         og_description: "Giaudi il flair engiadinais authentic en la chasa da vacanzas istorica Posta Veglia. Plaz per 7-9 persunas a Segl-Baselgia. Controllai la disponibilitad!",
         form_success: "Engraziel fitg! Voss messadi è vegnì tramess cun success.",
         form_error: "Stitg, i dat in problem cun trametter. Emprovai pli tard anc ina giada.",
-        map_interact: "Clicca per agir",
-        btn_directions: "Plannar la ruta / Guardar sin Google Maps"
-    }
+        map_interact: "Cliccar per interagir",
+        btn_directions: "Plannar la ruta / Guardar sin Google Maps",
+        date_error: "La partida sto esser suenter l'arrivada."
+    },
 };

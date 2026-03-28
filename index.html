@@ -3,18 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- Google Analytics – nach dem Page-Load geladen, kein Render-Blocking -->
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuMw_LIUC7C9_u9nVTxp3e86XG8Yv_p_7K.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Google Analytics – loaded asynchronously -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-E79C7DV0BE');
-        window.addEventListener('load', function () {
-            var s = document.createElement('script');
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE';
-            s.async = true;
-            document.head.appendChild(s);
-        });
     </script>
     <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
     <title data-i18n="seo_title">Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin</title>
@@ -22,9 +21,10 @@
     <meta name="description" data-i18n="seo_description"
         content="Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.">
     <meta name="theme-color" content="#f5f5f0">
-    <link rel="icon" href="/jpg/favicon.ico">
-    <link rel="apple-touch-icon" href="/jpg/favicon.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="jpg/favicon.ico" sizes="any">
+    <link rel="icon" href="jpg/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="jpg/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
     <meta property="og:title" data-i18n="og_title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
     <meta property="og:site_name" content="Posta Veglia Sils">
     <meta property="og:description" data-i18n="og_description"
@@ -33,10 +33,10 @@
     <meta property="og:url" content="https://altepostsils.ch">
     <link rel="canonical" href="https://altepostsils.ch/" />
     <link rel="alternate" hreflang="de" href="https://altepostsils.ch/">
-    <link rel="alternate" hreflang="en" href="https://altepostsils.ch/">
-    <link rel="alternate" hreflang="fr" href="https://altepostsils.ch/">
-    <link rel="alternate" hreflang="it" href="https://altepostsils.ch/">
-    <link rel="alternate" hreflang="rm" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="en" href="https://altepostsils.ch/?lang=en">
+    <link rel="alternate" hreflang="fr" href="https://altepostsils.ch/?lang=fr">
+    <link rel="alternate" hreflang="it" href="https://altepostsils.ch/?lang=it">
+    <link rel="alternate" hreflang="rm" href="https://altepostsils.ch/?lang=rm">
     <link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/">
 
     <!-- JSON-LD Structured Data for SEO -->
@@ -49,15 +49,16 @@
     "url": "https://altepostsils.ch/",
     "identifier": "posta-veglia-sils",
     "image": [
-        "https://altepostsils.ch/jpg/haus.webp",
-        "https://altepostsils.ch/jpg/wohnzimmer/stube-mit-buffet.webp",
-        "https://altepostsils.ch/jpg/kueche/kueche.webp",
-        "https://altepostsils.ch/jpg/schlafzimmer/appenzellerzimmer.webp",
-        "https://altepostsils.ch/jpg/schlafzimmer/balkenzimmer-bett.webp",
-        "https://altepostsils.ch/jpg/wc/badezimmer.webp",
-        "https://altepostsils.ch/jpg/wc/duschezimmer.webp",
-        "https://altepostsils.ch/jpg/restliches/garten.webp"
+        "https://altepostsils.ch/jpg/haus.jpg",
+        "https://altepostsils.ch/jpg/wohnzimmer/stube-mit-buffet.jpg",
+        "https://altepostsils.ch/jpg/kueche/kueche.jpg",
+        "https://altepostsils.ch/jpg/schlafzimmer/appenzellerzimmer.jpg",
+        "https://altepostsils.ch/jpg/schlafzimmer/balkenzimmer-bett.jpg",
+        "https://altepostsils.ch/jpg/wc/badezimmer.jpg",
+        "https://altepostsils.ch/jpg/wc/duschezimmer.jpg",
+        "https://altepostsils.ch/jpg/restliches/garten.jpg"
     ],
+    "priceRange": "$$",
 
     "address": {
         "@type": "PostalAddress",
@@ -76,13 +77,8 @@
 
     "telephone": "+41 79 891 00 30",
     "email": "info@altepostsils.ch",
-    "checkinTime": "15:00:00+01:00",
+    "checkinTime": "14:00:00+01:00",
     "checkoutTime": "10:00:00+01:00",
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8,
-        "reviewCount": "4
-    },
 
     "offers": {
         "@type": "AggregateOffer",
@@ -116,6 +112,11 @@
 
         ],
         "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Languages Spoken",
+                "value": ["German", "English", "Italian", "Romansh"]
+            },
             {
                 "@type": "LocationFeatureSpecification",
                 "name": "Free WiFi",
@@ -156,9 +157,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
     <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://calendar.google.com">
     <!-- Google Fonts geladen asynchron, um Render-Blocking zu vermeiden -->
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -168,7 +170,36 @@
             href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
             rel="stylesheet">
     </noscript>
-    <link rel="stylesheet" href="css/main.css">
+    <style>
+        :root {
+            --clr-gold: #b3883a; --clr-gold-light: #e6c888; --clr-wood-dark: #2c241b; --clr-wood-med: #4a3f35;
+            --clr-stone-light: #f5f5f0; --clr-stone-mid: #e8e8e2; --clr-slate: #545b62; --clr-white: #ffffff; --clr-black: #111111;
+            --font-heading: 'Lora', serif; --font-body: 'Inter', sans-serif;
+            --trans-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --trans-slow: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); background-color: var(--clr-stone-light); color: var(--clr-wood-dark); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: var(--trans-smooth); background: transparent; }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--clr-white); letter-spacing: 0.05em; text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--clr-white); text-decoration: none; transition: var(--trans-smooth); }
+        .hero { height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--clr-white); padding: 0 5%; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.7) 100%); z-index: -1; }
+        .hero-content { max-width: 800px; animation: fadeUp 1s ease-out forwards; }
+        h1 { font-family: var(--font-heading); font-size: clamp(3rem, 6vw, 5rem); color: var(--clr-white); margin-bottom: 1rem; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .mobile-toggle { display: none; color: var(--clr-white); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
+        @media (max-width: 1100px) {
+            .mobile-toggle { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; max-width: 400px; height: 100vh; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); flex-direction: column; justify-content: center; transition: var(--trans-smooth); }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/main.css"></noscript>
     <script src="js/translations.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/app.js" defer></script>
@@ -198,8 +229,9 @@
 
     <header id="home" class="hero">
         <img src="jpg/sils.webp" srcset="jpg/sils-400w.webp 400w, jpg/sils-800w.webp 800w, jpg/sils.webp 1626w"
-            sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 100vw" alt="Landschaft Sils" class="hero-bg"
-            width="1626" height="1084" fetchpriority="high">
+            sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 100vw"
+            alt="Winterliche Landschaft in Sils-Baselgia mit verschneiten Bergen" class="hero-bg" width="1626"
+            height="1084" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 data-i18n="hero_title">Ferienhaus Posta Veglia</h1>
@@ -227,7 +259,8 @@
                     </div>
                     <div class="about-img">
                         <img src="jpg/haus.webp" srcset="jpg/haus-800w.webp 800w, jpg/haus.webp 1626w"
-                            sizes="(max-width: 992px) 100vw, 50vw" alt="Haus Posta Veglia" width="1626" height="1084">
+                            sizes="(max-width: 992px) 100vw, 50vw"
+                            alt="Historisches Engadinerhaus Posta Veglia in Sils-Baselgia" width="1626" height="1084">
                     </div>
                 </div>
             </div>
@@ -239,24 +272,29 @@
                 <h2 data-i18n="raeume_title">Räume</h2>
                 <div class="rooms-grid">
                     <div class="room-card" data-room="wohnzimmer">
-                        <img src="jpg/simbole/whonzimmer.webp" alt="Wohnzimmer & Sonnenstube" class="room-card-img"
-                            loading="lazy" decoding="async" onerror="this.src='jpg/wohnzimmer/stube-mit-buffet.webp'">
+                        <img src="jpg/simbole/whonzimmer.webp"
+                            alt="Historische Arvenstube im Ferienhaus Posta Veglia mit Engadiner Kachelofen"
+                            class="room-card-img" loading="lazy" decoding="async" width="800" height="533"
+                            onerror="this.src='jpg/wohnzimmer/stube-mit-buffet.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_wohnzimmer">Wohnzimmer & Sonnenstube</h3>
                         </div>
                     </div>
 
                     <div class="room-card" data-room="kueche">
-                        <img src="jpg/simbole/kueche.webp" alt="Küche" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533" onerror="this.src='jpg/kueche/kueche.webp'">
+                        <img src="jpg/simbole/kueche.webp"
+                            alt="Traditionelle Engadiner Küche in der Posta Veglia mit modernem Komfort"
+                            class="room-card-img" loading="lazy" decoding="async" width="800" height="533"
+                            onerror="this.src='jpg/kueche/kueche.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_kueche">Küche</h3>
                         </div>
                     </div>
 
                     <div class="room-card" data-room="schlafzimmer">
-                        <img src="jpg/simbole/einzelzimmer.webp" alt="Schlafzimmer" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533"
+                        <img src="jpg/simbole/einzelzimmer.webp"
+                            alt="Authentisches Schlafzimmer im historischen Engadinerhaus" class="room-card-img"
+                            loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='jpg/schlafzimmer/balkenzimmer-bett.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_schlafzimmer">Schlafzimmer</h3>
@@ -264,16 +302,18 @@
                     </div>
 
                     <div class="room-card" data-room="bad">
-                        <img src="jpg/simbole/badezimmer.webp" alt="Badezimmer" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533" onerror="this.src='jpg/wc/badezimmer.webp'">
+                        <img src="jpg/simbole/badezimmer.webp"
+                            alt="Eines der modernisierten Badezimmer im Ferienhaus Posta Veglia" class="room-card-img"
+                            loading="lazy" decoding="async" width="800" height="533"
+                            onerror="this.src='jpg/wc/badezimmer.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_bad">Badezimmer</h3>
                         </div>
                     </div>
 
                     <div class="room-card" data-room="gang">
-                        <img src="jpg/simbole/gang.webp" alt="Gang & Garten" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533"
+                        <img src="jpg/simbole/gang.webp" alt="Grosszügiger Eingangsbereich (Sulér) im Erdgeschoss"
+                            class="room-card-img" loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='jpg/restliches/gang-unten-ohne-tischtennis.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_gang">Gang & Garten</h3>
@@ -281,9 +321,10 @@
                     </div>
 
                     <div class="room-card" data-room="allgemein">
-                        <img src="jpg/simbole/garten.webp" alt="Restliche Ausstattung" class="room-card-img"
-                            loading="lazy" decoding="async" width="800" height="533"
-                            onerror="this.src='jpg/zimmerplan.webp'">
+                        <img src="jpg/simbole/garten.webp"
+                            alt="Idyllischer Garten mit Sitzplatz und Blick auf die Engadiner Bergwelt"
+                            class="room-card-img" loading="lazy" decoding="async" width="800" height="600"
+                            onerror="this.src='jpg/restliches/garten.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_allgemein">Restliche Ausstattung</h3>
                         </div>
@@ -328,42 +369,44 @@
                     <table>
                         <thead>
                             <tr>
-                                <th data-i18n="sea_1w">Saison 1 Winter</th>
-                                <th data-i18n="sea_1s">Saison 1 Sommer</th>
-                                <th data-i18n="sea_2w">Saison 2 Winter</th>
-                                <th data-i18n="sea_2s">Saison 2 Sommer</th>
-                                <th data-i18n="sea_3">Saison 3</th>
-                                <th data-i18n="sea_4">Saison 4</th>
+                                <th data-i18n="sea_1w" data-season="S1W">Saison 1 Winter</th>
+                                <th data-i18n="sea_1s" data-season="S1S">Saison 1 Sommer</th>
+                                <th data-i18n="sea_2w" data-season="S2W">Saison 2 Winter</th>
+                                <th data-i18n="sea_2s" data-season="S2S">Saison 2 Sommer</th>
+                                <th data-i18n="sea_3" data-season="S3">Saison 3</th>
+                                <th data-i18n="sea_4" data-season="S4">Saison 4</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-i18n="preise_kw1">KW 1/ 5-Ostern/ 51-53</td>
-                                <td data-i18n="preise_kw2">KW 27-37</td>
-                                <td data-i18n="preise_kw3">KW 2-4</td>
-                                <td data-i18n="preise_kw4">KW 38-42</td>
-                                <td data-i18n="preise_kw5">KW 23-26</td>
-                                <td data-i18n="preise_kw6">KW Ostern-22/ 43-50</td>
+                                <td data-i18n="preise_kw1" data-season="S1W">KW 1/ 5-Ostern/ 51-53</td>
+                                <td data-i18n="preise_kw2" data-season="S1S">KW 27-37</td>
+                                <td data-i18n="preise_kw3" data-season="S2W">KW 2-4</td>
+                                <td data-i18n="preise_kw4" data-season="S2S">KW 38-42</td>
+                                <td data-i18n="preise_kw5" data-season="S3">KW 23-26</td>
+                                <td data-i18n="preise_kw6" data-season="S4">KW Ostern-22/ 43-50</td>
                             </tr>
                             <tr>
-                                <td data-i18n="preise_m1">Weihnachten/ Neujahr/<br>Februar/ März bis Ostern</td>
-                                <td data-i18n="preise_m2">Juli/ August bis<br>Mitte September</td>
-                                <td data-i18n="preise_m3">Januar</td>
-                                <td data-i18n="preise_m4">Mitte September bis<br>ca. 20. Oktober</td>
-                                <td data-i18n="preise_m5">Juni</td>
-                                <td data-i18n="preise_m6">Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten</td>
+                                <td data-i18n="preise_m1" data-season="S1W">Weihnachten/ Neujahr/<br>Februar/ März bis Ostern</td>
+                                <td data-i18n="preise_m2" data-season="S1S">Juli/ August bis<br>Mitte September</td>
+                                <td data-i18n="preise_m3" data-season="S2W">Januar</td>
+                                <td data-i18n="preise_m4" data-season="S2S">Mitte September bis<br>ca. 20. Oktober</td>
+                                <td data-i18n="preise_m5" data-season="S3">Juni</td>
+                                <td data-i18n="preise_m6" data-season="S4">Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten</td>
                             </tr>
                             <tr>
-                                <td><strong>CHF 2'030.-</strong></td>
-                                <td><strong>CHF 1'950.-</strong></td>
-                                <td><strong>CHF 1'830.-</strong></td>
-                                <td><strong>CHF 1'790.-</strong></td>
-                                <td><strong>CHF 1'640.-</strong></td>
-                                <td><strong>CHF 1'440.-</strong></td>
+                                <td data-season="S1W"><strong>CHF 2'030.-</strong></td>
+                                <td data-season="S1S"><strong>CHF 1'950.-</strong></td>
+                                <td data-season="S2W"><strong>CHF 1'830.-</strong></td>
+                                <td data-season="S2S"><strong>CHF 1'790.-</strong></td>
+                                <td data-season="S3"><strong>CHF 1'640.-</strong></td>
+                                <td data-season="S4"><strong>CHF 1'440.-</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
+
 
                 <div class="pricing-notes mt-4">
                     <p data-i18n="preise_p2">Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche,
@@ -385,10 +428,6 @@
                     data-title="Standort Karte" data-height="100%" data-allow="accelerometer">
                     <p style="color: #666;" data-i18n="loading_map">Standort Karte wird geladen...</p>
                 </div>
-                <div class="bewertung-hinweis" style="text-align: center; padding: 15px 0; font-size: 0.9em;">
-                    <p style="margin-bottom: 0;" data-i18n="standort_bewertung">Unsere Gäste bewerten die Posta Veglia
-                        auf Google Maps mit <strong>4.9 von 5 Sternen</strong> (basierend auf 4 Bewertungen).</p>
-                </div>
             </div>
         </section>
 
@@ -398,9 +437,9 @@
                 <h2 data-i18n="kontakt_title">Kontakt</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3 data-i18n="kontakt_q_title">Haben Sie eine Frage?</h3>
-                        <p data-i18n="kontakt_q_text">Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage
-                            zum Haus oder zur Umgebung? Dann füllen Sie bitte das Kontaktformular aus.</p>
+                        <h3 data-i18n="kontakt_q_title">Sind sie Interessiert?</h3>
+                        <p data-i18n="kontakt_q_text">Möchten Sie gerne die Posta Veglia mieten? Dann füllen Sie bitte
+                            das Kontaktformular aus.</p>
                         <br>
                         <p><strong>Seraina Steinlin</strong></p>
                         <p>info@altepostsils.ch</p>
@@ -426,11 +465,11 @@
                                 <input type="text" name="Adresse" data-i18n="ph_adresse" placeholder="Adresse"
                                     class="form-control" autocomplete="street-address" aria-label="Adresse" required>
                             </div>
-                            <div style="display: flex; gap: 1rem;" class="form-group">
-                                <input type="text" name="PLZ" data-i18n="ph_plz" placeholder="PLZ" class="form-control"
-                                    style="width: 30%;" autocomplete="postal-code" aria-label="PLZ" required>
-                                <input type="text" name="Ort" data-i18n="ph_ort" placeholder="Ort" class="form-control"
-                                    style="width: 70%;" autocomplete="address-level2" aria-label="Ort" required>
+                            <div class="form-group form-row">
+                                <input type="text" name="PLZ" data-i18n="ph_plz" placeholder="PLZ" class="form-control plz-field"
+                                    autocomplete="postal-code" aria-label="PLZ" required>
+                                <input type="text" name="Ort" data-i18n="ph_ort" placeholder="Ort" class="form-control ort-field"
+                                    autocomplete="address-level2" aria-label="Ort" required>
                             </div>
                             <div class="form-group">
                                 <input type="email" name="Email" data-i18n="ph_email" placeholder="E-Mail"
@@ -440,7 +479,7 @@
                                 <input type="tel" name="Telefon" data-i18n="ph_telefon" placeholder="Telefon"
                                     class="form-control" autocomplete="tel" aria-label="Telefon" required>
                             </div>
-                            <div style="display: flex; gap: 1rem;" class="form-group">
+                            <div class="form-group form-row">
                                 <input type="text" name="Anreise" data-i18n="ph_anreise" placeholder="Anreise (Datum)"
                                     class="form-control" onfocus="(this.type='date')"
                                     onblur="(this.value==''?this.type='text':this.type='date')" aria-label="Anreise">
@@ -481,10 +520,14 @@
                 zusätzlichen schönen Aufenthaltsraum.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/wohnzimmer/ofen.webp" alt="Ofen in Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/wohnzimmer/esstisch.webp" alt="Esstisch in Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/wohnzimmer/stube-mit-buffet.webp" alt="Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/wohnzimmer/sonnenstube.webp" alt="Sonnenstube" loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/ofen.webp" alt="Traditioneller Engadiner Kachelofen in der Arvenstube"
+                loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/esstisch.webp" alt="Grosszügiger Esstisch aus Arvenholz für gemeinsame Mahlzeiten"
+                loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/stube-mit-buffet.webp" alt="Historische Arvenstube mit authentischem Ambiente"
+                loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/sonnenstube.webp" alt="Lichtdurchflutete Sonnenstube und Veranda im Obergeschoss"
+                loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -497,9 +540,12 @@
                 Apéro geniessen.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/kueche/feuerstelle.webp" alt="Ofen von Küche aus" loading="lazy" decoding="async">
-            <img src="jpg/kueche/kuechenimpressionen.webp" alt="Küchenimpressionen" loading="lazy" decoding="async">
-            <img src="jpg/kueche/kueche.webp" alt="Küche mit Glaskeramik-Kochfeld" loading="lazy" decoding="async">
+            <img src="jpg/kueche/feuerstelle.webp" alt="Blick auf die historische Feuerstelle in der Küche"
+                loading="lazy" decoding="async">
+            <img src="jpg/kueche/kuechenimpressionen.webp" alt="Details der sorgfältig modernisierten Engadiner Küche"
+                loading="lazy" decoding="async">
+            <img src="jpg/kueche/kueche.webp" alt="Ausgestattete Küche mit modernen Geräten und Steinboden"
+                loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -511,10 +557,14 @@
                 die kleinen Gäste stehen zudem mehrere Kinderbetten zur Verfügung.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/schlafzimmer/appenzellerzimmer.webp" alt="Zimmer mit Bad" loading="lazy" decoding="async">
-            <img src="jpg/schlafzimmer/balkenzimmer-bett.webp" alt="Balkenzimmer" loading="lazy" decoding="async">
-            <img src="jpg/schlafzimmer/einzelzimmer.webp" alt="Einzelzimmer" loading="lazy" decoding="async">
-            <img src="jpg/schlafzimmer/zimmer-ob-stube.webp" alt="Schlafzimmer" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/appenzellerzimmer.webp" alt="Schlafzimmer mit angrenzendem Badezimmer"
+                loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/balkenzimmer-bett.webp"
+                alt="Authentisches Balkenzimmer mit komfortablem Doppelbett" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/einzelzimmer.webp" alt="Heller Einzelschlafraum mit historischer Bausubstanz"
+                loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/zimmer-ob-stube.webp" alt="Gemütliches Schlafzimmer oberhalb der Wohnstube"
+                loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -526,9 +576,12 @@
             </p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/wc/duschezimmer.webp" alt="Duschezimmer" loading="lazy" decoding="async">
-            <img src="jpg/wc/waschstelle-mit-wc.webp" alt="Lavabo mit WC" loading="lazy" decoding="async">
-            <img src="jpg/wc/badezimmer.webp" alt="Badezimmer" loading="lazy" decoding="async">
+            <img src="jpg/wc/duschezimmer.webp" alt="Modernes Badezimmer mit Dusche und WC" loading="lazy"
+                decoding="async">
+            <img src="jpg/wc/waschstelle-mit-wc.webp" alt="Lavabo und WC im modernisierten Bereich" loading="lazy"
+                decoding="async">
+            <img src="jpg/wc/badezimmer.webp" alt="Hauptbadezimmer mit Badewanne und WC" loading="lazy"
+                decoding="async">
         </div>
     </template>
 
@@ -541,10 +594,12 @@
                 und ein Grill sind vorhanden.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/restliches/gang-unten-ohne-tischtennis.webp" alt="Gang" loading="lazy" decoding="async">
-            <img src="jpg/restliches/gang-unten-mit-tischtennis.webp" alt="Gang mit Tischtennis" loading="lazy"
+            <img src="jpg/restliches/gang-unten-ohne-tischtennis.webp"
+                alt="Grosser Sulér (Eingangshalle) im Erdgeschoss" loading="lazy" decoding="async">
+            <img src="jpg/restliches/gang-unten-mit-tischtennis.webp" alt="Freizeitraum im Sulér mit Tischtennistisch"
+                loading="lazy" decoding="async">
+            <img src="jpg/restliches/garten.webp" alt="Privater Garten der Posta Veglia mit Bergblick" loading="lazy"
                 decoding="async">
-            <img src="jpg/restliches/garten.webp" alt="Garten" loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -559,7 +614,8 @@
             </p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/zimmerplan.webp" alt="Zimmerplan" loading="lazy" decoding="async" width="1200" height="800">
+            <img src="jpg/zimmerplan.webp" alt="Detaillierter Zimmerplan und Grundriss der Posta Veglia" loading="lazy"
+                decoding="async" width="1200" height="800">
         </div>
     </template>
 
