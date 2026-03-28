@@ -143,6 +143,17 @@ a {
     display: flex;
     gap: 2rem;
     list-style: none;
+    align-items: center;
+}
+
+@media (max-width: 1250px) {
+    .nav-links {
+        gap: 1.25rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
 }
 
 .nav-links a {
@@ -181,6 +192,13 @@ a {
     gap: 0.5rem;
     align-items: center;
     margin-left: 1rem;
+}
+
+@media (max-width: 1100px) {
+    .lang-switcher {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
 }
 
 .lang-switcher button {
@@ -731,7 +749,7 @@ footer a {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .nav-links {
         position: fixed;
         top: 0;
