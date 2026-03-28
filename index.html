@@ -34,25 +34,18 @@
 {
   "@context": "https://schema.org",
   "@type": "VacationRental",
+  "@id": "https://altepostsils.ch/#property",
   "name": "Ferienhaus Posta Veglia",
-  "identifier": "https://altepostsils.ch/",
-  "description": "Historisches, denkmalgeschütztes Engadinerhaus für bis zu 9 Personen in Sils-Baselgia, Engadin.",
+  "description": "Historisches, denkmalgeschütztes Engadinerhaus von 1792 für bis zu 9 Personen in Sils-Baselgia. Authentisches Wohnen mit Arvenholzstube und Engadinerofen.",
   "url": "https://altepostsils.ch/",
   "image": [
     "https://altepostsils.ch/jpg/Haus.webp",
-    "https://altepostsils.ch/jpg/Haus2.webp",
-    "https://altepostsils.ch/jpg/Haus3.webp",
-    "https://altepostsils.ch/jpg/Haus4.webp",
-    "https://altepostsils.ch/jpg/Haus5.webp",
-    "https://altepostsils.ch/jpg/Haus6.webp",
-    "https://altepostsils.ch/jpg/Haus7.webp",
-    "https://altepostsils.ch/jpg/Haus8.webp"
+    "https://altepostsils.ch/jpg/Haus2.webp"
   ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via da Baselgia 10",
-    "addressLocality": "Sils im Engadin/Segl",
-    "addressRegion": "Graubünden",
+    "addressLocality": "Sils im Engadin",
     "postalCode": "7515",
     "addressCountry": "CH"
   },
@@ -61,37 +54,70 @@
     "latitude": 46.4320,
     "longitude": 9.7615
   },
-  "telephone": "+41 79 891 00 30",
+  "telephone": "+41798910030",
   "email": "info@altepostsils.ch",
-  "containsPlace": {
-    "@type": "Accommodation",
-    "name": "Ganzes Haus",
-    "numberOfBedrooms": 4,
-    "numberOfBathroomsTotal": 2,
-    "occupancy": {
-      "@type": "QuantitativeValue",
-      "maxValue": 9
+  "additionalType": [
+    "https://www.wikidata.org/wiki/Q11651",
+    "https://www.wikidata.org/wiki/Q23775"
+  ],
+  "numberOfBedrooms": 4,
+  "numberOfBathroomsTotal": 2,
+  "occupancy": {
+    "@type": "QuantitativeValue",
+    "value": 9,
+    "unitCode": "C62"
+  },
+  "petsAllowed": "true",
+  "containsPlace": [
+    {
+      "@type": "Accommodation",
+      "name": "Historisches Ferienhaus (Gesamte Unterkunft)",
+      "numberOfBedrooms": 4,
+      "bed": {
+        "@type": "BedDetails",
+        "numberOfBeds": 9
+      }
+    }
+  ],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Historische Arvenholzstube",
+      "value": true
     },
-    "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Original Engadinerofen",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Kostenloses WLAN",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "2 Parkplätze inklusive",
+      "value": true
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "CHF",
+    "url": "https://altepostsils.ch/preise/",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": [
       {
-        "@type": "LocationFeatureSpecification",
-        "name": "Historische Arvenholzstube",
-        "value": true
+        "@type": "UnitPriceSpecification",
+        "name": "Schlussreinigung",
+        "price": 250,
+        "priceCurrency": "CHF"
       },
       {
-        "@type": "LocationFeatureSpecification",
-        "name": "WLAN",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Engadinerofen",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "2 Parkplätze",
-        "value": true
+        "@type": "UnitPriceSpecification",
+        "name": "Bettwäsche pro Person",
+        "price": 18,
+        "priceCurrency": "CHF"
       }
     ]
   }
