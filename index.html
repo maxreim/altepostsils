@@ -24,6 +24,7 @@
     <meta name="theme-color" content="#f5f5f0">
     <link rel="icon" href="/jpg/favicon.ico">
     <link rel="apple-touch-icon" href="/jpg/favicon.png">
+    <link rel="manifest" href="/manifest.json">
     <meta property="og:title" data-i18n="og_title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
     <meta property="og:site_name" content="Posta Veglia Sils">
     <meta property="og:description" data-i18n="og_description"
@@ -170,11 +171,11 @@
             <li><a href="#standort" data-i18n="nav_standort">Standort</a></li>
             <li><a href="#kontakt" data-i18n="nav_kontakt">Kontakt</a></li>
             <li class="lang-switcher">
-                <button data-lang="de" class="active">DE</button>
-                <button data-lang="en">EN</button>
-                <button data-lang="fr">FR</button>
-                <button data-lang="it">IT</button>
-                <button data-lang="rm">RM</button>
+                <button data-lang="de" class="active" aria-label="Deutsch" aria-current="true">DE</button>
+                <button data-lang="en" aria-label="English">EN</button>
+                <button data-lang="fr" aria-label="Français">FR</button>
+                <button data-lang="it" aria-label="Italiano">IT</button>
+                <button data-lang="rm" aria-label="Rumantsch">RM</button>
             </li>
         </ul>
     </nav>
@@ -311,7 +312,12 @@
         <!-- Preise -->
         <section id="preise" class="pricing-section section-white">
             <div class="container reveal">
-                <h2 data-i18n="preise_title">Preise</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2 style="margin-bottom: 0;" data-i18n="preise_title">Preise</h2>
+                    <button onclick="window.print()" class="btn-link"
+                        style="border:none; background:none; cursor:pointer;" data-i18n="btn_print">Seite
+                        drucken</button>
+                </div>
                 <div class="pricing-notes">
                     <p data-i18n="preise_p1">Die Posta Veglia kann grundsätzlich von Samstag bis Samstag gemietet
                         werden. In der Saison 4 sind auch kürzere Aufenthalte und andere Anreisetage möglich. Je nach
@@ -405,50 +411,50 @@
                     <div class="contact-form">
                         <form action="https://formsubmit.co/ajax/info@altepostsils.ch" method="POST">
                             <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="Neue Kontaktanfrage - Posta Veglia">
+                            <input type="hidden" name="_cc"
+                                value="info@altepostsils.ch, flurin.m.meier@gmail.com, flurin.max.meier@gmx.ch">
+                            <input type="hidden" name="_subject"
+                                value="Neue Kontaktanfrage - Posta Veglia (altepostsils.ch)">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://altepostsils.ch">
                             <!-- Honeypot zur Spam-Vermeidung -->
                             <input type="text" name="_honey" style="display:none">
 
                             <div class="form-group">
                                 <input type="text" name="Name" data-i18n="ph_name" placeholder="Vorname, Name"
-                                    class="form-control" autocomplete="name" required>
+                                    class="form-control" autocomplete="name" aria-label="Vorname, Name" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="Adresse" data-i18n="ph_adresse" placeholder="Adresse"
-                                    class="form-control" autocomplete="street-address" required>
+                                    class="form-control" autocomplete="street-address" aria-label="Adresse" required>
                             </div>
                             <div style="display: flex; gap: 1rem;" class="form-group">
                                 <input type="text" name="PLZ" data-i18n="ph_plz" placeholder="PLZ" class="form-control"
-                                    style="width: 30%;" autocomplete="postal-code" required>
+                                    style="width: 30%;" autocomplete="postal-code" aria-label="PLZ" required>
                                 <input type="text" name="Ort" data-i18n="ph_ort" placeholder="Ort" class="form-control"
-                                    style="width: 70%;" autocomplete="address-level2" required>
+                                    style="width: 70%;" autocomplete="address-level2" aria-label="Ort" required>
                             </div>
                             <div class="form-group">
                                 <input type="email" name="Email" data-i18n="ph_email" placeholder="E-Mail"
-                                    class="form-control" autocomplete="email" required>
+                                    class="form-control" autocomplete="email" aria-label="E-Mail" required>
                             </div>
                             <div class="form-group">
                                 <input type="tel" name="Telefon" data-i18n="ph_telefon" placeholder="Telefon"
-                                    class="form-control" autocomplete="tel" required>
+                                    class="form-control" autocomplete="tel" aria-label="Telefon" required>
                             </div>
                             <div style="display: flex; gap: 1rem;" class="form-group">
                                 <input type="text" name="Anreise" data-i18n="ph_anreise" placeholder="Anreise (Datum)"
                                     class="form-control" onfocus="(this.type='date')"
-                                    onblur="(this.value==''?this.type='text':this.type='date')">
+                                    onblur="(this.value==''?this.type='text':this.type='date')" aria-label="Anreise">
                                 <input type="text" name="Abreise" data-i18n="ph_abreise" placeholder="Abreise (Datum)"
                                     class="form-control" onfocus="(this.type='date')"
-                                    onblur="(this.value==''?this.type='text':this.type='date')">
+                                    onblur="(this.value==''?this.type='text':this.type='date')" aria-label="Abreise">
                             </div>
                             <div class="form-group">
                                 <textarea name="Nachricht" data-i18n="ph_nachricht" placeholder="Ihre Nachricht"
-                                    class="form-control" rows="5" required></textarea>
+                                    class="form-control" rows="5" aria-label="Ihre Nachricht" required></textarea>
                             </div>
-                            <input type="hidden" name="_subject" value="Neue Anfrage über Webseite (altepostsils.ch)">
-                            <input type="hidden" name="_next" value="https://altepostsils.ch">
-                            <input type="hidden" name="_template" value="box">
-                            <input type="hidden" name="_cc" value="flurin.max.meier@gmx.ch">
                             <button type="submit" class="btn" data-i18n="btn_senden">Nachricht Senden</button>
                         </form>
                     </div>
@@ -459,7 +465,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a>
+            <p>&copy; 2026 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a>
             </p>
         </div>
     </footer>
@@ -567,6 +573,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Zurück nach oben">↑</a>
 
 </body>
 

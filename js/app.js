@@ -13,12 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
+    const backToTop = document.querySelector('.back-to-top');
+
     window.addEventListener('scroll', () => {
         updateScrollProgress();
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
+        }
+
+        // Back to top button visibility
+        if (backToTop) {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         }
 
         // Active Section Tracking
@@ -194,12 +205,44 @@ document.addEventListener('DOMContentLoaded', () => {
             form.onsubmit = (e) => {
                 e.preventDefault();
                 const btn = form.querySelector('button');
-                btn.disabled = true; btn.innerHTML = '<span class="loader"></span>';
-                fetch(form.action, { method: "POST", body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                const originalBtnText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<span class="loader"></span>';
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch(form.action, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
                     .then(r => {
-                        if (r.ok) form.innerHTML = `<div class="form-feedback success">${window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!"}</div>`;
-                        else throw 1;
-                    }).catch(() => { alert("Error"); btn.disabled = false; btn.innerHTML = "Senden"; });
+                        if (r.ok) {
+                            const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!";
+                            form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
+                        } else {
+                            throw new Error('Submission failed');
+                        }
+                    })
+                    .catch(() => {
+                        const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
+                        // Remove existing error if any
+                        const existingError = form.querySelector('.form-feedback.error');
+                        if (existingError) existingError.remove();
+
+                        // Create and insert new error
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'form-feedback error';
+                        errorDiv.innerHTML = errorMsg;
+                        form.prepend(errorDiv);
+
+                        btn.disabled = false;
+                        btn.innerHTML = originalBtnText;
+                    });
             };
         }
     }

@@ -761,16 +761,26 @@ textarea.form-control {
     background: #f0f7f0;
     color: #2e7d32;
     border: 1px solid #c8e6c9;
+    box-shadow: var(--shadow-soft);
+    padding: 3rem 2rem;
 }
 
-.loader {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--clr-white);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    animation: rotation 1s linear infinite;
+.form-feedback.error {
+    background: #fff5f5;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+width: 20px;
+height: 20px;
+border: 2px solid var(--clr-white);
+border-bottom-color: transparent;
+border-radius: 50%;
+display: inline-block;
+animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
@@ -783,9 +793,89 @@ textarea.form-control {
     }
 }
 
-/* Map Interaction Overlay (UX) */
-.iframe-container {
-    position: relative;
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--clr-gold);
+    color: var(--clr-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-heavy);
+    cursor: pointer;
+    transition: var(--trans-smooth);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 900;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--clr-wood-dark);
+    transform: translateY(-5px);
+}
+
+/* Print Styles */
+@media print {
+
+    .navbar,
+    .hero,
+    .mobile-toggle,
+    .back-to-top,
+    .contact-form,
+    .lang-switcher,
+    .btn,
+    .btn-link,
+    .iframe-placeholder,
+    .iframe-container,
+    .bewertung-hinweis {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    section {
+        padding: 2rem 0;
+        page-break-inside: avoid;
+    }
+
+    .container {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    h2::after {
+        display: none;
+    }
+
+    .pricing-table-wrap {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    table {
+        min-width: 100%;
+        border: 1px solid #ccc;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        font-size: 10pt;
+    }
 }
 
 .map-overlay {

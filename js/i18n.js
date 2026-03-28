@@ -36,8 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.lang-switcher button').forEach(btn => {
                 if (btn.getAttribute('data-lang') === lang) {
                     btn.classList.add('active');
+                    btn.setAttribute('aria-current', 'true');
                 } else {
                     btn.classList.remove('active');
+                    btn.removeAttribute('aria-current');
                 }
             });
         }
