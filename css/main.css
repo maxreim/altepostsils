@@ -559,13 +559,6 @@ th {
     font-size: 0.95rem;
 }
 
-.mobile-pricing-img {
-    display: none;
-    width: 100%;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-soft);
-}
-
 /* Contact */
 .contact-grid {
     display: grid;

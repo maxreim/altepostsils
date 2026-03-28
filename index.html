@@ -2,6 +2,7 @@
 <html lang="de">
 
 <head>
+    <meta charset="utf-8">
     <!-- Google Analytics – nach dem Page-Load geladen, kein Render-Blocking -->
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,18 +17,17 @@
         });
     </script>
     <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
-    <meta charset="utf-8">
+    <title>Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.">
-    <meta name="keywords"
-        content="Ferienhaus, Sils, mieten, Ferien, Engadin, Alte Post, Baselgia, Schweizer Berge, Gruppenhaus, Engadinerhaus">
     <meta name="theme-color" content="#f5f5f0">
     <meta property="og:title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
     <meta property="og:description"
         content="Mieten Sie unser historisches Engadinerhaus in Sils-Baselgia für erholsame Ferien im Engadin. Platz für bis zu 9 Personen.">
-    <meta property="og:image" content="https://altepostsils.ch/jpg/Haus.webp">
+    <meta property="og:image" content="https://altepostsils.ch/jpg/haus.png">
     <meta property="og:url" content="https://altepostsils.ch">
+    <link rel="canonical" href="https://altepostsils.ch/" />
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -35,18 +35,19 @@
   "@context": "https://schema.org",
   "@type": "VacationRental",
   "name": "Ferienhaus Posta Veglia",
-  "description": "Das Haus Posta Veglia (Baujahr 1792) in Sils-Baselgia steht unter Denkmalschutz. Eine behutsam modernisierte Ferienunterkunft im historischen Engadiner Ambiente mit Arvenholz-Stube und Engadinerofen, die Platz für 7 bis maximal 9 Personen bietet.",
+  "description": "Das Haus Posta Veglia (Baujahr 1792) in Sils-Baselgia steht unter Denkmalschutz. Eine behutsam modernisierte Ferienunterkunft im historischen Engadiner Ambiente, die Platz für 7 bis maximal 9 Personen bietet.",
   "url": "https://altepostsils.ch/",
   "identifier": "posta-veglia-sils",
+  "additionalType": "http://www.productontology.org/id/Vacation_rental",
   "image": [
-    "https://altepostsils.ch/jpg/Haus.webp",
-    "https://altepostsils.ch/jpg/Wohnzimmer/Stube%20mit%20Buffet.webp",
-    "https://altepostsils.ch/jpg/K%C3%BCche/K%C3%BCche.webp",
-    "https://altepostsils.ch/jpg/Schlafzimmer/Appenzellerzimmer.webp",
-    "https://altepostsils.ch/jpg/Schlafzimmer/Balkenzimmer%20Bett.webp",
-    "https://altepostsils.ch/jpg/WC/Badezimmer.webp",
-    "https://altepostsils.ch/jpg/WC/Duschezimmer.webp",
-    "https://altepostsils.ch/jpg/Restliches/Garten.webp"
+    "https://altepostsils.ch/jpg/haus.webp",
+    "https://altepostsils.ch/jpg/wohnzimmer/stube-mit-buffet.webp",
+    "https://altepostsils.ch/jpg/kueche/kueche.webp",
+    "https://altepostsils.ch/jpg/schlafzimmer/appenzellerzimmer.webp",
+    "https://altepostsils.ch/jpg/schlafzimmer/balkenzimmer-bett.webp",
+    "https://altepostsils.ch/jpg/wc/badezimmer.webp",
+    "https://altepostsils.ch/jpg/wc/duschezimmer.webp",
+    "https://altepostsils.ch/jpg/restliches/garten.webp"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -66,10 +67,52 @@
   "checkoutTime": "10:00:00+01:00",
   "petsAllowed": true,
   "smokingAllowed": false,
+  "numberOfRooms": 10,
+  "numberOfBedrooms": 5,
+  "numberOfBathroomsTotal": 3,
+  "bed": [
+    {
+      "@type": "BedDetails",
+      "numberOfBeds": 4,
+      "typeOfBed": "http://purl.org/goodrelations/v1#Double"
+    },
+    {
+      "@type": "BedDetails",
+      "numberOfBeds": 1,
+      "typeOfBed": "http://purl.org/goodrelations/v1#Single"
+    }
+  ],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free WiFi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Washing Machine",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Dishwasher",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Parking",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Garden",
+      "value": true
+    }
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5.0", 
-    "reviewCount": "12"
+    "ratingValue": "4.5", 
+    "reviewCount": "2"
   },
   "offers": {
     "@type": "AggregateOffer",
@@ -78,54 +121,13 @@
     "highPrice": "2030.00",
     "offerCount": "6",
     "description": "Wochenpreise variieren je nach Saison. Zzgl. Strom und Endreinigung."
-  },
-  "containsPlace": {
-    "@type": "Accommodation",
-    "occupancy": {
-      "@type": "QuantitativeValue",
-      "value": 9
-    },
-    "numberOfRooms": {
-      "@type": "QuantitativeValue",
-      "value": 5
-    },
-    "numberOfBedrooms": {
-      "@type": "QuantitativeValue",
-      "value": 4
-    },
-    "numberOfBathrooms": {
-      "@type": "QuantitativeValue",
-      "value": 2.5
-    },
-    "amenityFeature": [
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Free WiFi",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Washing Machine",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Dishwasher",
-        "value": true
-      },
-      {
-        "@type": "LocationFeatureSpecification",
-        "name": "Free Parking",
-        "value": true
-      }
-    ]
   }
 }
 </script>
 
     <title>Ferienhaus Posta Veglia mieten | Sils im Engadin</title>
-    <link rel="preload" as="image" href="jpg/Sils.webp"
-        imagesrcset="jpg/Sils-400w.webp 400w, jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w"
+    <link rel="preload" as="image" href="jpg/sils.webp"
+        imagesrcset="jpg/sils-400w.webp 400w, jpg/sils-800w.webp 800w, jpg/sils.webp 1626w"
         imagesizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 1626px">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,7 +162,7 @@
     </nav>
 
     <header id="home" class="hero">
-        <img src="jpg/Sils.webp" srcset="jpg/Sils-400w.webp 400w, jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w"
+        <img src="jpg/sils.webp" srcset="jpg/sils-400w.webp 400w, jpg/sils-800w.webp 800w, jpg/sils.webp 1626w"
             sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 100vw" alt="Landschaft Sils" class="hero-bg"
             width="1626" height="1084" fetchpriority="high">
         <div class="hero-overlay"></div>
@@ -191,7 +193,7 @@
                             verbringen.</p>
                     </div>
                     <div class="about-img">
-                        <img src="jpg/Haus.webp" srcset="jpg/Haus-800w.webp 800w, jpg/Haus.webp 1626w"
+                        <img src="jpg/haus.webp" srcset="jpg/haus-800w.webp 800w, jpg/haus.webp 1626w"
                             sizes="(max-width: 992px) 100vw, 50vw" alt="Haus Posta Veglia" width="1626" height="1084">
                     </div>
                 </div>
@@ -204,8 +206,8 @@
                 <h2>Räume</h2>
                 <div class="rooms-grid">
                     <div class="room-card" data-room="wohnzimmer">
-                        <img src="jpg/simbole/Whonzimmer.webp" alt="Wohnzimmer & Sonnenstube" class="room-card-img"
-                            loading="lazy" decoding="async" onerror="this.src='jpg/Wohnzimmer/Stube mit Buffet.webp'">
+                        <img src="jpg/simbole/whonzimmer.webp" alt="Wohnzimmer & Sonnenstube" class="room-card-img"
+                            loading="lazy" decoding="async" onerror="this.src='jpg/wohnzimmer/stube-mit-buffet.webp'">
                         <div class="room-card-content">
                             <h3>Wohnzimmer & Sonnenstube</h3>
                             <span class="btn-link">Bilder ansehen</span>
@@ -213,8 +215,8 @@
                     </div>
 
                     <div class="room-card" data-room="kueche">
-                        <img src="jpg/simbole/küche.webp" alt="Küche" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533" onerror="this.src='jpg/Küche/Küche.webp'">
+                        <img src="jpg/simbole/kueche.webp" alt="Küche" class="room-card-img" loading="lazy"
+                            decoding="async" width="800" height="533" onerror="this.src='jpg/kueche/kueche.webp'">
                         <div class="room-card-content">
                             <h3>Küche</h3>
                             <span class="btn-link">Bilder ansehen</span>
@@ -222,9 +224,9 @@
                     </div>
 
                     <div class="room-card" data-room="schlafzimmer">
-                        <img src="jpg/simbole/Einzelzimmer.webp" alt="Schlafzimmer" class="room-card-img" loading="lazy"
+                        <img src="jpg/simbole/einzelzimmer.webp" alt="Schlafzimmer" class="room-card-img" loading="lazy"
                             decoding="async" width="800" height="533"
-                            onerror="this.src='jpg/Schlafzimmer/Balkenzimmer Bett.webp'">
+                            onerror="this.src='jpg/schlafzimmer/balkenzimmer-bett.webp'">
                         <div class="room-card-content">
                             <h3>Schlafzimmer</h3>
                             <span class="btn-link">Bilder ansehen</span>
@@ -232,8 +234,8 @@
                     </div>
 
                     <div class="room-card" data-room="bad">
-                        <img src="jpg/simbole/Badezimmer.webp" alt="Badezimmer" class="room-card-img" loading="lazy"
-                            decoding="async" width="800" height="533" onerror="this.src='jpg/WC/Badezimmer.webp'">
+                        <img src="jpg/simbole/badezimmer.webp" alt="Badezimmer" class="room-card-img" loading="lazy"
+                            decoding="async" width="800" height="533" onerror="this.src='jpg/wc/badezimmer.webp'">
                         <div class="room-card-content">
                             <h3>Badezimmer</h3>
                             <span class="btn-link">Bilder ansehen</span>
@@ -241,9 +243,9 @@
                     </div>
 
                     <div class="room-card" data-room="gang">
-                        <img src="jpg/simbole/Gang.webp" alt="Gang & Garten" class="room-card-img" loading="lazy"
+                        <img src="jpg/simbole/gang.webp" alt="Gang & Garten" class="room-card-img" loading="lazy"
                             decoding="async" width="800" height="533"
-                            onerror="this.src='jpg/Restliches/Gang unten ohne Tischtennis.webp'">
+                            onerror="this.src='jpg/restliches/gang-unten-ohne-tischtennis.webp'">
                         <div class="room-card-content">
                             <h3>Gang & Garten</h3>
                             <span class="btn-link">Bilder ansehen</span>
@@ -251,7 +253,7 @@
                     </div>
 
                     <div class="room-card" data-room="allgemein">
-                        <img src="jpg/simbole/Garten.webp" alt="Restliche Ausstattung" class="room-card-img"
+                        <img src="jpg/simbole/garten.webp" alt="Restliche Ausstattung" class="room-card-img"
                             loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='jpg/zimmerplan.webp'">
                         <div class="room-card-content">
@@ -335,9 +337,6 @@
                     </table>
                 </div>
 
-                <img src="jpg/Tabelle Mietpreise Hochformat.webp" alt="Preis Tabelle" class="mobile-pricing-img"
-                    loading="lazy" decoding="async" width="1000" height="1500">
-
                 <div class="pricing-notes mt-4">
                     <p>Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und
                         zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à
@@ -361,7 +360,7 @@
                 <div class="bewertung-hinweis"
                     style="text-align: center; padding: 8px 0; font-size: 0.85em; opacity: 0.8;">
                     <p style="margin-bottom: 0;">Unsere Gäste bewerten die Posta Veglia auf Google Maps mit <strong>4.5
-                            von 5 Sternen</strong> (basierend auf 12 Bewertungen).</p>
+                            von 5 Sternen</strong> (basierend auf 2 Bewertungen).</p>
                 </div>
             </div>
         </section>
@@ -451,10 +450,10 @@
                 Aufenthaltsraum.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/Wohnzimmer/Ofen.webp" alt="Ofen in Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/Wohnzimmer/Esstisch.webp" alt="Esstisch in Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/Wohnzimmer/Stube mit Buffet.webp" alt="Wohnzimmer" loading="lazy" decoding="async">
-            <img src="jpg/Wohnzimmer/Sonnenstube.webp" alt="Sonnenstube" loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/ofen.webp" alt="Ofen in Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/esstisch.webp" alt="Esstisch in Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/stube-mit-buffet.webp" alt="Wohnzimmer" loading="lazy" decoding="async">
+            <img src="jpg/wohnzimmer/sonnenstube.webp" alt="Sonnenstube" loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -466,9 +465,9 @@
                 für eine grosse Familie oder Freunde, die gemeinsam kochen und dazu noch gern einen Apéro geniessen.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/Küche/Feuerstelle.webp" alt="Ofen von Küche aus" loading="lazy" decoding="async">
-            <img src="jpg/Küche/Küchenimpressionen.webp" alt="Küchenimpressionen" loading="lazy" decoding="async">
-            <img src="jpg/Küche/Küche.webp" alt="Küche mit Glaskeramik-Kochfeld" loading="lazy" decoding="async">
+            <img src="jpg/kueche/feuerstelle.webp" alt="Ofen von Küche aus" loading="lazy" decoding="async">
+            <img src="jpg/kueche/kuechenimpressionen.webp" alt="Küchenimpressionen" loading="lazy" decoding="async">
+            <img src="jpg/kueche/kueche.webp" alt="Küche mit Glaskeramik-Kochfeld" loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -480,10 +479,10 @@
                 zudem mehrere Kinderbetten zur Verfügung.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/Schlafzimmer/Appenzellerzimmer.webp" alt="Zimmer mit Bad" loading="lazy" decoding="async">
-            <img src="jpg/Schlafzimmer/Balkenzimmer Bett.webp" alt="Balkenzimmer" loading="lazy" decoding="async">
-            <img src="jpg/Schlafzimmer/Einzelzimmer.webp" alt="Einzelzimmer" loading="lazy" decoding="async">
-            <img src="jpg/Schlafzimmer/Zimmer ob Stube.webp" alt="Schlafzimmer" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/appenzellerzimmer.webp" alt="Zimmer mit Bad" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/balkenzimmer-bett.webp" alt="Balkenzimmer" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/einzelzimmer.webp" alt="Einzelzimmer" loading="lazy" decoding="async">
+            <img src="jpg/schlafzimmer/zimmer-ob-stube.webp" alt="Schlafzimmer" loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -494,9 +493,9 @@
                 vorgelagertem Doppellavabo bieten den nötigen Komfort auch bei grosser Belegung.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/WC/Duschezimmer.webp" alt="Duschezimmer" loading="lazy" decoding="async">
-            <img src="jpg/WC/Waschstelle mit WC.webp" alt="Lavabo mit WC" loading="lazy" decoding="async">
-            <img src="jpg/WC/Badezimmer.webp" alt="Badezimmer" loading="lazy" decoding="async">
+            <img src="jpg/wc/duschezimmer.webp" alt="Duschezimmer" loading="lazy" decoding="async">
+            <img src="jpg/wc/waschstelle-mit-wc.webp" alt="Lavabo mit WC" loading="lazy" decoding="async">
+            <img src="jpg/wc/badezimmer.webp" alt="Badezimmer" loading="lazy" decoding="async">
         </div>
     </template>
 
@@ -509,10 +508,10 @@
                 vorhanden.</p>
         </div>
         <div class="modal-gallery">
-            <img src="jpg/Restliches/Gang unten ohne Tischtennis.webp" alt="Gang" loading="lazy" decoding="async">
-            <img src="jpg/Restliches/Gang unten mit Tischtennis.webp" alt="Gang mit Tischtennis" loading="lazy"
+            <img src="jpg/restliches/gang-unten-ohne-tischtennis.webp" alt="Gang" loading="lazy" decoding="async">
+            <img src="jpg/restliches/gang-unten-mit-tischtennis.webp" alt="Gang mit Tischtennis" loading="lazy"
                 decoding="async">
-            <img src="jpg/Restliches/Garten.webp" alt="Garten" loading="lazy" decoding="async">
+            <img src="jpg/restliches/garten.webp" alt="Garten" loading="lazy" decoding="async">
         </div>
     </template>
 
