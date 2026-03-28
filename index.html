@@ -34,20 +34,19 @@
 {
   "@context": "https://schema.org",
   "@type": "VacationRental",
-  "@id": "https://altepostsils.ch/#property",
-  "identifier": "POSTA-VEGLIA-01",
   "name": "Ferienhaus Posta Veglia",
-  "description": "Historisches, denkmalgeschütztes Engadinerhaus von 1792 für bis zu 9 Personen in Sils-Baselgia. Authentisches Wohnen mit Arvenholzstube und Engadinerofen.",
+  "description": "Das Haus Posta Veglia (Baujahr 1792) in Sils-Baselgia steht unter Denkmalschutz. Eine behutsam modernisierte Ferienunterkunft im historischen Engadiner Ambiente mit Arvenholz-Stube und Engadinerofen, die Platz für 7 bis maximal 9 Personen bietet.",
   "url": "https://altepostsils.ch/",
+  "identifier": "posta-veglia-sils",
   "image": [
     "https://altepostsils.ch/jpg/Haus.webp",
-    "https://altepostsils.ch/jpg/Haus2.webp",
-    "https://altepostsils.ch/jpg/Sils.webp",
-    "https://altepostsils.ch/jpg/Wohnzimmer/Ofen.webp",
-    "https://altepostsils.ch/jpg/Wohnzimmer/Esstisch.webp",
-    "https://altepostsils.ch/jpg/Wohnzimmer/Sonnenstube.webp",
+    "https://altepostsils.ch/jpg/Wohnzimmer/Stube%20mit%20Buffet.webp",
     "https://altepostsils.ch/jpg/K%C3%BCche/K%C3%BCche.webp",
-    "https://altepostsils.ch/jpg/WC/Badezimmer.webp"
+    "https://altepostsils.ch/jpg/Schlafzimmer/Appenzellerzimmer.webp",
+    "https://altepostsils.ch/jpg/Schlafzimmer/Balkenzimmer%20Bett.webp",
+    "https://altepostsils.ch/jpg/WC/Badezimmer.webp",
+    "https://altepostsils.ch/jpg/WC/Duschezimmer.webp",
+    "https://altepostsils.ch/jpg/Restliches/Garten.webp"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -58,78 +57,83 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 46.4320,
-    "longitude": 9.7615
+    "latitude": 46.4326,
+    "longitude": 9.7601
   },
-  "telephone": "+41798910030",
+  "telephone": "+41 79 891 00 30",
   "email": "info@altepostsils.ch",
-  "additionalType": [
-    "https://www.wikidata.org/wiki/Q11651",
-    "https://www.wikidata.org/wiki/Q23775"
-  ],
-  "numberOfBedrooms": 4,
-  "numberOfBathroomsTotal": 2,
-  "occupancy": {
-    "@type": "QuantitativeValue",
-    "value": 9,
-    "unitCode": "C62"
+  "checkinTime": "15:00:00+01:00",
+  "checkoutTime": "10:00:00+01:00",
+  "petsAllowed": true,
+  "smokingAllowed": false,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5", 
+    "reviewCount": "2"
   },
-  "petsAllowed": "true",
-  "containsPlace": [
-    {
-      "@type": "Accommodation",
-      "name": "Historisches Ferienhaus (Gesamte Unterkunft)",
-      "numberOfBedrooms": 4,
-      "bed": {
-        "@type": "BedDetails",
-        "numberOfBeds": 9
-      }
-    }
-  ],
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Historische Arvenholzstube",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Original Engadinerofen",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Kostenloses WLAN",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "2 Parkplätze inklusive",
-      "value": true
-    }
-  ],
   "offers": {
-    "@type": "Offer",
+    "@type": "AggregateOffer",
     "priceCurrency": "CHF",
-    "url": "https://altepostsils.ch/preise/",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": [
+    "lowPrice": "1440.00",
+    "highPrice": "2030.00",
+    "offerCount": "6",
+    "description": "Preise variieren je nach Saison (Winter/Sommer) pro Woche."
+  },
+  "containsPlace": {
+    "@type": "Accommodation",
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "value": 9
+    },
+    "numberOfRooms": {
+      "@type": "QuantitativeValue",
+      "value": 5
+    },
+    "numberOfBedrooms": {
+      "@type": "QuantitativeValue",
+      "value": 4
+    },
+    "amenityFeature": [
       {
-        "@type": "UnitPriceSpecification",
-        "name": "Schlussreinigung",
-        "price": 250,
-        "priceCurrency": "CHF"
+        "@type": "LocationFeatureSpecification",
+        "name": "WLAN",
+        "value": true
       },
       {
-        "@type": "UnitPriceSpecification",
-        "name": "Bettwäsche pro Person",
-        "price": 18,
-        "priceCurrency": "CHF"
+        "@type": "LocationFeatureSpecification",
+        "name": "Küche",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Parkplatz",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Waschmaschine",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Geschirrspüler",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Heizung",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Tischtennis",
+        "value": true
       }
     ]
   }
 }
 </script>
+
     <title>Ferienhaus Posta Veglia mieten | Sils im Engadin</title>
     <link rel="preload" as="image" href="jpg/Sils.webp"
         imagesrcset="jpg/Sils-400w.webp 400w, jpg/Sils-800w.webp 800w, jpg/Sils.webp 1626w"
@@ -364,6 +368,11 @@
                     data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.980043835413!2d9.755170167771885!3d46.43389929369027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784810d9064bed5%3A0x81d7535b224a1e03!2sAltepostsils!5e0!3m2!1sde!2sch!4v1684768783455!5m2!1sde!2sch"
                     data-title="Standort Karte" data-height="100%" data-allow="accelerometer">
                     <p style="color: #666;">Standort Karte wird geladen...</p>
+                </div>
+                <div class="bewertung-hinweis"
+                    style="text-align: center; padding: 8px 0; font-size: 0.85em; opacity: 0.8;">
+                    <p style="margin-bottom: 0;">Unsere Gäste bewerten die Posta Veglia auf Google Maps mit <strong>5.0
+                            von 5 Sternen</strong> (basierend auf 12 Bewertungen).</p>
                 </div>
             </div>
         </section>
