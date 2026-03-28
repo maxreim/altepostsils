@@ -198,53 +198,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'ArrowLeft') { i = (i - 1 + imgs.length) % imgs.length; lImg.src = imgs[i].src; lImg.dataset.index = i; }
             }
         });
+    }
 
-        // Form Submission
-        const form = document.querySelector('#kontakt form');
-        if (form) {
-            form.onsubmit = (e) => {
-                e.preventDefault();
-                const btn = form.querySelector('button');
-                const originalBtnText = btn.innerHTML;
-                btn.disabled = true;
-                btn.innerHTML = '<span class="loader"></span>';
+    // Form Submission (Decoupled from Modals)
+    const form = document.querySelector('#kontakt form');
+    if (form) {
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalBtnText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loader"></span>';
 
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
+            const formData = new FormData(form);
 
-                fetch(form.action, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(r => {
-                        if (r.ok) {
-                            const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!";
-                            form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
-                        } else {
+            fetch(form.action, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+                .then(r => {
+                    if (r.ok) {
+                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!";
+                        form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
+                    } else {
+                        return r.json().then(errData => {
+                            console.error('FormSubmit Error Response:', errData);
+                            throw new Error(errData.message || 'Submission failed');
+                        }).catch(() => {
                             throw new Error('Submission failed');
-                        }
-                    })
-                    .catch(() => {
-                        const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
-                        // Remove existing error if any
-                        const existingError = form.querySelector('.form-feedback.error');
-                        if (existingError) existingError.remove();
+                        });
+                    }
+                })
+                .catch((err) => {
+                    console.error('Form Submission Error:', err);
+                    const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
 
-                        // Create and insert new error
-                        const errorDiv = document.createElement('div');
-                        errorDiv.className = 'form-feedback error';
-                        errorDiv.innerHTML = errorMsg;
-                        form.prepend(errorDiv);
+                    // Remove existing error if any
+                    const existingError = form.querySelector('.form-feedback.error');
+                    if (existingError) existingError.remove();
 
-                        btn.disabled = false;
-                        btn.innerHTML = originalBtnText;
-                    });
-            };
-        }
+                    // Create and insert new error
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'form-feedback error';
+                    errorDiv.innerHTML = errorMsg;
+                    form.prepend(errorDiv);
+
+                    btn.disabled = false;
+                    btn.innerHTML = originalBtnText;
+                });
+        };
     }
 });
 
