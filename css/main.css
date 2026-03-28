@@ -625,7 +625,7 @@ section {
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     background: var(--clr-white);
-    padding: 1rem;
+    padding: 0;
 }
 
 .iframe-container iframe {
@@ -875,38 +875,6 @@ animation: rotation 1s linear infinite;
     td {
         border: 1px solid #ccc;
         font-size: 10pt;
-    }
-}
-
-.map-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--glass-bg);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: var(--shadow-soft);
-    pointer-events: none;
-    transition: var(--trans-smooth);
-    opacity: 0.8;
-}
-
-.iframe-container:not(.interacted) iframe {
-    pointer-events: none;
-}
-
-.iframe-container.interacted .map-overlay {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Mobile Tweak */
-@media (max-width: 768px) {
-    .map-overlay {
-        font-size: 0.9rem;
-        width: 80%;
-        text-align: center;
     }
 }
 

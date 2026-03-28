@@ -78,7 +78,8 @@ const translations = {
         og_description: "Erleben Sie authentisches Engadiner Flair im historischen Ferienhaus Posta Veglia (Baujahr 1792). Platz für 7-9 Personen in Sils-Baselgia. Jetzt Verfügbarkeit prüfen & direkt anfragen!",
         form_success: "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
         form_error: "Entschuldigung, es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.",
-        map_interact: "Klicken zum Interagieren"
+        map_interact: "Klicken zum Interagieren",
+        btn_directions: "Route planen / Auf Google Maps ansehen"
     },
     en: {
         nav_home: "Home",
@@ -159,7 +160,8 @@ const translations = {
         og_description: "Experience authentic Engadine flair in the historic Posta Veglia holiday home (built 1792). Space for 7-9 people in Sils-Baselgia. Check availability & book now!",
         form_success: "Thank you! Your message has been sent successfully.",
         form_error: "Sorry, there was a problem sending your message. Please try again later.",
-        map_interact: "Click to interact"
+        map_interact: "Click to interact",
+        btn_directions: "Plan route / View on Google Maps"
     },
     fr: {
         nav_home: "Accueil",
@@ -240,7 +242,8 @@ const translations = {
         og_description: "Découvrez the charme authentique de l'Engadine dans the maison de vacances historique Posta Veglia. Jusqu'à 9 personnes à Sils-Baselgia. Réservez dès maintenant !",
         form_success: "Merci ! Votre message a été envoyé avec succès.",
         form_error: "Désolé, un problème est survenu lors de l'envoi. Veuillez réessayer plus tard.",
-        map_interact: "Cliquez pour interagir"
+        map_interact: "Cliquez pour interagir",
+        btn_directions: "Planifier l'itinéraire / Voir sur Google Maps"
     },
     it: {
         nav_home: "Home",
@@ -321,7 +324,8 @@ const translations = {
         og_description: "Vivi l'autentico stile engadinese nella storica casa vacanze Posta Veglia. Spazio per 7-9 persone a Sils-Baselgia. Controlla la disponibilità!",
         form_success: "Grazie! Il tuo messaggio è stato inviato con successo.",
         form_error: "Spiacenti, c'è stato un problema con l'invio. Riprova più tardi.",
-        map_interact: "Clicca per interagire"
+        map_interact: "Clicca per interagire",
+        btn_directions: "Pianifica percorso / Visualizza su Google Maps"
     },
     rm: {
         nav_home: "Chasa",
@@ -402,6 +406,7 @@ const translations = {
         og_description: "Giaudi il flair engiadinais authentic en la chasa da vacanzas istorica Posta Veglia. Plaz per 7-9 persunas a Segl-Baselgia. Controllai la disponibilitad!",
         form_success: "Engraziel fitg! Voss messadi è vegnì tramess cun success.",
         form_error: "Stitg, i dat in problem cun trametter. Emprovai pli tard anc ina giada.",
-        map_interact: "Clicca per agir"
+        map_interact: "Clicca per agir",
+        btn_directions: "Plannar la ruta / Guardar sin Google Maps"
     }
 };

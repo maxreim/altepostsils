@@ -142,21 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalClose.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
 
-        // Lazy Load Iframes
-        const lazyIframes = document.querySelectorAll('.iframe-container[data-src]');
-        const loadIframe = (container) => {
-            const src = container.getAttribute('data-src');
-            container.innerHTML = `<iframe title="${container.getAttribute('data-title')}" src="${src}" width="100%" height="${container.getAttribute('data-height') || '500'}" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
-            container.classList.add('loaded');
-        };
-
-        const iframeObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { loadIframe(entry.target); observer.unobserve(entry.target); }
-            });
-        }, { rootMargin: '200px' });
-        lazyIframes.forEach(c => iframeObserver.observe(c));
-
         // Lightbox
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
@@ -199,6 +184,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Lazy Load Iframes (Decoupled from Modals)
+    const lazyIframes = document.querySelectorAll('.iframe-container[data-src]');
+    const loadIframe = (container) => {
+        const src = container.getAttribute('data-src');
+        const title = container.getAttribute('data-title');
+        const height = container.getAttribute('data-height') || '500';
+        const allow = container.getAttribute('data-allow') || '';
+
+        container.innerHTML = `
+            <iframe title="${title}" src="${src}" width="100%" height="${height}" style="border:0;" allowfullscreen="" loading="lazy" allow="${allow}"></iframe>
+        `;
+
+        container.classList.add('loaded');
+    };
+
+    const iframeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadIframe(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px' });
+    lazyIframes.forEach(c => iframeObserver.observe(c));
+
 
     // Form Submission (Decoupled from Modals)
     const form = document.querySelector('#kontakt form');
