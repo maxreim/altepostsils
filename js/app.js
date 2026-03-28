@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const roomKey = card.getAttribute('data-room');
                 if (roomContents[roomKey]) {
                     modalBody.innerHTML = roomContents[roomKey];
+                    // Translate modal content
+                    if (window.i18n) {
+                        window.i18n.apply(window.i18n.getLang(), modalBody);
+                    }
                     modalOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                     attachLightboxEvents();

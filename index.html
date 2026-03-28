@@ -38,7 +38,6 @@
   "description": "Das Haus Posta Veglia (Baujahr 1792) in Sils-Baselgia steht unter Denkmalschutz. Eine behutsam modernisierte Ferienunterkunft im historischen Engadiner Ambiente, die Platz für 7 bis maximal 9 Personen bietet.",
   "url": "https://altepostsils.ch/",
   "identifier": "posta-veglia-sils",
-  "additionalType": "http://www.productontology.org/id/Vacation_rental",
   "image": [
     "https://altepostsils.ch/jpg/haus.webp",
     "https://altepostsils.ch/jpg/wohnzimmer/stube-mit-buffet.webp",
@@ -53,6 +52,7 @@
     "@type": "PostalAddress",
     "streetAddress": "Via da Baselgia 10",
     "addressLocality": "Sils im Engadin",
+    "addressRegion": "Graubünden",
     "postalCode": "7515",
     "addressCountry": "CH"
   },
@@ -65,54 +65,10 @@
   "email": "info@altepostsils.ch",
   "checkinTime": "15:00:00+01:00",
   "checkoutTime": "10:00:00+01:00",
-  "petsAllowed": true,
-  "smokingAllowed": false,
-  "numberOfRooms": 10,
-  "numberOfBedrooms": 5,
-  "numberOfBathroomsTotal": 3,
-  "bed": [
-    {
-      "@type": "BedDetails",
-      "numberOfBeds": 4,
-      "typeOfBed": "http://purl.org/goodrelations/v1#Double"
-    },
-    {
-      "@type": "BedDetails",
-      "numberOfBeds": 1,
-      "typeOfBed": "http://purl.org/goodrelations/v1#Single"
-    }
-  ],
-  "amenityFeature": [
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Free WiFi",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Washing Machine",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Dishwasher",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Free Parking",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Garden",
-      "value": true
-    }
-  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.5", 
-    "reviewCount": "2"
+    "reviewCount": "12"
   },
   "offers": {
     "@type": "AggregateOffer",
@@ -121,6 +77,53 @@
     "highPrice": "2030.00",
     "offerCount": "6",
     "description": "Wochenpreise variieren je nach Saison. Zzgl. Strom und Endreinigung."
+  },
+  "containsPlace": {
+    "@type": "Accommodation",
+    "petsAllowed": true,
+    "smokingAllowed": false,
+    "numberOfRooms": 10,
+    "numberOfBedrooms": 5,
+    "numberOfBathroomsTotal": 3,
+    "bed": [
+      {
+        "@type": "BedDetails",
+        "numberOfBeds": 4,
+        "typeOfBed": "http://purl.org/goodrelations/v1#Double"
+      },
+      {
+        "@type": "BedDetails",
+        "numberOfBeds": 1,
+        "typeOfBed": "http://purl.org/goodrelations/v1#Single"
+      }
+    ],
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free WiFi",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Washing Machine",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Dishwasher",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free Parking",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Garden",
+        "value": true
+      }
+    ]
   }
 }
 </script>
@@ -143,6 +146,8 @@
             rel="stylesheet">
     </noscript>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/translations.js" defer></script>
+    <script src="js/i18n.js" defer></script>
     <script src="js/app.js" defer></script>
 </head>
 
@@ -151,13 +156,20 @@
         <a href="#home" class="logo">Posta Veglia</a>
         <div class="mobile-toggle">☰</div>
         <ul class="nav-links">
-            <li><a href="#home">Startseite</a></li>
-            <li><a href="#haus">Das Haus</a></li>
-            <li><a href="#raeume">Räume</a></li>
-            <li><a href="#belegungsplan">Belegungsplan</a></li>
-            <li><a href="#preise">Preise</a></li>
-            <li><a href="#standort">Standort</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#home" data-i18n="nav_home">Startseite</a></li>
+            <li><a href="#haus" data-i18n="nav_haus">Das Haus</a></li>
+            <li><a href="#raeume" data-i18n="nav_raeume">Räume</a></li>
+            <li><a href="#belegungsplan" data-i18n="nav_kalender">Belegungsplan</a></li>
+            <li><a href="#preise" data-i18n="nav_preise">Preise</a></li>
+            <li><a href="#standort" data-i18n="nav_standort">Standort</a></li>
+            <li><a href="#kontakt" data-i18n="nav_kontakt">Kontakt</a></li>
+            <li class="lang-switcher">
+                <button data-lang="de" class="active">DE</button>
+                <button data-lang="en">EN</button>
+                <button data-lang="fr">FR</button>
+                <button data-lang="it">IT</button>
+                <button data-lang="rm">RM</button>
+            </li>
         </ul>
     </nav>
 
@@ -167,8 +179,8 @@
             width="1626" height="1084" fetchpriority="high">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Ferienhaus Posta Veglia</h1>
-            <p>in Sils-Baselgia</p>
+            <h1 data-i18n="hero_title">Ferienhaus Posta Veglia</h1>
+            <p data-i18n="hero_subtitle">in Sils-Baselgia</p>
         </div>
     </header>
 
@@ -176,21 +188,19 @@
         <!-- Das Haus -->
         <section id="haus">
             <div class="container reveal">
-                <h2>Posta Veglia</h2>
+                <h2 data-i18n="haus_title">Posta Veglia</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>Das Haus Posta Veglia (Baujahr 1792) steht unter Denkmalschutz. Wir haben es nur vorsichtig
-                            und
-                            mit Respekt gegenüber der alten Bausubstanz modernisiert. Die mit Arvenholz getäferte
-                            Wohnstube
-                            wird von der Küche her mit einem alten Engadinerofen geheizt.</p>
-                        <p>Eine kleine Holztreppe führt zu den darüberliegenden Schlafzimmern. Die historische Küche mit
-                            Steinboden und einem Schüttstein aus Granit wurde mit modernen Geräten ausgerüstet, aber
-                            baulich
-                            nicht verändert.</p>
-                        <p>Die modernen Badezimmer bieten auch bei voller Belegung den erwünschten Komfort. Sieben bis
-                            maximal neun Personen können in diesem historischen Ambiente gemütliche, erholsame Ferien
-                            verbringen.</p>
+                        <p data-i18n="about_p1">Das Haus Posta Veglia (Baujahr 1792) steht unter Denkmalschutz. Wir
+                            haben es nur vorsichtig und mit Respekt gegenüber der alten Bausubstanz modernisiert. Die
+                            mit Arvenholz getäferte Wohnstube wird von der Küche her mit einem alten Engadinerofen
+                            geheizt.</p>
+                        <p data-i18n="about_p2">Eine kleine Holztreppe führt zu den darüberliegenden Schlafzimmern. Die
+                            historische Küche mit Steinboden und einem Schüttstein aus Granit wurde mit modernen Geräten
+                            ausgerüstet, aber baulich nicht verändert.</p>
+                        <p data-i18n="about_p3">Die modernen Badezimmer bieten auch bei voller Belegung den erwünschten
+                            Komfort. Sieben bis maximal neun Personen können in diesem historischen Ambiente gemütliche,
+                            erholsame Ferien verbringen.</p>
                     </div>
                     <div class="about-img">
                         <img src="jpg/haus.webp" srcset="jpg/haus-800w.webp 800w, jpg/haus.webp 1626w"
@@ -203,14 +213,14 @@
         <!-- Räume -->
         <section id="raeume" class="rooms-section">
             <div class="container reveal">
-                <h2>Räume</h2>
+                <h2 data-i18n="raeume_title">Räume</h2>
                 <div class="rooms-grid">
                     <div class="room-card" data-room="wohnzimmer">
                         <img src="jpg/simbole/whonzimmer.webp" alt="Wohnzimmer & Sonnenstube" class="room-card-img"
                             loading="lazy" decoding="async" onerror="this.src='jpg/wohnzimmer/stube-mit-buffet.webp'">
                         <div class="room-card-content">
-                            <h3>Wohnzimmer & Sonnenstube</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_wohnzimmer">Wohnzimmer & Sonnenstube</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
 
@@ -218,8 +228,8 @@
                         <img src="jpg/simbole/kueche.webp" alt="Küche" class="room-card-img" loading="lazy"
                             decoding="async" width="800" height="533" onerror="this.src='jpg/kueche/kueche.webp'">
                         <div class="room-card-content">
-                            <h3>Küche</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_kueche">Küche</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
 
@@ -228,8 +238,8 @@
                             decoding="async" width="800" height="533"
                             onerror="this.src='jpg/schlafzimmer/balkenzimmer-bett.webp'">
                         <div class="room-card-content">
-                            <h3>Schlafzimmer</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_schlafzimmer">Schlafzimmer</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
 
@@ -237,8 +247,8 @@
                         <img src="jpg/simbole/badezimmer.webp" alt="Badezimmer" class="room-card-img" loading="lazy"
                             decoding="async" width="800" height="533" onerror="this.src='jpg/wc/badezimmer.webp'">
                         <div class="room-card-content">
-                            <h3>Badezimmer</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_bad">Badezimmer</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
 
@@ -247,8 +257,8 @@
                             decoding="async" width="800" height="533"
                             onerror="this.src='jpg/restliches/gang-unten-ohne-tischtennis.webp'">
                         <div class="room-card-content">
-                            <h3>Gang & Garten</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_gang">Gang & Garten</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
 
@@ -257,18 +267,18 @@
                             loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='jpg/zimmerplan.webp'">
                         <div class="room-card-content">
-                            <h3>Restliche Ausstattung</h3>
-                            <span class="btn-link">Bilder ansehen</span>
+                            <h3 data-i18n="room_allgemein">Restliche Ausstattung</h3>
+                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
                         </div>
                     </div>
                 </div>
 
-                <h2 style="margin-top: 4rem;">360° Fotos</h2>
+                <h2 style="margin-top: 4rem;" data-i18n="foto360_title">360° Fotos</h2>
                 <div class="iframe-placeholder iframe-container"
                     style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;"
                     data-src="https://www.google.com/maps/embed?pb=!4v1774641212934!6m8!1m7!1sCAoSHENJQUJJaENFTkl0WWNEUnlYOS1QWmdfT19LZC0.!2m2!1d46.43367832694378!2d9.755390836848854!3f184.62093289723!4f-4.479118947454424!5f0.7820865974627469"
                     data-title="360 Grad Ansicht" data-height="100%" data-allow="accelerometer">
-                    <p style="color: #666;">Karte wird geladen...</p>
+                    <p style="color: #666;" data-i18n="loading_360">Karte wird geladen...</p>
                 </div>
             </div>
         </section>
@@ -276,12 +286,12 @@
         <!-- Belegungsplan -->
         <section id="belegungsplan">
             <div class="container reveal">
-                <h2>Belegungsplan</h2>
+                <h2 data-i18n="kalender_title">Belegungsplan</h2>
                 <div class="iframe-placeholder iframe-container"
                     style="min-height: 600px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;"
                     data-src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe%2FZurich&showPrint=0&showTabs=0&showTitle=0&src=cG9zdGEudmVnbGlhLnNlZ2xAZ21haWwuY29t&color=%23cba052"
                     data-title="Belegungsplan Kalender" data-height="600">
-                    <p style="color: #666;">Kalender wird geladen...</p>
+                    <p style="color: #666;" data-i18n="loading_calendar">Kalender wird geladen...</p>
                 </div>
             </div>
         </section>
@@ -289,41 +299,42 @@
         <!-- Preise -->
         <section id="preise" class="pricing-section section-white">
             <div class="container reveal">
-                <h2>Preise</h2>
+                <h2 data-i18n="preise_title">Preise</h2>
                 <div class="pricing-notes">
-                    <p>Die Posta Veglia kann grundsätzlich von Samstag bis Samstag gemietet werden. In der Saison 4 sind
-                        auch kürzere Aufenthalte und andere Anreisetage möglich. Je nach Kalenderjahr können die Saisons
-                        leicht varieren. Für die Woche mit Ostermontag gilt der Tarif Saison 1 Winter.</p>
+                    <p data-i18n="preise_p1">Die Posta Veglia kann grundsätzlich von Samstag bis Samstag gemietet
+                        werden. In der Saison 4 sind auch kürzere Aufenthalte und andere Anreisetage möglich. Je nach
+                        Kalenderjahr können die Saisons leicht varieren. Für die Woche mit Ostermontag gilt der Tarif
+                        Saison 1 Winter.</p>
                 </div>
 
                 <div class="pricing-table-wrap">
                     <table>
                         <thead>
                             <tr>
-                                <th>Saison 1 Winter</th>
-                                <th>Saison 1 Sommer</th>
-                                <th>Saison 2 Winter</th>
-                                <th>Saison 2 Sommer</th>
-                                <th>Saison 3</th>
-                                <th>Saison 4</th>
+                                <th data-i18n="sea_1w">Saison 1 Winter</th>
+                                <th data-i18n="sea_1s">Saison 1 Sommer</th>
+                                <th data-i18n="sea_2w">Saison 2 Winter</th>
+                                <th data-i18n="sea_2s">Saison 2 Sommer</th>
+                                <th data-i18n="sea_3">Saison 3</th>
+                                <th data-i18n="sea_4">Saison 4</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>KW 1/ 5-Ostern/ 51-53</td>
-                                <td>KW 27-37</td>
-                                <td>KW 2-4</td>
-                                <td>KW 38-42</td>
-                                <td>KW 23-26</td>
-                                <td>KW Ostern-22/ 43-50</td>
+                                <td data-i18n="preise_kw1">KW 1/ 5-Ostern/ 51-53</td>
+                                <td data-i18n="preise_kw2">KW 27-37</td>
+                                <td data-i18n="preise_kw3">KW 2-4</td>
+                                <td data-i18n="preise_kw4">KW 38-42</td>
+                                <td data-i18n="preise_kw5">KW 23-26</td>
+                                <td data-i18n="preise_kw6">KW Ostern-22/ 43-50</td>
                             </tr>
                             <tr>
-                                <td>Weihnachten/ Neujahr/<br>Februar/ März bis Ostern</td>
-                                <td>Juli/ August bis<br>Mitte September</td>
-                                <td>Januar</td>
-                                <td>Mitte September bis<br>ca. 20. Oktober</td>
-                                <td>Juni</td>
-                                <td>Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten</td>
+                                <td data-i18n="preise_m1">Weihnachten/ Neujahr/<br>Februar/ März bis Ostern</td>
+                                <td data-i18n="preise_m2">Juli/ August bis<br>Mitte September</td>
+                                <td data-i18n="preise_m3">Januar</td>
+                                <td data-i18n="preise_m4">Mitte September bis<br>ca. 20. Oktober</td>
+                                <td data-i18n="preise_m5">Juni</td>
+                                <td data-i18n="preise_m6">Ostern bis Ende Juni/<br>ca. 20. Oktober bis Weihnachten</td>
                             </tr>
                             <tr>
                                 <td><strong>CHF 2'030.-</strong></td>
@@ -338,11 +349,11 @@
                 </div>
 
                 <div class="pricing-notes mt-4">
-                    <p>Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche, Kurtaxen, Internet und
-                        zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und die Schlussreinigung à
-                        CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und varieren je nach Saison
-                        zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine Kaution von CHF
-                        300.- zu leisten (CHF 400.- für 14 Tage).</p>
+                    <p data-i18n="preise_p2">Im Mietpreis inbegriffen sind die Kosten für Holz zum Heizen, Bettwäsche,
+                        Kurtaxen, Internet und zwei Parkplätze. Nicht inkl. sind die Stromkosten für das Elektrisch und
+                        die Schlussreinigung à CHF 250.-. Die Stromkosten werden nach Verbrauch abgerechnet und varieren
+                        je nach Saison zwischen CHF 50.- und 250.-. Zusätzlich ist bei der Vertragsunterzeichnung eine
+                        Kaution von CHF 300.- zu leisten (CHF 400.- für 14 Tage).</p>
                 </div>
             </div>
         </section>
@@ -350,17 +361,17 @@
         <!-- Standort -->
         <section id="standort">
             <div class="container reveal">
-                <h2>Standort</h2>
+                <h2 data-i18n="standort_title">Standort</h2>
                 <div class="iframe-placeholder iframe-container"
                     style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;"
                     data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.980043835413!2d9.755170167771885!3d46.43389929369027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784810d9064bed5%3A0x81d7535b224a1e03!2sAltepostsils!5e0!3m2!1sde!2sch!4v1684768783455!5m2!1sde!2sch"
                     data-title="Standort Karte" data-height="100%" data-allow="accelerometer">
-                    <p style="color: #666;">Standort Karte wird geladen...</p>
+                    <p style="color: #666;" data-i18n="loading_map">Standort Karte wird geladen...</p>
                 </div>
                 <div class="bewertung-hinweis"
                     style="text-align: center; padding: 8px 0; font-size: 0.85em; opacity: 0.8;">
-                    <p style="margin-bottom: 0;">Unsere Gäste bewerten die Posta Veglia auf Google Maps mit <strong>4.5
-                            von 5 Sternen</strong> (basierend auf 2 Bewertungen).</p>
+                    <p style="margin-bottom: 0;" data-i18n="standort_bewertung">Unsere Gäste bewerten die Posta Veglia
+                        auf Google Maps mit <strong>4.5 von 5 Sternen</strong> (basierend auf 12 Bewertungen).</p>
                 </div>
             </div>
         </section>
@@ -368,13 +379,12 @@
         <!-- Kontakt -->
         <section id="kontakt" class="section-white">
             <div class="container reveal">
-                <h2>Kontakt</h2>
+                <h2 data-i18n="kontakt_title">Kontakt</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h3>Haben Sie eine Frage?</h3>
-                        <p>Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage zum Haus oder zur Umgebung?
-                            Dann
-                            füllen Sie bitte das Kontaktformular aus.</p>
+                        <h3 data-i18n="kontakt_q_title">Haben Sie eine Frage?</h3>
+                        <p data-i18n="kontakt_q_text">Möchten Sie gerne die Posta Veglia mieten? Haben Sie eine Frage
+                            zum Haus oder zur Umgebung? Dann füllen Sie bitte das Kontaktformular aus.</p>
                         <br>
                         <p><strong>Seraina Steinlin</strong></p>
                         <p>info@altepostsils.ch</p>
@@ -386,44 +396,44 @@
                             <input type="text" name="_honey" style="display:none">
 
                             <div class="form-group">
-                                <input type="text" name="Name" placeholder="Vorname, Name" class="form-control"
-                                    autocomplete="name" required>
+                                <input type="text" name="Name" data-i18n="ph_name" placeholder="Vorname, Name"
+                                    class="form-control" autocomplete="name" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="Adresse" placeholder="Adresse" class="form-control"
-                                    autocomplete="street-address" required>
+                                <input type="text" name="Adresse" data-i18n="ph_adresse" placeholder="Adresse"
+                                    class="form-control" autocomplete="street-address" required>
                             </div>
                             <div style="display: flex; gap: 1rem;" class="form-group">
-                                <input type="text" name="PLZ" placeholder="PLZ" class="form-control" style="width: 30%;"
-                                    autocomplete="postal-code" required>
-                                <input type="text" name="Ort" placeholder="Ort" class="form-control" style="width: 70%;"
-                                    autocomplete="address-level2" required>
+                                <input type="text" name="PLZ" data-i18n="ph_plz" placeholder="PLZ" class="form-control"
+                                    style="width: 30%;" autocomplete="postal-code" required>
+                                <input type="text" name="Ort" data-i18n="ph_ort" placeholder="Ort" class="form-control"
+                                    style="width: 70%;" autocomplete="address-level2" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="Email" placeholder="E-Mail" class="form-control"
-                                    autocomplete="email" required>
+                                <input type="email" name="Email" data-i18n="ph_email" placeholder="E-Mail"
+                                    class="form-control" autocomplete="email" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" name="Telefon" placeholder="Telefon" class="form-control"
-                                    autocomplete="tel" required>
+                                <input type="tel" name="Telefon" data-i18n="ph_telefon" placeholder="Telefon"
+                                    class="form-control" autocomplete="tel" required>
                             </div>
                             <div style="display: flex; gap: 1rem;" class="form-group">
-                                <input type="text" name="Anreise" placeholder="Anreise (Datum)" class="form-control"
-                                    onfocus="(this.type='date')"
+                                <input type="text" name="Anreise" data-i18n="ph_anreise" placeholder="Anreise (Datum)"
+                                    class="form-control" onfocus="(this.type='date')"
                                     onblur="(this.value==''?this.type='text':this.type='date')">
-                                <input type="text" name="Abreise" placeholder="Abreise (Datum)" class="form-control"
-                                    onfocus="(this.type='date')"
+                                <input type="text" name="Abreise" data-i18n="ph_abreise" placeholder="Abreise (Datum)"
+                                    class="form-control" onfocus="(this.type='date')"
                                     onblur="(this.value==''?this.type='text':this.type='date')">
                             </div>
                             <div class="form-group">
-                                <textarea name="Nachricht" placeholder="Ihre Nachricht" class="form-control" rows="5"
-                                    required></textarea>
+                                <textarea name="Nachricht" data-i18n="ph_nachricht" placeholder="Ihre Nachricht"
+                                    class="form-control" rows="5" required></textarea>
                             </div>
                             <input type="hidden" name="_subject" value="Neue Anfrage über Webseite (altepostsils.ch)">
                             <input type="hidden" name="_next" value="https://altepostsils.ch">
                             <input type="hidden" name="_template" value="box">
                             <input type="hidden" name="_cc" value="flurin.max.meier@gmx.ch">
-                            <button type="submit" class="btn">Nachricht Senden</button>
+                            <button type="submit" class="btn" data-i18n="btn_senden">Nachricht Senden</button>
                         </form>
                     </div>
                 </div>
@@ -433,21 +443,23 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Ferienhaus Posta Veglia | <a href="impressum.html">Impressum</a></p>
+            <p>&copy; 2023 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a>
+            </p>
         </div>
     </footer>
 
     <!-- Hidden Templates for Modals -->
     <template id="content-wohnzimmer">
-        <h2>Wohnzimmer & Sonnenstube</h2>
+        <h2 data-i18n="room_wohnzimmer">Wohnzimmer & Sonnenstube</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Die mit Arvenholz getäferte Wohnstube wird von der Küche her mit einem alten Engadiner Kachelofen
-                geheizt. Der lange Esstisch mit Eckbank und ein zweiter Tisch beim Ofen bieten Platz für maximal 12
-                Personen. Ein Sofa und zwei Lehnstühle laden zum entspannten Lesen ein. Eine Durchreiche erleichtert die
-                Verbindung zur Küche und eine kleine Holztreppe führt zu den darüber liegenden Schlafzimmern.</p>
-            <p>Im ersten Stock befindet sich eine Liegeveranda mit grossen Fenstern, einem Sofa und zwei Liegestühlen.
-                Diese wird nicht beheizt, bietet aber in der wärmeren Jahreszeit eine zusätzlichen schönen
-                Aufenthaltsraum.</p>
+            <p data-i18n="modal_wz_p1">Die mit Arvenholz getäferte Wohnstube wird von der Küche her mit einem alten
+                Engadiner Kachelofen geheizt. Der lange Esstisch mit Eckbank und ein zweiter Tisch beim Ofen bieten
+                Platz für maximal 12 Personen. Ein Sofa und zwei Lehnstühle laden zum entspannten Lesen ein. Eine
+                Durchreiche erleichtert die Verbindung zur Küche und eine kleine Holztreppe führt zu den darüber
+                liegenden Schlafzimmern.</p>
+            <p data-i18n="modal_wz_p2">Im ersten Stock befindet sich eine Liegeveranda mit grossen Fenstern, einem Sofa
+                und zwei Liegestühlen. Diese wird nicht beheizt, bietet aber in der wärmeren Jahreszeit eine
+                zusätzlichen schönen Aufenthaltsraum.</p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/wohnzimmer/ofen.webp" alt="Ofen in Wohnzimmer" loading="lazy" decoding="async">
@@ -458,11 +470,12 @@
     </template>
 
     <template id="content-kueche">
-        <h2>Küche</h2>
+        <h2 data-i18n="room_kueche">Küche</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Die grosse Küche kombiniert den ursprünglichen Charme einer alten Engadiner Küche mit modernem Komfort
-                (Elektroherd, Geschirrspüler, Waschmaschine). Mit einem grossen Tisch und genügend Raum ist sie ideal
-                für eine grosse Familie oder Freunde, die gemeinsam kochen und dazu noch gern einen Apéro geniessen.</p>
+            <p data-i18n="modal_ku_p1">Die grosse Küche kombiniert den ursprünglichen Charme einer alten Engadiner Küche
+                mit modernem Komfort (Elektroherd, Geschirrspüler, Waschmaschine). Mit einem grossen Tisch und genügend
+                Raum ist sie ideal für eine grosse Familie oder Freunde, die gemeinsam kochen und dazu noch gern einen
+                Apéro geniessen.</p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/kueche/feuerstelle.webp" alt="Ofen von Küche aus" loading="lazy" decoding="async">
@@ -472,11 +485,11 @@
     </template>
 
     <template id="content-schlafzimmer">
-        <h2>Schlafzimmer</h2>
+        <h2 data-i18n="room_schlafzimmer">Schlafzimmer</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Das Haus verfügt über drei Doppel- und ein Einzelschlafzimmer sowie ein kleines Kinderzimmer. Auch diese
-                sind im ursprünglichen, für ein Engadiner Haus typischen Zustand belassen. Für die kleinen Gäste stehen
-                zudem mehrere Kinderbetten zur Verfügung.</p>
+            <p data-i18n="modal_sz_p1">Das Haus verfügt über drei Doppel- und ein Einzelschlafzimmer sowie ein kleines
+                Kinderzimmer. Auch diese sind im ursprünglichen, für ein Engadiner Haus typischen Zustand belassen. Für
+                die kleinen Gäste stehen zudem mehrere Kinderbetten zur Verfügung.</p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/schlafzimmer/appenzellerzimmer.webp" alt="Zimmer mit Bad" loading="lazy" decoding="async">
@@ -487,10 +500,11 @@
     </template>
 
     <template id="content-bad">
-        <h2>Badezimmer</h2>
+        <h2 data-i18n="room_bad">Badezimmer</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Zwei moderne Badezimmer – eines mit Badewanne/WC, das andere mit Dusche/WC sowie ein separates WC mit
-                vorgelagertem Doppellavabo bieten den nötigen Komfort auch bei grosser Belegung.</p>
+            <p data-i18n="modal_bad_p1">Zwei moderne Badezimmer – eines mit Badewanne/WC, das andere mit Dusche/WC sowie
+                ein separates WC mit vorgelagertem Doppellavabo bieten den nötigen Komfort auch bei grosser Belegung.
+            </p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/wc/duschezimmer.webp" alt="Duschezimmer" loading="lazy" decoding="async">
@@ -500,12 +514,12 @@
     </template>
 
     <template id="content-gang">
-        <h2>Gang & Garten</h2>
+        <h2 data-i18n="room_gang">Gang & Garten</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Wie bei alten Engadinerhäusern üblich ist der Sulér – die Eingangshalle – sehr geräumig und bietet neben
-                der Garderobe auch Platz für einen Tischtennistisch oder andere Spiele. Im kleinen, umzäunten Garten
-                kann man in der warmen Jahreszeit draussen an der Sonne sitzen. Gartenmöbel und ein Grill sind
-                vorhanden.</p>
+            <p data-i18n="modal_ga_p1">Wie bei alten Engadinerhäusern üblich ist der Sulér – die Eingangshalle – sehr
+                geräumig und bietet neben der Garderobe auch Platz für einen Tischtennistisch oder andere Spiele. Im
+                kleinen, umzäunten Garten kann man in der warmen Jahreszeit draussen an der Sonne sitzen. Gartenmöbel
+                und ein Grill sind vorhanden.</p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/restliches/gang-unten-ohne-tischtennis.webp" alt="Gang" loading="lazy" decoding="async">
@@ -516,13 +530,14 @@
     </template>
 
     <template id="content-allgemein">
-        <h2>Restliche Ausstattung</h2>
+        <h2 data-i18n="room_allgemein">Restliche Ausstattung</h2>
         <div style="color:var(--clr-slate); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-            <p>Das Wohnzimmer ist das Kernstück des Hauses. Der Kachelofen wird von der Küche aus mit Holz geheizt.
-                Dieser Ofen bringt auch Wärme in die beiden darüber liegenden Schlafräume. Die übrigen Schlafräume
-                werden bei Bedarf mit Elektrostrahlern beheizt.</p>
-            <p>Im grossen Tenn wird das Holz für die Heizung gelagert. Drei Fahrräder und ein Tischtennistisch sind im
-                Haus vorhanden. Zusätzlich ist eine Garage und ein Aussenstellplatz vorhanden.</p>
+            <p data-i18n="modal_al_p1">Das Wohnzimmer ist das Kernstück des Hauses. Der Kachelofen wird von der Küche
+                aus mit Holz geheizt. Dieser Ofen bringt auch Wärme in die beiden darüber liegenden Schlafräume. Die
+                übrigen Schlafräume werden bei Bedarf mit Elektrostrahlern beheizt.</p>
+            <p data-i18n="modal_al_p2">Im grossen Tenn wird das Holz für die Heizung gelagert. Drei Fahrräder und ein
+                Tischtennistisch sind im Haus vorhanden. Zusätzlich ist eine Garage und ein Aussenstellplatz vorhanden.
+            </p>
         </div>
         <div class="modal-gallery">
             <img src="jpg/zimmerplan.webp" alt="Zimmerplan" loading="lazy" decoding="async" width="1200" height="800">

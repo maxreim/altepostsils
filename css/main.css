@@ -175,6 +175,46 @@ a {
     width: 100%;
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--clr-white);
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: var(--trans-smooth);
+    font-family: var(--font-body);
+}
+
+.navbar.scrolled .lang-switcher button {
+    color: var(--clr-wood-dark);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.lang-switcher button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--clr-gold);
+}
+
+.navbar.scrolled .lang-switcher button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.lang-switcher button.active {
+    background: var(--clr-gold);
+    color: var(--clr-white);
+    border-color: var(--clr-gold);
+}
+
 .mobile-toggle {
     display: none;
     color: var(--clr-white);
