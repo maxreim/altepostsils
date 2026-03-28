@@ -125,6 +125,19 @@ a {
     box-shadow: var(--shadow-soft);
 }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--clr-gold);
+    z-index: 1100;
+    transition: width 0.1s ease;
+}
+
+
 .logo {
     font-family: var(--font-heading);
     font-size: 1.8rem;
@@ -379,6 +392,26 @@ section {
     transform: scale(1.05);
 }
 
+/* Glimmer effect on hover */
+.room-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.room-card:hover::after {
+    left: 125%;
+}
+
+
 .room-card-content {
     padding: 1.5rem;
     background: var(--clr-white);
@@ -479,6 +512,36 @@ section {
 .modal-body {
     padding: 3rem;
 }
+
+/* Modal Navigation */
+.modal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--clr-stone-mid);
+}
+
+.modal-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--clr-gold);
+    color: var(--clr-gold);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--trans-smooth);
+}
+
+.modal-nav-btn:hover {
+    background: var(--clr-gold);
+    color: var(--clr-white);
+}
+
 
 .modal-gallery {
     display: grid;

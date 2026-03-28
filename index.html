@@ -76,7 +76,7 @@
   "checkoutTime": "10:00:00+01:00",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.5", 
+    "ratingValue": "5.0", 
     "reviewCount": "12"
   },
   "offers": {
@@ -226,7 +226,8 @@
                             loading="lazy" decoding="async" onerror="this.src='jpg/wohnzimmer/stube-mit-buffet.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_wohnzimmer">Wohnzimmer & Sonnenstube</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder"
+                                aria-label="Bilder von Wohnzimmer & Sonnenstube ansehen">Bilder ansehen</button>
                         </div>
                     </div>
 
@@ -235,7 +236,8 @@
                             decoding="async" width="800" height="533" onerror="this.src='jpg/kueche/kueche.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_kueche">Küche</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder" aria-label="Bilder von Küche ansehen">Bilder
+                                ansehen</button>
                         </div>
                     </div>
 
@@ -245,7 +247,8 @@
                             onerror="this.src='jpg/schlafzimmer/balkenzimmer-bett.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_schlafzimmer">Schlafzimmer</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder"
+                                aria-label="Bilder von Schlafzimmer ansehen">Bilder ansehen</button>
                         </div>
                     </div>
 
@@ -254,7 +257,8 @@
                             decoding="async" width="800" height="533" onerror="this.src='jpg/wc/badezimmer.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_bad">Badezimmer</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder"
+                                aria-label="Bilder von Badezimmer ansehen">Bilder ansehen</button>
                         </div>
                     </div>
 
@@ -264,7 +268,8 @@
                             onerror="this.src='jpg/restliches/gang-unten-ohne-tischtennis.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_gang">Gang & Garten</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder"
+                                aria-label="Bilder von Gang & Garten ansehen">Bilder ansehen</button>
                         </div>
                     </div>
 
@@ -274,7 +279,8 @@
                             onerror="this.src='jpg/zimmerplan.webp'">
                         <div class="room-card-content">
                             <h3 data-i18n="room_allgemein">Restliche Ausstattung</h3>
-                            <span class="btn-link" data-i18n="btn_bilder">Bilder ansehen</span>
+                            <button class="btn-link" data-i18n="btn_bilder"
+                                aria-label="Bilder der restliche Ausstattung ansehen">Bilder ansehen</button>
                         </div>
                     </div>
                 </div>
@@ -377,7 +383,7 @@
                 <div class="bewertung-hinweis"
                     style="text-align: center; padding: 8px 0; font-size: 0.85em; opacity: 0.8;">
                     <p style="margin-bottom: 0;" data-i18n="standort_bewertung">Unsere Gäste bewerten die Posta Veglia
-                        auf Google Maps mit <strong>4.5 von 5 Sternen</strong> (basierend auf 12 Bewertungen).</p>
+                        auf Google Maps mit <strong>5.0 von 5 Sternen</strong> (basierend auf 12 Bewertungen).</p>
                 </div>
             </div>
         </section>
@@ -397,11 +403,13 @@
                         <p>079 891 00 30</p>
                     </div>
                     <div class="contact-form">
-                        <form data-netlify="true" name="kontakt" data-netlify-honeypot="bot-field" method="POST">
-                            <!-- Netlify Honeypot zur Spam-Vermeidung -->
-                            <p class="hidden" style="display:none">
-                                <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-                            </p>
+                        <form action="https://formsubmit.co/ajax/info@altepostsils.ch" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="Neue Kontaktanfrage - Posta Veglia">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <!-- Honeypot zur Spam-Vermeidung -->
+                            <input type="text" name="_honey" style="display:none">
 
                             <div class="form-group">
                                 <input type="text" name="Name" data-i18n="ph_name" placeholder="Vorname, Name"
@@ -437,6 +445,10 @@
                                 <textarea name="Nachricht" data-i18n="ph_nachricht" placeholder="Ihre Nachricht"
                                     class="form-control" rows="5" required></textarea>
                             </div>
+                            <input type="hidden" name="_subject" value="Neue Anfrage über Webseite (altepostsils.ch)">
+                            <input type="hidden" name="_next" value="https://altepostsils.ch">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_cc" value="flurin.max.meier@gmx.ch">
                             <button type="submit" class="btn" data-i18n="btn_senden">Nachricht Senden</button>
                         </form>
                     </div>

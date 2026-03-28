@@ -1,12 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Scroll progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+
+    const updateScrollProgress = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + "%";
+    };
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
+        updateScrollProgress();
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+
+        // Active Section Tracking
+        const sections = document.querySelectorAll('section, header');
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
     }, { passive: true });
 
     // Mobile menu toggle
@@ -19,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileToggle.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close mobile menu on click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -31,19 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Animation
     const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
-
         reveals.forEach(reveal => {
             const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
+            if (elementTop < window.innerHeight - 100) {
                 reveal.classList.add('active');
             }
         });
     };
-
     window.addEventListener('scroll', revealOnScroll, { passive: true });
-    revealOnScroll(); // Trigger on load
+    revealOnScroll();
 
     // Setup Modals
     const roomCards = document.querySelectorAll('.room-card');
@@ -52,30 +77,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalBody = document.querySelector('.modal-body');
 
     if (modalOverlay && modalClose && modalBody) {
-        // Store original room content templates safely
-        const roomContents = {
-            wohnzimmer: document.getElementById('content-wohnzimmer') ? document.getElementById('content-wohnzimmer').innerHTML : '',
-            schlafzimmer: document.getElementById('content-schlafzimmer') ? document.getElementById('content-schlafzimmer').innerHTML : '',
-            bad: document.getElementById('content-bad') ? document.getElementById('content-bad').innerHTML : '',
-            kueche: document.getElementById('content-kueche') ? document.getElementById('content-kueche').innerHTML : '',
-            gang: document.getElementById('content-gang') ? document.getElementById('content-gang').innerHTML : '',
-            allgemein: document.getElementById('content-allgemein') ? document.getElementById('content-allgemein').innerHTML : ''
+        const roomKeys = ['wohnzimmer', 'kueche', 'schlafzimmer', 'bad', 'gang', 'allgemein'];
+        const roomContents = {};
+        roomKeys.forEach(key => {
+            const tmpl = document.getElementById(`content-${key}`);
+            roomContents[key] = tmpl ? tmpl.innerHTML : '';
+        });
+
+        const openRoomModal = (roomKey) => {
+            if (!roomContents[roomKey]) return;
+
+            modalBody.innerHTML = roomContents[roomKey];
+
+            // Modal Navigation
+            const currentIndex = roomKeys.indexOf(roomKey);
+            const prevIndex = (currentIndex - 1 + roomKeys.length) % roomKeys.length;
+            const nextIndex = (currentIndex + 1) % roomKeys.length;
+
+            const navDiv = document.createElement('div');
+            navDiv.className = 'modal-nav';
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'modal-nav-btn';
+            prevBtn.innerHTML = `← ${window.translations?.[window.i18n?.getLang()]?.['room_' + roomKeys[prevIndex]] || 'Back'}`;
+            prevBtn.onclick = () => openRoomModal(roomKeys[prevIndex]);
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'modal-nav-btn';
+            nextBtn.innerHTML = `${window.translations?.[window.i18n?.getLang()]?.['room_' + roomKeys[nextIndex]] || 'Next'} →`;
+            nextBtn.onclick = () => openRoomModal(roomKeys[nextIndex]);
+
+            navDiv.appendChild(prevBtn);
+            navDiv.appendChild(nextBtn);
+            modalBody.appendChild(navDiv);
+
+            if (window.i18n) window.i18n.apply(window.i18n.getLang(), modalBody);
+
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            attachLightboxEvents();
+            modalClose.focus();
         };
 
         roomCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const roomKey = card.getAttribute('data-room');
-                if (roomContents[roomKey]) {
-                    modalBody.innerHTML = roomContents[roomKey];
-                    // Translate modal content
-                    if (window.i18n) {
-                        window.i18n.apply(window.i18n.getLang(), modalBody);
-                    }
-                    modalOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    attachLightboxEvents();
-                }
-            });
+            card.addEventListener('click', () => openRoomModal(card.getAttribute('data-room')));
         });
 
         const closeModal = () => {
@@ -84,134 +129,79 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
-        });
+        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
 
-        // Facade Pattern for Iframes (Maps & Calendar)
+        // Lazy Load Iframes
         const lazyIframes = document.querySelectorAll('.iframe-container[data-src]');
-
         const loadIframe = (container) => {
             const src = container.getAttribute('data-src');
-            if (!src) return;
-
-            const title = container.getAttribute('data-title') || 'Iframe Content';
-            const height = container.getAttribute('data-height') || '500';
-            const allow = container.getAttribute('data-allow') || '';
-
-            container.innerHTML = `
-            <div class="map-overlay" data-i18n="map_interact">Klicken zum Interagieren</div>
-            <iframe title="${title}"
-                src="${src}"
-                width="100%" height="${height}"
-                style="border:0;" allowfullscreen="" loading="lazy"
-                ${allow ? `allow="${allow}"` : ''}
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        `;
+            container.innerHTML = `<iframe title="${container.getAttribute('data-title')}" src="${src}" width="100%" height="${container.getAttribute('data-height') || '500'}" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
             container.classList.add('loaded');
-
-            // Map Interaction Overlay logic
-            if (container.querySelector('.map-overlay')) {
-                container.addEventListener('click', () => {
-                    container.classList.add('interacted');
-                });
-                container.addEventListener('touchstart', () => {
-                    container.classList.add('interacted');
-                }, { passive: true });
-
-                // Translate the overlay text
-                if (window.i18n) {
-                    window.i18n.apply(window.i18n.getLang(), container);
-                }
-            }
         };
 
         const iframeObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    loadIframe(entry.target);
-                    observer.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { loadIframe(entry.target); observer.unobserve(entry.target); }
             });
         }, { rootMargin: '200px' });
+        lazyIframes.forEach(c => iframeObserver.observe(c));
 
-        lazyIframes.forEach(container => {
-            iframeObserver.observe(container);
-        });
-
-        // Custom Lightbox for modal images
+        // Lightbox
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
-        lightbox.innerHTML = '<div class="lightbox-close">✕</div><img>';
+        lightbox.innerHTML = `
+            <div class="lightbox-close">✕</div>
+            <div class="lightbox-arrow lb-prev" style="position:absolute; left:20px; color:#fff; font-size:3rem; cursor:pointer;">←</div>
+            <img src="" style="max-width:90%; max-height:90vh;">
+            <div class="lightbox-arrow lb-next" style="position:absolute; right:20px; color:#fff; font-size:3rem; cursor:pointer;">→</div>
+        `;
         document.body.appendChild(lightbox);
-        const lightboxImg = lightbox.querySelector('img');
+        const lImg = lightbox.querySelector('img');
 
         const attachLightboxEvents = () => {
-            const modalImages = modalBody.querySelectorAll('.modal-gallery img');
-            modalImages.forEach(img => {
-                img.addEventListener('click', () => {
-                    lightboxImg.src = img.src;
-                    lightbox.classList.add('active');
-                });
+            const imgs = Array.from(modalBody.querySelectorAll('.modal-gallery img'));
+            imgs.forEach((img, i) => {
+                img.onclick = () => { lImg.src = img.src; lImg.dataset.index = i; lightbox.classList.add('active'); };
             });
+
+            lightbox.querySelector('.lb-prev').onclick = (e) => {
+                e.stopPropagation();
+                let i = (parseInt(lImg.dataset.index) - 1 + imgs.length) % imgs.length;
+                lImg.src = imgs[i].src; lImg.dataset.index = i;
+            };
+            lightbox.querySelector('.lb-next').onclick = (e) => {
+                e.stopPropagation();
+                let i = (parseInt(lImg.dataset.index) + 1) % imgs.length;
+                lImg.src = imgs[i].src; lImg.dataset.index = i;
+            };
         };
 
-        lightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-        });
+        lightbox.onclick = () => lightbox.classList.remove('active');
 
-        // Close on Escape key and handle Arrow keys for Lightbox
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                if (lightbox.classList.contains('active')) {
-                    lightbox.classList.remove('active');
-                } else if (modalOverlay.classList.contains('active')) {
-                    closeModal();
-                }
-            } else if (lightbox.classList.contains('active')) {
-                const modalImages = Array.from(modalBody.querySelectorAll('.modal-gallery img'));
-                if (modalImages.length > 1) {
-                    let currentIndex = modalImages.findIndex(img => img.src === lightboxImg.src);
-                    if (e.key === 'ArrowRight') {
-                        currentIndex = (currentIndex + 1) % modalImages.length;
-                        lightboxImg.src = modalImages[currentIndex].src;
-                    } else if (e.key === 'ArrowLeft') {
-                        currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length;
-                        lightboxImg.src = modalImages[currentIndex].src;
-                    }
-                }
+            if (e.key === 'Escape') { lightbox.classList.remove('active'); closeModal(); }
+            if (lightbox.classList.contains('active')) {
+                const imgs = Array.from(modalBody.querySelectorAll('.modal-gallery img'));
+                let i = parseInt(lImg.dataset.index);
+                if (e.key === 'ArrowRight') { i = (i + 1) % imgs.length; lImg.src = imgs[i].src; lImg.dataset.index = i; }
+                if (e.key === 'ArrowLeft') { i = (i - 1 + imgs.length) % imgs.length; lImg.src = imgs[i].src; lImg.dataset.index = i; }
             }
         });
 
-        // AJAX Form Submission
-        const contactForm = document.querySelector('form[name="kontakt"]');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+        // Form Submission
+        const form = document.querySelector('#kontakt form');
+        if (form) {
+            form.onsubmit = (e) => {
                 e.preventDefault();
-                const formData = new FormData(contactForm);
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.innerHTML;
-
-                // Show loading state
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span class="loader"></span>';
-
-                fetch("/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString(),
-                })
-                    .then(() => {
-                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Vielen Dank!";
-                        contactForm.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
-                    })
-                    .catch(() => {
-                        const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
-                        alert(errorMsg);
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                    });
-            });
+                const btn = form.querySelector('button');
+                btn.disabled = true; btn.innerHTML = '<span class="loader"></span>';
+                fetch(form.action, { method: "POST", body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                    .then(r => {
+                        if (r.ok) form.innerHTML = `<div class="form-feedback success">${window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!"}</div>`;
+                        else throw 1;
+                    }).catch(() => { alert("Error"); btn.disabled = false; btn.innerHTML = "Senden"; });
+            };
         }
     }
 });
+
