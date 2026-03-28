@@ -687,25 +687,7 @@ th {
     font-size: 0.95rem;
 }
 
-/* Season Highlighting */
-[data-season].current-season {
-    background-color: var(--clr-season-active);
-    position: relative;
-}
 
-th[data-season].current-season::after {
-    content: '★ Aktuell';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.7rem;
-    background: var(--clr-gold);
-    color: white;
-    padding: 2px 6px;
-    border-radius: 10px;
-    white-space: nowrap;
-}
 
 
 
