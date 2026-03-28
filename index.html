@@ -17,17 +17,26 @@
         });
     </script>
     <meta name="google-site-verification" content="4XbP4HRkXX1ZmAxpvp2ZIVBNDx4YD6y51uXICbjhAOo" />
-    <title>Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin</title>
+    <title data-i18n="seo_title">Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
+    <meta name="description" data-i18n="seo_description"
         content="Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.">
     <meta name="theme-color" content="#f5f5f0">
-    <meta property="og:title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
-    <meta property="og:description"
-        content="Mieten Sie unser historisches Engadinerhaus in Sils-Baselgia für erholsame Ferien im Engadin. Platz für bis zu 9 Personen.">
-    <meta property="og:image" content="https://altepostsils.ch/jpg/haus.png">
+    <link rel="icon" href="/jpg/favicon.ico">
+    <link rel="apple-touch-icon" href="/jpg/favicon.png">
+    <meta property="og:title" data-i18n="og_title" content="Ferienhaus Posta Veglia mieten | Sils-Baselgia">
+    <meta property="og:site_name" content="Posta Veglia Sils">
+    <meta property="og:description" data-i18n="og_description"
+        content="Erleben Sie authentisches Engadiner Flair im historischen Ferienhaus Posta Veglia (Baujahr 1792). Platz für 7-9 Personen in Sils-Baselgia. Jetzt Verfügbarkeit prüfen & direkt anfragen!">
+    <meta property="og:image" content="https://altepostsils.ch/jpg/haus.jpg">
     <meta property="og:url" content="https://altepostsils.ch">
     <link rel="canonical" href="https://altepostsils.ch/" />
+    <link rel="alternate" hreflang="de" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="en" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="fr" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="it" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="rm" href="https://altepostsils.ch/">
+    <link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/">
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -88,13 +97,8 @@
     "bed": [
       {
         "@type": "BedDetails",
-        "numberOfBeds": 4,
-        "typeOfBed": "http://purl.org/goodrelations/v1#Double"
-      },
-      {
-        "@type": "BedDetails",
-        "numberOfBeds": 1,
-        "typeOfBed": "http://purl.org/goodrelations/v1#Single"
+        "numberOfBeds": 9,
+        "typeOfBed": "Single and Double Beds"
       }
     ],
     "amenityFeature": [
@@ -135,6 +139,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
     <link rel="preconnect" href="https://www.google.com">
     <!-- Google Fonts geladen asynchron, um Render-Blocking zu vermeiden -->
     <link rel="preload" as="style"
@@ -391,9 +397,11 @@
                         <p>079 891 00 30</p>
                     </div>
                     <div class="contact-form">
-                        <form action="https://formsubmit.co/posta.veglia.segl@gmail.com" method="POST">
-                            <!-- Honeypot zur Spam-Vermeidung -->
-                            <input type="text" name="_honey" style="display:none">
+                        <form data-netlify="true" name="kontakt" data-netlify-honeypot="bot-field" method="POST">
+                            <!-- Netlify Honeypot zur Spam-Vermeidung -->
+                            <p class="hidden" style="display:none">
+                                <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
 
                             <div class="form-group">
                                 <input type="text" name="Name" data-i18n="ph_name" placeholder="Vorname, Name"
@@ -429,10 +437,6 @@
                                 <textarea name="Nachricht" data-i18n="ph_nachricht" placeholder="Ihre Nachricht"
                                     class="form-control" rows="5" required></textarea>
                             </div>
-                            <input type="hidden" name="_subject" value="Neue Anfrage über Webseite (altepostsils.ch)">
-                            <input type="hidden" name="_next" value="https://altepostsils.ch">
-                            <input type="hidden" name="_template" value="box">
-                            <input type="hidden" name="_cc" value="flurin.max.meier@gmx.ch">
                             <button type="submit" class="btn" data-i18n="btn_senden">Nachricht Senden</button>
                         </form>
                     </div>

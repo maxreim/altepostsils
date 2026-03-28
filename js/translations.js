@@ -70,7 +70,14 @@ const translations = {
         modal_bad_p1: "Zwei moderne Badezimmer – eines mit Badewanne/WC, das andere mit Dusche/WC sowie ein separates WC mit vorgelagertem Doppellavabo bieten den nötigen Komfort auch bei grosser Belegung.",
         modal_ga_p1: "Wie bei alten Engadinerhäusern üblich ist der Sulér – die Eingangshalle – sehr geräumig und bietet neben der Garderobe auch Platz für einen Tischtennistisch oder andere Spiele. Im kleinen, umzäunten Garten kann man in der warmen Jahreszeit draussen an der Sonne sitzen. Gartenmöbel und ein Grill sind vorhanden.",
         modal_al_p1: "Das Wohnzimmer ist das Kernstück des Hauses. Der Kachelofen wird von der Küche aus mit Holz geheizt. Dieser Ofen bringt auch Wärme in die beiden darüber liegenden Schlafräume. Die übrigen Schlafräume werden bei Bedarf mit Elektrostrahlern beheizt.",
-        modal_al_p2: "Im grossen Tenn wird das Holz für die Heizung gelagert. Drei Fahrräder und ein Tischtennistisch sind im Haus vorhanden. Zusätzlich ist eine Garage und ein Aussenstellplatz vorhanden."
+        modal_al_p2: "Im grossen Tenn wird das Holz für die Heizung gelagert. Drei Fahrräder und ein Tischtennistisch sind im Haus vorhanden. Zusätzlich ist eine Garage und ein Aussenstellplatz vorhanden.",
+        seo_title: "Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin",
+        seo_description: "Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.",
+        og_title: "Ferienhaus Posta Veglia mieten | Sils-Baselgia",
+        og_description: "Erleben Sie authentisches Engadiner Flair im historischen Ferienhaus Posta Veglia (Baujahr 1792). Platz für 7-9 Personen in Sils-Baselgia. Jetzt Verfügbarkeit prüfen & direkt anfragen!",
+        form_success: "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+        form_error: "Entschuldigung, es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.",
+        map_interact: "Klicken zum Interagieren"
     },
     en: {
         nav_home: "Home",
@@ -143,7 +150,14 @@ const translations = {
         modal_bad_p1: "Two modern bathrooms – one with bath/WC, the other with shower/WC, and a separate WC with a double washbasin in front offer the necessary comfort even with high occupancy.",
         modal_ga_p1: "As is usual with old Engadine houses, the Sulér – the entrance hall – is very spacious and, in addition to the cloakroom, also offers space for a table tennis table or other games. In the small, fenced garden you can sit outside in the sun during the warm season. Garden furniture and a grill are available.",
         modal_al_p1: "The living room is the core of the house. The tiled stove is heated with wood from the kitchen. This stove also brings heat to the two bedrooms above it. The other bedrooms are heated with electric heaters if necessary.",
-        modal_al_p2: "The wood for the heating is stored in the large barn. Three bicycles and a table tennis table are available in the house. In addition, there is a garage and an outdoor parking space."
+        modal_al_p2: "The wood for the heating is stored in the large barn. Three bicycles and a table tennis table are available in the house. In addition, there is a garage and an outdoor parking space.",
+        seo_title: "Rent Holiday Home Posta Veglia | Sils-Baselgia, Engadine",
+        seo_description: "Rent the Posta Veglia holiday home in Sils-Baselgia (Engadine). Heritage-protected, historic Engadine house for 7-9 people. Ideal for relaxing holidays in the Swiss mountains.",
+        og_title: "Rent Holiday Home Posta Veglia | Sils-Baselgia",
+        og_description: "Experience authentic Engadine flair in the historic Posta Veglia holiday home (built 1792). Space for 7-9 people in Sils-Baselgia. Check availability & book now!",
+        form_success: "Thank you! Your message has been sent successfully.",
+        form_error: "Sorry, there was a problem sending your message. Please try again later.",
+        map_interact: "Click to interact"
     },
     fr: {
         nav_home: "Accueil",
@@ -215,8 +229,15 @@ const translations = {
         modal_sz_p1: "La maison dispose de trois chambres doubles et d'une simple, ainsi que d'une petite chambre d'enfants. Ces dernières ont également été conservées dans leur état d'origine. Plusieurs lits pour enfants sont à disposition.",
         modal_bad_p1: "Deux salles de bains modernes - l'une avec baignoire/WC, l'autre avec douche/WC, ainsi qu'un WC séparé avec lavabo double, offrent le confort nécessaire même en cas de forte occupation.",
         modal_ga_p1: "Comme c'est souvent le cas dans les anciennes maisons engadinoises, le Sulér - le hall d'entrée - est très spacieux et offre de la place pour une table de ping-pong ou d'autres jeux. Dans le petit jardin clôturé, vous pouvez vous asseoir dehors au soleil. Des meubles de jardin et un barbecue sont disponibles.",
-        modal_al_p1: "Le salon est le cœur de la maison. Le poêle en faïence est chauffé au bois depuis la cuisine. Ce poêle apporte également de la chaleur aux deux chambres situées au-dessus. Les autres chambres sont chauffées avec des radiateurs électriques si nécessaire.",
-        modal_al_p2: "Le bois pour le chauffage est stocké dans la grande grange. Trois vélos et une table de ping-pong sont disponibles in la maison. Il y a aussi un garage et une place de parking extérieure."
+        modal_al_p1: "Le salon est le cœur de the maison. Le poêle en faïence est chauffé au bois depuis the cuisine. Ce poêle apporte également de the chaleur aux deux chambres situées au-dessus. Les autres chambres sont chauffées avec des radiateurs électriques si nécessaire.",
+        modal_al_p2: "Le bois pour the chauffage est stocké dans the grande grange. Trois vélos et une table de ping-pong sont disponibles dans the maison. Il y a aussi un garage et une place de parking extérieure.",
+        seo_title: "Louer the maison de vacances Posta Veglia | Sils-Baselgia, Engadine",
+        seo_description: "Louez the maison de vacances Posta Veglia à Sils-Baselgia (Engadine). Maison engadinoise historique protégée pour 7 à 9 personnes. Idéal pour des vacances relaxantes.",
+        og_title: "Louer the maison de vacances Posta Veglia | Sils-Baselgia",
+        og_description: "Découvrez the charme authentique de l'Engadine dans the maison de vacances historique Posta Veglia. Jusqu'à 9 personnes à Sils-Baselgia. Réservez dès maintenant !",
+        form_success: "Merci ! Votre message a été envoyé avec succès.",
+        form_error: "Désolé, un problème est survenu lors de l'envoi. Veuillez réessayer plus tard.",
+        map_interact: "Cliquez pour interagir"
     },
     it: {
         nav_home: "Home",
@@ -289,7 +310,14 @@ const translations = {
         modal_bad_p1: "Due bagni moderni - uno con vasca/WC, l'altro con doccia/WC, nonché un WC separato con doppio lavabo - offrono il comfort necessario anche con un'alta occupazione.",
         modal_ga_p1: "Come è tipico delle antiche case engadinesi, il Sulér - l'ingresso - è molto spazioso e offre posto anche per un tavolo da ping pong o altri giochi. Nel piccolo giardino recintato potrete sedervi fuori al sole durante la stagione mite. Mobili da giardino e un barbecue sono disponibili.",
         modal_al_p1: "Il soggiorno è il fulcro della casa. La stufa in maiolica è riscaldata a legna dalla cucina. Questa stufa porta calore anche alle due camere da letto soprastanti. Le altre camere sono riscaldate con stufe elettriche, se necessario.",
-        modal_al_p2: "La legna per il riscaldamento è conservata nel grande fienile. Tre biciclette e un tavolo da ping pong sono disponibili. Inoltre c'è un garage e un posto auto esterno."
+        modal_al_p2: "La legna per il riscaldamento è conservata nel grande fienile. Tre biciclette e un tavolo da ping pong sono disponibili. Inoltre c'è un garage e un posto auto esterno.",
+        seo_title: "Affitto casa vacanze Posta Veglia | Sils-Baselgia, Engadina",
+        seo_description: "Affitta la casa vacanze Posta Veglia a Sils-Baselgia (Engadina). Storica casa engadinese protetta per 7-9 persone. Ideale per vacanze rilassanti.",
+        og_title: "Affitto casa vacanze Posta Veglia | Sils-Baselgia",
+        og_description: "Vivi l'autentico stile engadinese nella storica casa vacanze Posta Veglia. Spazio per 7-9 persone a Sils-Baselgia. Controlla la disponibilità!",
+        form_success: "Grazie! Il tuo messaggio è stato inviato con successo.",
+        form_error: "Spiacenti, c'è stato un problema con l'invio. Riprova più tardi.",
+        map_interact: "Clicca per interagire"
     },
     rm: {
         nav_home: "Chasa",
@@ -362,6 +390,13 @@ const translations = {
         modal_bad_p1: "Dus banis moderns - in cun bogn/WC, l'auter cun duscha/WC sco eir in WC separà porschan il confort necessari.",
         modal_ga_p1: "Sco usità tier las veglias chasas engiadinaisas è il Sulér - l'entradura - fitg vast. Igl ha plaz per ina maisa da pingpong. En il pitschen curtin pudais vus seser ordaifer al sulegl.",
         modal_al_p1: "La stiva è il coc da la chasa. Il stgaffet vegn stgaudà cun laina nà da la cuschina. Quest stgaffet maina eir chalur en las duos chombras sura. Las autras chombras vegnan stgaudadas cun stgaudaders electrics sche necessari.",
-        modal_al_p2: "La laina vegn depositada en il tablà. Igl ha trais velos ed ina maisa da pingpong en la chasa. A disposiziun è era ina garascha."
+        modal_al_p2: "La laina vegn depositada en il tablà. Igl ha trais velos ed ina maisa da pingpong en la chasa. A disposiziun è era ina garascha.",
+        seo_title: "Fittar chasa da vacanzas Posta Veglia | Segl-Baselgia, Engiadina",
+        seo_description: "Fittar la chasa da vacanzas Posta Veglia a Segl-Baselgia (Engiadina). Chasa engiadinaisa istorica protegida per 7-9 persunas. Ideal per vacanzas d'arpas.",
+        og_title: "Fittar chasa da vacanzas Posta Veglia | Segl-Baselgia",
+        og_description: "Giaudi il flair engiadinais authentic en la chasa da vacanzas istorica Posta Veglia. Plaz per 7-9 persunas a Segl-Baselgia. Controllai la disponibilitad!",
+        form_success: "Engraziel fitg! Voss messadi è vegnì tramess cun success.",
+        form_error: "Stitg, i dat in problem cun trametter. Emprovai pli tard anc ina giada.",
+        map_interact: "Clicca per agir"
     }
 };

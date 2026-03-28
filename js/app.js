@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const allow = container.getAttribute('data-allow') || '';
 
             container.innerHTML = `
+            <div class="map-overlay" data-i18n="map_interact">Klicken zum Interagieren</div>
             <iframe title="${title}"
                 src="${src}"
                 width="100%" height="${height}"
@@ -108,6 +109,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         `;
             container.classList.add('loaded');
+
+            // Map Interaction Overlay logic
+            if (container.querySelector('.map-overlay')) {
+                container.addEventListener('click', () => {
+                    container.classList.add('interacted');
+                });
+                container.addEventListener('touchstart', () => {
+                    container.classList.add('interacted');
+                }, { passive: true });
+
+                // Translate the overlay text
+                if (window.i18n) {
+                    window.i18n.apply(window.i18n.getLang(), container);
+                }
+            }
         };
 
         const iframeObserver = new IntersectionObserver((entries, observer) => {
@@ -144,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.classList.remove('active');
         });
 
-        // Close on Escape key
+        // Close on Escape key and handle Arrow keys for Lightbox
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (lightbox.classList.contains('active')) {
@@ -152,7 +168,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (modalOverlay.classList.contains('active')) {
                     closeModal();
                 }
+            } else if (lightbox.classList.contains('active')) {
+                const modalImages = Array.from(modalBody.querySelectorAll('.modal-gallery img'));
+                if (modalImages.length > 1) {
+                    let currentIndex = modalImages.findIndex(img => img.src === lightboxImg.src);
+                    if (e.key === 'ArrowRight') {
+                        currentIndex = (currentIndex + 1) % modalImages.length;
+                        lightboxImg.src = modalImages[currentIndex].src;
+                    } else if (e.key === 'ArrowLeft') {
+                        currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length;
+                        lightboxImg.src = modalImages[currentIndex].src;
+                    }
+                }
             }
         });
+
+        // AJAX Form Submission
+        const contactForm = document.querySelector('form[name="kontakt"]');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="loader"></span>';
+
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString(),
+                })
+                    .then(() => {
+                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Vielen Dank!";
+                        contactForm.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
+                    })
+                    .catch(() => {
+                        const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
+                        alert(errorMsg);
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    });
+            });
+        }
     }
 });

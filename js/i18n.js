@@ -9,15 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
         root.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang][key]) {
-                // If it's an input or textarea with placeholder, update placeholder
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                const translation = translations[lang][key];
+
+                // Handle different element types
+                if (el.tagName === 'META') {
+                    el.setAttribute('content', translation);
+                } else if (el.tagName === 'TITLE') {
+                    document.title = translation;
+                } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     if (el.hasAttribute('placeholder')) {
-                        el.placeholder = translations[lang][key];
+                        el.placeholder = translation;
                     } else if (el.type === 'submit' || el.type === 'button') {
-                        el.value = translations[lang][key];
+                        el.value = translation;
                     }
                 } else {
-                    el.innerHTML = translations[lang][key];
+                    el.innerHTML = translation;
                 }
             }
         });
