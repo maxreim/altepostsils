@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Custom Lightbox for modal images
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
-        lightbox.innerHTML = '<img>';
+        lightbox.innerHTML = '<div class="lightbox-close">✕</div><img>';
         document.body.appendChild(lightbox);
         const lightboxImg = lightbox.querySelector('img');
 
