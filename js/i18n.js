@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const urlLang = getLangFromURL();
-    let currentLang = urlLang || localStorage.getItem('lang') || defaultLang;
+    const storageLang = localStorage.getItem('lang');
+    let currentLang = urlLang || storageLang || defaultLang;
+
+    // Optimization: Skip initial translation if we're already in 'de' and it's the target
+    const skipInitialTranslation = (currentLang === 'de' && !urlLang && !storageLang);
+
 
     // If urlLang is set, save it to localStorage for future visits
     if (urlLang && translations[urlLang]) {
@@ -21,22 +26,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         root.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                const translation = translations[lang][key];
+            const translation = translations[lang][key];
+            if (translation) {
+                // If the element already has this exact content, skip (avoids layout thrashing)
+                if (el.innerHTML === translation || el.textContent === translation) return;
 
                 // Handle different element types
                 if (el.tagName === 'META') {
                     el.setAttribute('content', translation);
                 } else if (el.tagName === 'TITLE') {
-                    document.title = translation;
+                    if (document.title !== translation) document.title = translation;
                 } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     if (el.hasAttribute('placeholder')) {
-                        el.placeholder = translation;
+                        if (el.placeholder !== translation) el.placeholder = translation;
                     } else if (el.type === 'submit' || el.type === 'button') {
-                        el.value = translation;
+                        if (el.value !== translation) el.value = translation;
                     }
                 } else {
-                    el.innerHTML = translation;
+                    // Use textContent if no HTML tags are present for better performance
+                    if (translation.indexOf('<') === -1) {
+                        el.textContent = translation;
+                    } else {
+                        el.innerHTML = translation;
+                    }
                 }
             }
         });
@@ -92,6 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     if (typeof translations !== 'undefined') {
         setupLangSwitcher();
-        applyTranslations(currentLang);
+        if (!skipInitialTranslation) {
+            applyTranslations(currentLang);
+        } else {
+            // Even if we skip translation, we should ensure HTML lang and button states are correct
+            document.documentElement.lang = 'de';
+            document.querySelectorAll('.lang-switcher button[data-lang="de"]').forEach(btn => {
+                btn.classList.add('active');
+                btn.setAttribute('aria-current', 'true');
+            });
+        }
     }
 });

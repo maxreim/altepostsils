@@ -154,10 +154,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
-    <link rel="preconnect" href="https://www.google.com">
-    <link rel="preconnect" href="https://calendar.google.com">
+    <link rel="dns-prefetch" href="https://calendar.google.com">
     <!-- Google Fonts geladen asynchron, um Render-Blocking zu vermeiden -->
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -303,9 +302,10 @@
 
         @media (max-width: 768px) {
             .hero-content {
-                animation: none;
+                animation: none !important;
                 /* Immediate visibility on mobile for LCP */
-                opacity: 1;
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
 
@@ -413,7 +413,8 @@
                     <div class="about-img">
                         <img src="images/haus.webp" srcset="images/haus-800w.webp 800w, images/haus.webp 1626w"
                             sizes="(max-width: 992px) 100vw, 50vw"
-                            alt="Historisches Engadinerhaus Posta Veglia in Sils-Baselgia" width="1626" height="1084">
+                            alt="Historisches Engadinerhaus Posta Veglia in Sils-Baselgia" width="1626" height="1084"
+                            loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
