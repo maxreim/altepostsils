@@ -3,6 +3,12 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuMw_LIUC7C9_u9nVTxp3e86XG8Yv_p_7K.woff2"
+        as="font" type="font/woff2" crossorigin>
+    <link rel="preload"
+        href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2"
+        as="font" type="font/woff2" crossorigin>
 
     <!-- Google Analytics – loaded asynchronously -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E79C7DV0BE"></script>
@@ -142,9 +148,9 @@
 }
 </script>
 
-    <link rel="preload" as="image" href="images/sils-800w.webp"
-        imagesrcset="images/sils-400w.webp 400w, images/sils-800w.webp 800w, images/sils-1200w.webp 1200w, images/sils.webp 1626w"
-        imagesizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, (max-width: 1400px) 1200px, 1626px">
+    <link rel="preload" as="image" href="images/sils.webp"
+        imagesrcset="images/sils-400w.webp 400w, images/sils-800w.webp 800w, images/sils.webp 1626w"
+        imagesizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 1626px">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -339,6 +345,7 @@
     <noscript>
         <link rel="stylesheet" href="css/main.css">
     </noscript>
+    <script src="js/translations.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/app.js" defer></script>
 </head>
@@ -374,9 +381,9 @@
     </nav>
 
     <header id="home" class="hero">
-        <img src="images/sils-800w.webp"
-            srcset="images/sils-400w.webp 400w, images/sils-800w.webp 800w, images/sils-1200w.webp 1200w, images/sils.webp 1626w"
-            sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, (max-width: 1400px) 1200px, 1626px"
+        <img src="images/sils.webp"
+            srcset="images/sils-400w.webp 400w, images/sils-800w.webp 800w, images/sils.webp 1626w"
+            sizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 100vw"
             alt="Winterliche Landschaft in Sils-Baselgia mit verschneiten Bergen" class="hero-bg" width="1626"
             height="1084" fetchpriority="high">
         <div class="hero-overlay"></div>
