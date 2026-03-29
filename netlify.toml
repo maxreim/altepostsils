@@ -33,6 +33,6 @@
 
 [[headers]]
   # Langes Caching für Bilder
-  for = "/jpg/*"
+  for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
