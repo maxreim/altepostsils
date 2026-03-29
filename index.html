@@ -22,9 +22,11 @@
     <title data-i18n="seo_title">Ferienhaus Posta Veglia mieten | Sils-Baselgia, Engadin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" data-i18n="seo_description"
-        content="Ferienhaus Posta Veglia in Sils-Baselgia (Engadin) mieten. Denkmalgeschütztes, historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Schweizer Bergen.">
-    <meta name="theme-color" content="#f5f5f0">
-    <link rel="icon" href="jpg/favicon.ico" sizes="any">
+        content="Ferienhaus Posta Veglia in Sils-Baselgia mieten. Historisches Engadinerhaus für 7-9 Personen. Ideal für erholsame Ferien in den Bergen.">
+    <link rel="icon" href="jpg/favicon-48.png" sizes="48x48">
+    <link rel="icon" href="jpg/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="jpg/favicon-144.png" sizes="144x144">
+    <link rel="icon" href="jpg/favicon-192.png" sizes="192x192">
     <link rel="icon" href="jpg/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="jpg/apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
@@ -32,7 +34,7 @@
     <meta property="og:site_name" content="Posta Veglia Sils">
     <meta property="og:description" data-i18n="og_description"
         content="Erleben Sie authentisches Engadiner Flair im historischen Ferienhaus Posta Veglia (Baujahr 1792). Platz für 7-9 Personen in Sils-Baselgia. Jetzt Verfügbarkeit prüfen & direkt anfragen!">
-    <meta property="og:image" content="https://altepostsils.ch/jpg/haus.jpg">
+    <meta property="og:image" content="https://altepostsils.ch/jpg/sils-400w.webp">
     <meta property="og:url" content="https://altepostsils.ch">
     <link rel="canonical" href="https://altepostsils.ch/" />
     <link rel="alternate" hreflang="de" href="https://altepostsils.ch/">
@@ -146,7 +148,6 @@
 }
 </script>
 
-    <title>Ferienhaus Posta Veglia mieten | Sils im Engadin</title>
     <link rel="preload" as="image" href="jpg/sils.webp"
         imagesrcset="jpg/sils-400w.webp 400w, jpg/sils-800w.webp 800w, jpg/sils.webp 1626w"
         imagesizes="(max-width: 500px) 400px, (max-width: 1000px) 800px, 1626px">
@@ -224,6 +225,8 @@
             color: var(--clr-white);
             letter-spacing: 0.05em;
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         .nav-links {
@@ -349,7 +352,15 @@
 
 <body>
     <nav class="navbar">
-        <a href="#home" class="logo">Posta Veglia</a>
+        <a href="#home" class="logo">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" style="vertical-align: middle; margin-right: 8px;">
+                <path d="M24 3L45 24L24 45L3 24L24 3Z" fill="currentColor" />
+                <path d="M24 12L36 30H12L24 12Z" fill="white" fill-opacity="0.8" />
+                <path d="M24 18L30 27H18L24 18Z" fill="currentColor" />
+            </svg>
+            <span>Posta Veglia</span>
+        </a>
         <div class="mobile-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="#home" data-i18n="nav_home">Startseite</a></li>
