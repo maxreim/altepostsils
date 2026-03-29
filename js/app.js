@@ -266,12 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         form.onsubmit = (e) => {
             const lang = window.i18n ? window.i18n.getLang() : 'de';
-            const t = window.translations?.[lang] || window.translations['de'];
+            const t = window.translations?.[lang] || window.translations?.['de'];
             // Date Validation
             if (dateIn && dateOut && dateIn.value && dateOut.value) {
                 if (new Date(dateOut.value) <= new Date(dateIn.value)) {
                     e.preventDefault();
-                    alert(t.date_error);
+                    alert(t?.date_error || 'Das Abreisedatum muss nach dem Anreisedatum liegen.');
                     return;
                 }
             }
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
                 .then(r => {
                     if (r.ok) {
-                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!";
+                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || 'Vielen Dank! Wir melden uns in Kürze.';
                         form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
                     } else {
                         return r.json().then(errData => {
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch((err) => {
                     console.error('Form Submission Error:', err);
-                    const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
+                    const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
                     const existingError = form.querySelector('.form-feedback.error');
                     if (existingError) existingError.remove();
                     const errorDiv = document.createElement('div');
