@@ -1,5 +1,7 @@
 [build]
   publish = "."
+  [build.environment]
+    NODE_VERSION = "24"
 
 [[headers]]
   # Setzen sicherer Header für alle Pfade
