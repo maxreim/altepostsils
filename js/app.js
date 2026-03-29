@@ -20,44 +20,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!scrollTicking) {
             window.requestAnimationFrame(() => {
                 updateScrollProgress();
-                if (window.scrollY > 50) {
+                const scrollY = window.scrollY;
+
+                if (scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
 
                 if (backToTop) {
-                    if (window.scrollY > 500) {
+                    if (scrollY > 500) {
                         backToTop.classList.add('visible');
                     } else {
                         backToTop.classList.remove('visible');
                     }
                 }
-
-                // Active Section Tracking
-                const sections = document.querySelectorAll('section, header');
-                let current = "";
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - 150) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // Scroll Reveal
-                reveals.forEach(reveal => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < window.innerHeight - 100) {
-                        reveal.classList.add('active');
-                    }
-                });
 
                 scrollTicking = false;
             });
@@ -83,17 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll Reveal Animation
+    // Performance Optimized Observers
+    const sections = document.querySelectorAll('section, header');
+    const navLinksItems = document.querySelectorAll('.nav-links a');
     const reveals = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-        reveals.forEach(reveal => {
-            const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < window.innerHeight - 100) {
-                reveal.classList.add('active');
+
+    // 1. Reveal on Scroll Observer
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target); // Reveal only once
             }
         });
-    };
-    revealOnScroll();
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(r => revealObserver.observe(r));
+
+    // 2. Active Section Highlight Observer
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                if (id) {
+                    navLinksItems.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            }
+        });
+    }, { threshold: 0.5 }); // High threshold to ensure it's the main section
+    sections.forEach(s => sectionObserver.observe(s));
 
     // Setup Modals
     const roomCards = document.querySelectorAll('.room-card');

@@ -277,7 +277,7 @@
 
         .hero-content {
             max-width: 800px;
-            animation: fadeUp 1s ease-out forwards;
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
         h1 {
@@ -288,15 +288,20 @@
             text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes fadeUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                animation: none; /* Immediate visibility on mobile for LCP */
+                opacity: 1;
             }
         }
 

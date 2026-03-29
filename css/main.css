@@ -144,11 +144,13 @@ a {
     font-weight: 700;
     color: var(--clr-white);
     letter-spacing: 0.05em;
-    transition: var(--trans-smooth);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: left center;
+    will-change: transform;
 }
 
 .navbar.scrolled .logo {
-    font-size: 1.5rem;
+    transform: scale(0.83);
     color: var(--clr-wood-dark);
 }
 
@@ -936,8 +938,9 @@ footer a {
 
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: var(--trans-slow);
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
 }
 
 .reveal.active {
