@@ -12,7 +12,6 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Link = "</images/sils.webp>; rel=preload; as=image; fetchpriority=high, <https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuMw_LIUC7C9_u9nVTxp3e86XG8Yv_p_7K.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, <https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
 
 [[headers]]
   # Keine Cache-Zwischenspeicherung für HTML (immer revalidieren)
