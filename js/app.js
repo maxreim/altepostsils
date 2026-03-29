@@ -15,27 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const backToTop = document.querySelector('.back-to-top');
 
+    // Create a sentinel element at the top of the body
+    const sentinel = document.createElement('div');
+    sentinel.id = 'scroll-sentinel';
+    sentinel.style.cssText = 'position:absolute; top:0; height:50px; width:1px; pointer-events:none; visibility:hidden;';
+    document.body.prepend(sentinel);
+
+    const navObserver = new IntersectionObserver((entries) => {
+        const isScrolling = !entries[0].isIntersecting;
+        navbar.classList.toggle('scrolled', isScrolling);
+    }, { threshold: 0 });
+    navObserver.observe(sentinel);
+
+    // Optimized Scroll Progress (Only update when scrolling)
     let scrollTicking = false;
     window.addEventListener('scroll', () => {
         if (!scrollTicking) {
             window.requestAnimationFrame(() => {
                 updateScrollProgress();
-                const scrollY = window.scrollY;
-
-                if (scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-
+                // Back-to-top check still needs scroll position
                 if (backToTop) {
-                    if (scrollY > 500) {
+                    if (window.scrollY > 500) {
                         backToTop.classList.add('visible');
                     } else {
                         backToTop.classList.remove('visible');
                     }
                 }
-
                 scrollTicking = false;
             });
             scrollTicking = true;
