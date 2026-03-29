@@ -3,36 +3,71 @@
   [build.environment]
     NODE_VERSION = "24"
 
+# ── Sicherheits-Header für alle Pfade ──────────────────────────────────────
 [[headers]]
-  # Setzen sicherer Header für alle Pfade
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Resource hints für schnelleres Laden
+    Link = "</css/main.css>; rel=preload; as=style, </js/translations.js>; rel=preload; as=script, </js/i18n.js>; rel=preload; as=script"
 
+# ── HTML: immer revalidieren ────────────────────────────────────────────────
 [[headers]]
-  # Keine Cache-Zwischenspeicherung für HTML (immer revalidieren)
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# ── CSS: 1 Jahr cachen (immutable = kein Re-Check) ─────────────────────────
 [[headers]]
-  # Langes Caching für CSS
-  for = "/*.css"
+  for = "/css/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ── JavaScript: 1 Jahr cachen ──────────────────────────────────────────────
 [[headers]]
-  # Langes Caching für JS
-  for = "/*.js"
+  for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ── Bilder: 1 Jahr cachen ──────────────────────────────────────────────────
 [[headers]]
-  # Langes Caching für Bilder
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# ── WebP-Bilder: explizit mit korrektem Content-Type ───────────────────────
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/webp"
+
+# ── SVG-Dateien ────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── Web App Manifest ───────────────────────────────────────────────────────
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/manifest+json"
+
+# ── Schriften (falls lokal gehostet werden) ────────────────────────────────
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
