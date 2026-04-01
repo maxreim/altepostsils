@@ -267,16 +267,29 @@ document.addEventListener('DOMContentLoaded', () => {
             mathA = Math.floor(Math.random() * 9) + 1;
             mathB = Math.floor(Math.random() * 9) + 1;
             mathAnswer = mathA + mathB;
+
             const lang = window.i18n ? window.i18n.getLang() : 'de';
-            const t = window.translations?.[lang] || window.translations['de'];
+            // Safer access to window.translations
+            const translations = window.translations || {};
+            const t = translations[lang] || translations['de'] || {};
+
             const label = document.getElementById('math-label');
             if (label) {
-                label.textContent = (t.verify_label || 'Bitte lösen: {a} + {b} = ?')
-                    .replace('{a}', mathA).replace('{b}', mathB);
+                // Hardcoded fallback labels in case translations.js is not updated on the server
+                const fallbacks = {
+                    de: "Bitte lösen: {a} + {b} = ?",
+                    en: "Please solve: {a} + {b} = ?",
+                    fr: "Veuillez résoudre : {a} + {b} = ?",
+                    it: "Per favore risolvi: {a} + {b} = ?",
+                    rm: "Per plaschair schliai: {a} + {b} = ?"
+                };
+                const labelText = t.verify_label || fallbacks[lang] || fallbacks.de;
+                label.textContent = labelText.replace('{a}', mathA).replace('{b}', mathB);
             }
             const input = document.getElementById('math-answer');
             if (input) input.value = '';
         };
+
         generateMathChallenge();
 
         // Regenerate when language changes
