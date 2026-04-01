@@ -603,7 +603,7 @@
                         <p>079 891 00 30</p>
                     </div>
                     <div class="contact-form">
-                        <form action="https://formsubmit.co/ajax/info@altepostsils.ch" method="POST">
+                        <form id="kontakt-form" action="https://formsubmit.co/ajax/info@altepostsils.ch" method="POST">
                             <!-- FormSubmit Configuration -->
                             <input type="hidden" name="_cc" value="flurin.m.meier@gmail.com,flurin.max.meier@gmx.ch">
                             <input type="hidden" name="_subject"
@@ -611,8 +611,11 @@
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://altepostsils.ch">
-                            <!-- Honeypot zur Spam-Vermeidung -->
-                            <input type="text" name="_honey" style="display:none">
+                            <!-- Honeypot – für Bots sichtbar, für Menschen versteckt -->
+                            <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;">
+                                <label for="hp_website">Bitte leer lassen</label>
+                                <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
 
                             <div class="form-group">
                                 <input type="text" name="Name" data-i18n="ph_name" placeholder="Vorname, Name"
@@ -649,7 +652,14 @@
                                 <textarea name="Nachricht" data-i18n="ph_nachricht" placeholder="Ihre Nachricht"
                                     class="form-control" rows="5" aria-label="Ihre Nachricht" required></textarea>
                             </div>
-                            <button type="submit" class="btn" data-i18n="btn_senden">Nachricht Senden</button>
+                            <!-- Math-Challenge gegen Bots -->
+                            <div class="form-group math-challenge" id="math-challenge-group">
+                                <label for="math-answer" id="math-label" class="math-label">Bitte lösen: ? + ? = ?</label>
+                                <input type="number" id="math-answer" name="math_answer" class="form-control" autocomplete="off" placeholder="Ihre Antwort" required>
+                            </div>
+
+
+                            <button type="submit" class="btn" id="submit-btn" data-i18n="btn_senden">Nachricht Senden</button>
                         </form>
                     </div>
                 </div>

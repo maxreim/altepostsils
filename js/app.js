@@ -261,37 +261,88 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission (Decoupled from Modals)
     const form = document.querySelector('#kontakt form');
     if (form) {
+        // --- Math Challenge Setup ---
+        let mathA, mathB, mathAnswer;
+        const generateMathChallenge = () => {
+            mathA = Math.floor(Math.random() * 9) + 1;
+            mathB = Math.floor(Math.random() * 9) + 1;
+            mathAnswer = mathA + mathB;
+            const lang = window.i18n ? window.i18n.getLang() : 'de';
+            const t = window.translations?.[lang] || window.translations['de'];
+            const label = document.getElementById('math-label');
+            if (label) {
+                label.textContent = (t.verify_label || 'Bitte lösen: {a} + {b} = ?')
+                    .replace('{a}', mathA).replace('{b}', mathB);
+            }
+            const input = document.getElementById('math-answer');
+            if (input) input.value = '';
+        };
+        generateMathChallenge();
+
+        // Regenerate when language changes
+        document.addEventListener('langChanged', generateMathChallenge);
+
+        // --- Time-based protection: record when form section entered ---
+        const formLoadTime = Date.now();
+
         const dateIn = form.querySelector('input[name="Anreise"]');
         const dateOut = form.querySelector('input[name="Abreise"]');
 
         form.onsubmit = (e) => {
+            e.preventDefault();
             const lang = window.i18n ? window.i18n.getLang() : 'de';
             const t = window.translations?.[lang] || window.translations['de'];
-            // Date Validation
+
+            // 1. Honeypot check
+            const honeypot = form.querySelector('input[name="website"]');
+            if (honeypot && honeypot.value.trim() !== '') {
+                // Silent fail for bots – show fake success
+                form.innerHTML = `<div class="form-feedback success">${t.form_success || 'Danke!'}</div>`;
+                return;
+            }
+
+            // 2. Time-based check (bots submit within milliseconds)
+            const elapsed = Date.now() - formLoadTime;
+            if (elapsed < 3000) {
+                showFormError(form, t.spam_error || 'Spam-Verdacht.');
+                generateMathChallenge();
+                return;
+            }
+
+            // 3. Math challenge validation
+            const mathInput = document.getElementById('math-answer');
+            if (!mathInput || parseInt(mathInput.value, 10) !== mathAnswer) {
+                showFormError(form, t.verify_error || 'Falsches Ergebnis.');
+                generateMathChallenge();
+                return;
+            }
+
+            // 4. Date validation
             if (dateIn && dateOut && dateIn.value && dateOut.value) {
                 if (new Date(dateOut.value) <= new Date(dateIn.value)) {
-                    e.preventDefault();
-                    alert(t.date_error);
+                    showFormError(form, t.date_error);
                     return;
                 }
             }
 
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalBtnText = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<span class="loader"></span>';
+            // All checks passed – submit
+            const btn = form.querySelector('#submit-btn');
+            const originalBtnText = btn ? btn.innerHTML : '';
+            if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loader"></span>'; }
 
+            // Build FormData but exclude math_answer (internal check only)
             const formData = new FormData(form);
+            formData.delete('math_answer');
+            formData.delete('website'); // don't send honeypot field
 
             fetch(form.action, {
-                method: "POST",
+                method: 'POST',
                 headers: { 'Accept': 'application/json' },
                 body: formData
             })
                 .then(r => {
                     if (r.ok) {
-                        const successMsg = window.translations?.[window.i18n?.getLang()]?.form_success || "Danke!";
+                        const successMsg = t.form_success || 'Danke!';
                         form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
                     } else {
                         return r.json().then(errData => {
@@ -302,17 +353,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch((err) => {
                     console.error('Form Submission Error:', err);
-                    const errorMsg = window.translations?.[window.i18n?.getLang()]?.form_error || "Error";
-                    const existingError = form.querySelector('.form-feedback.error');
-                    if (existingError) existingError.remove();
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'form-feedback error';
-                    errorDiv.innerHTML = errorMsg;
-                    form.prepend(errorDiv);
-                    btn.disabled = false;
-                    btn.innerHTML = originalBtnText;
+                    showFormError(form, t.form_error || 'Error');
+                    if (btn) { btn.disabled = false; btn.innerHTML = originalBtnText; }
+                    generateMathChallenge();
                 });
         };
+    }
+
+    // Helper: show form error
+    function showFormError(form, msg) {
+        const existingError = form.querySelector('.form-feedback.error');
+        if (existingError) existingError.remove();
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'form-feedback error';
+        errorDiv.textContent = msg;
+        form.prepend(errorDiv);
     }
 });
 
