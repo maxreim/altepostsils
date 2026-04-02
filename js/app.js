@@ -258,10 +258,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(`[data-season="${currentSeason}"]`).forEach(el => el.classList.add('current-season'));
 
 
-    // Form Submission (Decoupled from Modals)
+    // Form Submission (Enhanced Anti-Spam)
     const form = document.querySelector('#kontakt form');
     if (form) {
-        // --- Math Challenge Setup ---
+        // --- 0. Initial JS Check ---
+        const jsCheckField = form.querySelector('input[name="_js_check"]');
+        if (jsCheckField) jsCheckField.value = 'verified_' + Math.random().toString(36).substring(7);
+
+        // --- 1. Dynamic Form Activation ---
+        // Bots often scrape the HTML for the 'action' attribute. 
+        // We set it only after a human interacts with the form.
+        const activateForm = () => {
+            if (form.dataset.activated) return;
+            form.action = 'https://formsubmit.co/ajax/info@altepostsils.ch';
+            form.method = 'POST';
+            const mathInput = document.getElementById('math-answer');
+            if (mathInput) mathInput.setAttribute('name', 'math_answer');
+            form.dataset.activated = 'true';
+        };
+
+        // Activate on any real user interaction
+        ['focusin', 'click', 'touchstart'].forEach(evt => {
+            form.addEventListener(evt, activateForm, { once: true });
+        });
+
+        // --- 2. Math Challenge Setup ---
         let mathA, mathB, mathAnswer;
         const generateMathChallenge = () => {
             mathA = Math.floor(Math.random() * 9) + 1;
@@ -269,13 +290,11 @@ document.addEventListener('DOMContentLoaded', () => {
             mathAnswer = mathA + mathB;
 
             const lang = window.i18n ? window.i18n.getLang() : 'de';
-            // Safer access to window.translations
             const translations = window.translations || {};
             const t = translations[lang] || translations['de'] || {};
 
             const label = document.getElementById('math-label');
             if (label) {
-                // Hardcoded fallback labels in case translations.js is not updated on the server
                 const fallbacks = {
                     de: "Bitte lösen: {a} + {b} = ?",
                     en: "Please solve: {a} + {b} = ?",
@@ -291,30 +310,31 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         generateMathChallenge();
-
-        // Regenerate when language changes
         document.addEventListener('langChanged', generateMathChallenge);
 
-        // --- Time-based protection: record when form section entered ---
+        // --- 3. Submission Handler ---
         const formLoadTime = Date.now();
-
-        const dateIn = form.querySelector('input[name="Anreise"]');
-        const dateOut = form.querySelector('input[name="Abreise"]');
 
         form.onsubmit = (e) => {
             e.preventDefault();
             const lang = window.i18n ? window.i18n.getLang() : 'de';
             const t = window.translations?.[lang] || window.translations['de'];
 
-            // 1. Honeypot check
-            const honeypot = form.querySelector('input[name="website"]');
-            if (honeypot && honeypot.value.trim() !== '') {
-                // Silent fail for bots – show fake success
+            // A. Enhanced Honeypot check (multiple bait fields)
+            const hpFields = ['website', 'url', 'company', '_honeypot'];
+            const isSpam = hpFields.some(name => {
+                const field = form.querySelector(`[name="${name}"]`);
+                return field && field.value.trim() !== '';
+            });
+
+            if (isSpam) {
+                // Silent fail for bots
+                console.warn('Spam detected via honeypot.');
                 form.innerHTML = `<div class="form-feedback success">${t.form_success || 'Danke!'}</div>`;
                 return;
             }
 
-            // 2. Time-based check (bots submit within milliseconds)
+            // B. Time-based check (bots submit too fast)
             const elapsed = Date.now() - formLoadTime;
             if (elapsed < 3000) {
                 showFormError(form, t.spam_error || 'Spam-Verdacht.');
@@ -322,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // 3. Math challenge validation
+            // C. Math challenge validation
             const mathInput = document.getElementById('math-answer');
             if (!mathInput || parseInt(mathInput.value, 10) !== mathAnswer) {
                 showFormError(form, t.verify_error || 'Falsches Ergebnis.');
@@ -330,7 +350,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // 4. Date validation
+            // D. JS Verification Check
+            if (!jsCheckField || !jsCheckField.value.startsWith('verified_')) {
+                showFormError(form, 'Validation Error (JS).');
+                return;
+            }
+
+            // E. Date validation
+            const dateIn = form.querySelector('input[name="Anreise"]');
+            const dateOut = form.querySelector('input[name="Abreise"]');
             if (dateIn && dateOut && dateIn.value && dateOut.value) {
                 if (new Date(dateOut.value) <= new Date(dateIn.value)) {
                     showFormError(form, t.date_error);
@@ -338,30 +366,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // All checks passed – submit
+            // F. Actual Submission
             const btn = form.querySelector('#submit-btn');
             const originalBtnText = btn ? btn.innerHTML : '';
             if (btn) { btn.disabled = true; btn.innerHTML = '<span class="loader"></span>'; }
 
-            // Build FormData but exclude math_answer (internal check only)
-            const formData = new FormData(form);
-            formData.delete('math_answer');
-            formData.delete('website'); // don't send honeypot field
+            // Build clean FormData (exclude internal/spam fields)
+            const rawData = new FormData(form);
+            const finalData = new FormData();
 
-            fetch(form.action, {
+            // Define fields to exclude from the email
+            const exclude = [...hpFields, 'math_answer', '_js_check'];
+
+            for (let [key, value] of rawData.entries()) {
+                if (!exclude.includes(key)) {
+                    finalData.append(key, value);
+                }
+            }
+
+            fetch(form.action || 'https://formsubmit.co/ajax/info@altepostsils.ch', {
                 method: 'POST',
                 headers: { 'Accept': 'application/json' },
-                body: formData
+                body: finalData
             })
                 .then(r => {
                     if (r.ok) {
-                        const successMsg = t.form_success || 'Danke!';
-                        form.innerHTML = `<div class="form-feedback success">${successMsg}</div>`;
+                        form.innerHTML = `<div class="form-feedback success">${t.form_success || 'Danke!'}</div>`;
                     } else {
-                        return r.json().then(errData => {
-                            console.error('FormSubmit Error Response:', errData);
-                            throw new Error(errData.message || 'Submission failed');
-                        }).catch(() => { throw new Error('Submission failed'); });
+                        throw new Error('Submission failed');
                     }
                 })
                 .catch((err) => {
