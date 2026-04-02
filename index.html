@@ -115,6 +115,16 @@
         "amenityFeature": [
             {
                 "@type": "LocationFeatureSpecification",
+                "name": "Ski-in/Ski-out",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Family friendly",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
                 "name": "Languages Spoken",
                 "value": "German, English, Italian, Romansh"
             },
@@ -390,6 +400,7 @@
         <div class="hero-content">
             <h1 data-i18n="hero_title">Ferienhaus Posta Veglia</h1>
             <p data-i18n="hero_subtitle">in Sils-Baselgia</p>
+            <a href="#belegungsplan" class="btn hero-cta" data-i18n="hero_cta">Verfügbarkeit prüfen</a>
         </div>
     </header>
 
@@ -414,7 +425,7 @@
                     <div class="about-img">
                         <img src="images/haus.webp" srcset="images/haus-800w.webp 800w, images/haus.webp 1626w"
                             sizes="(max-width: 992px) 100vw, 50vw"
-                            alt="Historisches Engadinerhaus Posta Veglia in Sils-Baselgia" width="1626" height="1084"
+                            alt="Historisches Engadinerhaus Posta Veglia in Sils-Baselgia" data-i18n-alt="alt_haus" width="1626" height="1084"
                             loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -429,6 +440,7 @@
                     <div class="room-card" data-room="wohnzimmer">
                         <img src="images/simbole/whonzimmer.webp"
                             alt="Historische Arvenstube im Ferienhaus Posta Veglia mit Engadiner Kachelofen"
+                            data-i18n-alt="alt_stube"
                             class="room-card-img" loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='images/wohnzimmer/stube-mit-buffet.webp'">
                         <div class="room-card-content">
@@ -439,6 +451,7 @@
                     <div class="room-card" data-room="kueche">
                         <img src="images/simbole/kueche.webp"
                             alt="Traditionelle Engadiner Küche in der Posta Veglia mit modernem Komfort"
+                            data-i18n-alt="alt_kueche"
                             class="room-card-img" loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='images/kueche/kueche.webp'">
                         <div class="room-card-content">
@@ -448,7 +461,9 @@
 
                     <div class="room-card" data-room="schlafzimmer">
                         <img src="images/simbole/einzelzimmer.webp"
-                            alt="Authentisches Schlafzimmer im historischen Engadinerhaus" class="room-card-img"
+                            alt="Authentisches Schlafzimmer im historischen Engadinerhaus" 
+                            data-i18n-alt="alt_schlafzimmer"
+                            class="room-card-img"
                             loading="lazy" decoding="async" width="800" height="533"
                             onerror="this.src='images/schlafzimmer/balkenzimmer-bett.webp'">
                         <div class="room-card-content">
@@ -684,7 +699,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a>
+            <p>&copy; 2026 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a> | <a href="#datenschutz" data-room="datenschutz" data-i18n="nav_datenschutz">Datenschutz</a>
             </p>
         </div>
     </footer>
@@ -797,8 +812,20 @@
             </p>
         </div>
         <div class="modal-gallery">
-            <img src="images/zimmerplan.webp" alt="Detaillierter Zimmerplan und Grundriss der Posta Veglia"
-                loading="lazy" decoding="async" width="1200" height="800">
+            <img src="images/zimmerplan.webp" alt="Detaillierter Zimmerplan und Grundriss der Posta Veglia" data-i18n-alt="alt_zimmerplan">
+        </div>
+    </template>
+
+    <template id="content-datenschutz">
+        <h2 data-i18n="nav_datenschutz">Datenschutzerklärung</h2>
+        <div style="color:var(--clr-slate); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;" data-i18n="datenschutz_text">
+            <h3>1. Datenschutz auf einen Blick</h3>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+            <h3>2. Datenerfassung auf dieser Website</h3>
+            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+            <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+            <h3>3. Google Analytics</h3>
+            <p>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.</p>
         </div>
     </template>
 

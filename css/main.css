@@ -295,6 +295,35 @@ a {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.hero-cta {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    background: var(--clr-gold);
+    color: var(--clr-white);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    transition: var(--trans-smooth);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+}
+
+.hero-cta:hover {
+    background: var(--clr-white);
+    color: var(--clr-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero-cta {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
 section {
     padding: var(--section-pad);
 }

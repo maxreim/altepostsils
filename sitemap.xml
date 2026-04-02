@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://altepostsils.ch/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://altepostsils.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://altepostsils.ch/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://altepostsils.ch/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://altepostsils.ch/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="rm" href="https://altepostsils.ch/?lang=rm"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/"/>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://altepostsils.ch/impressum.html</loc>
+    <loc>https://altepostsils.ch/impressum</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
