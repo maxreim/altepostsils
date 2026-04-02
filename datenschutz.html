@@ -16,13 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico">
     <link rel="apple-touch-icon" href="/images/favicon.png">
-    <link rel="alternate" hreflang="de" href="https://altepostsils.ch/impressum.html">
-    <link rel="alternate" hreflang="en" href="https://altepostsils.ch/impressum.html">
-    <link rel="alternate" hreflang="fr" href="https://altepostsils.ch/impressum.html">
-    <link rel="alternate" hreflang="it" href="https://altepostsils.ch/impressum.html">
-    <link rel="alternate" hreflang="rm" href="https://altepostsils.ch/impressum.html">
-    <link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/impressum.html">
-    <title data-i18n="imp_page_title">Impressum | Ferienhaus Posta Veglia Sils</title>
+    <link rel="alternate" hreflang="de" href="https://altepostsils.ch/datenschutz.html">
+    <link rel="alternate" hreflang="en" href="https://altepostsils.ch/datenschutz.html">
+    <link rel="alternate" hreflang="fr" href="https://altepostsils.ch/datenschutz.html">
+    <link rel="alternate" hreflang="it" href="https://altepostsils.ch/datenschutz.html">
+    <link rel="alternate" hreflang="rm" href="https://altepostsils.ch/datenschutz.html">
+    <link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/datenschutz.html">
+    <title data-i18n="dat_page_title">Datenschutz | Ferienhaus Posta Veglia Sils</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -63,17 +63,7 @@
             text-transform: uppercase;
         }
 
-        .legal-contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
         @media (max-width: 768px) {
-            .legal-contact-grid {
-                grid-template-columns: 1fr;
-            }
             .impressum-content {
                 padding: 2rem;
             }
@@ -85,7 +75,27 @@
             color: var(--clr-stone-dark);
         }
         
+        #datenschutz {
+            margin-top: 2rem;
+        }
 
+        #datenschutz h3 {
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            color: var(--clr-stone-dark);
+            font-weight: 600;
+            border-left: 3px solid var(--clr-gold);
+            padding-left: 1rem;
+            font-family: var(--font-primary);
+        }
+
+        #datenschutz p {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            max-width: 75ch;
+        }
 
         .legal-footer-note {
             margin-top: 4rem;
@@ -117,35 +127,13 @@
 
     <main class="impressum-section">
         <div class="impressum-content reveal">
-            <h1 data-i18n="nav_impressum">Impressum</h1>
-            <div class="legal-contact-grid">
-                <div>
-                    <h2 data-i18n="nav_kontakt" style="margin-top: 0;">Kontakt</h2>
-                    <p><strong>Posta Veglia</strong><br>
-                        Via da Baselgia 10<br>
-                        7515 Sils im Engadin<br>
-                        Schweiz</p>
-                    <p>E-Mail: <a href="mailto:info@altepostsils.ch"
-                            style="color:var(--clr-gold); text-decoration: underline;">info@altepostsils.ch</a><br>
-                        Telefon: 079 891 00 30</p>
-                </div>
-                <div>
-                    <h2 data-i18n="imp_represented_by" style="margin-top: 0;">Vertreten durch</h2>
-                    <p>Seraina Steinlin</p>
-                    
-                    <h2 data-i18n="imp_copyright">Copyright</h2>
-                    <p data-i18n="imp_copyright_text" style="font-size: 0.9rem;">Das Copyright für sämtliche Inhalte dieser Website liegt bei Ferienhaus Posta Veglia.</p>
+            <h1 data-i18n="nav_datenschutz">Datenschutz</h1>
+
+            <div id="datenschutz">
+                <div data-i18n="datenschutz_text">
+                    <!-- Text comes from translations.js -->
                 </div>
             </div>
-
-            <h2 data-i18n="imp_disclaimer_title">Haftungsausschluss</h2>
-            <p data-i18n="imp_disclaimer_text">Die Autorin übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit,
-                Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen die Autorin
-                wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw.
-                Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische
-                Störungen entstanden sind, werden ausgeschlossen.</p>
-
-
 
             <div class="legal-footer-note">
                 <p>&copy; 2026 Ferienhaus Posta Veglia Sils-Baselgia. <span data-i18n="imp_last_update">Zuletzt aktualisiert: März 2026</span></p>
