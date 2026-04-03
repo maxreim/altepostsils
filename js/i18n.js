@@ -23,18 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const translation = translations[lang][key];
 
             if (translation) {
-                // If it looks like HTML (contains <), use innerHTML
-                if (translation.indexOf('<') !== -1) {
-                    el.innerHTML = translation;
-                } else {
-                    el.textContent = translation;
-                }
-
-                // Special handling for some tags
+                // Special handling for META and TITLE tags
                 if (el.tagName === 'META') {
-                    el.setAttribute('content', translation);
+                    if (el.getAttribute('content') !== translation) {
+                        el.setAttribute('content', translation);
+                    }
                 } else if (el.tagName === 'TITLE') {
-                    document.title = translation;
+                    if (document.title !== translation) {
+                        document.title = translation;
+                    }
+                } else {
+                    // Standard elements: If it looks like HTML, use innerHTML
+                    if (translation.indexOf('<') !== -1) {
+                        if (el.innerHTML !== translation) {
+                            el.innerHTML = translation;
+                        }
+                    } else {
+                        if (el.textContent !== translation) {
+                            el.textContent = translation;
+                        }
+                    }
                 }
             }
         });

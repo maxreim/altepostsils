@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuMw_LIUC7C9_u9nVTxp3e86XG8Yv_p_7K.woff2"
+    <link rel="preload" href="https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7Iw.woff2"
         as="font" type="font/woff2" crossorigin>
     <link rel="preload"
-        href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2"
+        href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
         as="font" type="font/woff2" crossorigin>
 
     <!-- Google Analytics – loaded asynchronously -->
@@ -188,10 +188,29 @@
             --clr-slate: #545b62;
             --clr-white: #ffffff;
             --clr-black: #111111;
-            --font-heading: 'Lora', serif;
-            --font-body: 'Inter', sans-serif;
+            --font-heading: 'Lora', 'Lora Fallback', serif;
+            --font-body: 'Inter', 'Inter Fallback', sans-serif;
             --trans-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             --trans-slow: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Font Metric Overrides to prevent CLS */
+        @font-face {
+            font-family: 'Lora Fallback';
+            src: local('Times New Roman'), local('serif');
+            ascent-override: 95%;
+            descent-override: 25%;
+            line-gap-override: 0%;
+            size-adjust: 98%;
+        }
+
+        @font-face {
+            font-family: 'Inter Fallback';
+            src: local('Arial'), local('sans-serif');
+            ascent-override: 90%;
+            descent-override: 22.5%;
+            line-gap-override: 0%;
+            size-adjust: 107%;
         }
 
         * {
@@ -290,7 +309,7 @@
 
         .hero-content {
             max-width: 800px;
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeUp 1s ease-out forwards;
         }
 
         h1 {
@@ -298,7 +317,19 @@
             font-size: clamp(3rem, 6vw, 5rem);
             color: var(--clr-white);
             margin-bottom: 1rem;
+            line-height: 1.2;
             text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeIn {

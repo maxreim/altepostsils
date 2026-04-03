@@ -8,8 +8,8 @@
     --clr-slate: #545b62;
     --clr-white: #ffffff;
     --clr-black: #111111;
-    --font-heading: 'Lora', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Lora', 'Lora Fallback', serif;
+    --font-body: 'Inter', 'Inter Fallback', sans-serif;
     --section-pad: 6rem 5%;
     --radius-sm: 8px;
     --radius-md: 16px;
@@ -20,6 +20,25 @@
     --glass-border: rgba(255, 255, 255, 0.3);
     --trans-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     --trans-slow: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Font Metric Overrides to prevent CLS */
+@font-face {
+    font-family: 'Lora Fallback';
+    src: local('Times New Roman'), local('serif');
+    ascent-override: 95%;
+    descent-override: 25%;
+    line-gap-override: 0%;
+    size-adjust: 98%;
+}
+
+@font-face {
+    font-family: 'Inter Fallback';
+    src: local('Arial'), local('sans-serif');
+    ascent-override: 90%;
+    descent-override: 22.5%;
+    line-gap-override: 0%;
+    size-adjust: 107%;
 }
 
 * {
