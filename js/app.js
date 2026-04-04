@@ -118,14 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const navDiv = document.createElement('div');
             navDiv.className = 'modal-nav';
 
+            /** @type {string} */
+            const lang = window.i18n ? window.i18n.getLang() : 'de';
+            /** @type {object} */
+            const currentTranslations = window.translations?.[lang] || {};
+
             const prevBtn = document.createElement('button');
             prevBtn.className = 'modal-nav-btn';
-            prevBtn.innerHTML = `← ${window.translations?.[window.i18n?.getLang()]?.['room_' + roomKeys[prevIndex]] || 'Back'}`;
+            prevBtn.innerHTML = `← ${currentTranslations['room_' + roomKeys[prevIndex]] || 'Back'}`;
             prevBtn.onclick = () => openRoomModal(roomKeys[prevIndex]);
 
             const nextBtn = document.createElement('button');
             nextBtn.className = 'modal-nav-btn';
-            nextBtn.innerHTML = `${window.translations?.[window.i18n?.getLang()]?.['room_' + roomKeys[nextIndex]] || 'Next'} →`;
+            nextBtn.innerHTML = `${currentTranslations['room_' + roomKeys[nextIndex]] || 'Next'} →`;
             nextBtn.onclick = () => openRoomModal(roomKeys[nextIndex]);
 
             navDiv.appendChild(prevBtn);
@@ -213,11 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const iframeObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // For very heavy iframes, we could also wait for a mousemove/touchstart 
+                // but IntersectionObserver with a small margin is usually balanced enough.
+                // We'll use 100px instead of 200px to be slightly more conservative.
                 loadIframe(entry.target);
                 observer.unobserve(entry.target);
             }
         });
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '100px' });
     lazyIframes.forEach(c => iframeObserver.observe(c));
 
 
@@ -283,33 +291,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // --- 2. Math Challenge Setup ---
-        let mathA, mathB, mathAnswer;
+        // Use a function that gets translations dynamically in case they aren't loaded yet
+        const getTranslation = (key, lang) => {
+            return window.translations?.[lang]?.[key] || window.translations?.['de']?.[key] || key;
+        };
+
         const generateMathChallenge = () => {
             mathA = Math.floor(Math.random() * 9) + 1;
             mathB = Math.floor(Math.random() * 9) + 1;
             mathAnswer = mathA + mathB;
 
             const lang = window.i18n ? window.i18n.getLang() : 'de';
-            const translations = window.translations || {};
-            const t = translations[lang] || translations['de'] || {};
-
             const label = document.getElementById('math-label');
             if (label) {
-                const fallbacks = {
-                    de: "Bitte lösen: {a} + {b} = ?",
-                    en: "Please solve: {a} + {b} = ?",
-                    fr: "Veuillez résoudre : {a} + {b} = ?",
-                    it: "Per favore risolvi: {a} + {b} = ?",
-                    rm: "Per plaschair schliai: {a} + {b} = ?"
-                };
-                const labelText = t.verify_label || fallbacks[lang] || fallbacks.de;
+                const labelText = getTranslation('verify_label', lang);
                 label.textContent = labelText.replace('{a}', mathA).replace('{b}', mathB);
             }
             const input = document.getElementById('math-answer');
             if (input) input.value = '';
         };
 
-        generateMathChallenge();
+        // If translations are still loading, wait for them
+        if (Object.keys(window.translations || {}).length === 0) {
+            document.addEventListener('langChanged', generateMathChallenge, { once: true });
+        } else {
+            generateMathChallenge();
+        }
+        
         document.addEventListener('langChanged', generateMathChallenge);
 
         // --- 3. Submission Handler ---
@@ -318,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         form.onsubmit = (e) => {
             e.preventDefault();
             const lang = window.i18n ? window.i18n.getLang() : 'de';
-            const t = window.translations?.[lang] || window.translations['de'];
+            const t = (window.translations?.[lang] || window.translations?.['de']) || {};
 
             // A. Enhanced Honeypot check (multiple bait fields)
             const hpFields = ['website', 'url', 'company', '_honeypot'];

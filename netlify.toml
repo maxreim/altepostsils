@@ -12,8 +12,8 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    # Resource hints für schnelleres Laden
-    Link = "</css/main.css>; rel=preload; as=style, </js/translations.js>; rel=preload; as=script, </js/i18n.js>; rel=preload; as=script"
+    # Resource hints für schnelleres Laden (translations.js entfernt)
+    Link = "</css/main.css>; rel=preload; as=style, </js/i18n.js>; rel=preload; as=script"
 
 # ── HTML: immer revalidieren ────────────────────────────────────────────────
 [[headers]]
@@ -52,6 +52,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ── Translations (JSON): 1 Jahr cachen ──────────────────────────────────────
+[[headers]]
+  for = "/locales/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/json"
+
 # ── Web App Manifest ───────────────────────────────────────────────────────
 [[headers]]
   for = "/manifest.json"
@@ -59,7 +66,13 @@
     Cache-Control = "public, max-age=86400"
     Content-Type = "application/manifest+json"
 
-# ── Schriften (falls lokal gehostet werden) ────────────────────────────────
+# ── Schriften (Lokal gehostet) ──────────────────────────────────────────────
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
 [[headers]]
   for = "/*.woff2"
   [headers.values]
@@ -71,3 +84,9 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
+
+# ── Netlify Edge Functions Configuration ──────────────────────────────────
+[[edge_functions]]
+  path = "/*"
+  function = "language"
+

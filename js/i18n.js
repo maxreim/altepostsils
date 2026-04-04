@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLang = 'de';
+    let translations = {};
 
     const getLangFromURL = () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -10,10 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const storageLang = localStorage.getItem('lang');
     let currentLang = urlLang || storageLang || defaultLang;
 
-    // Save language if provided in URL
-    if (urlLang && translations[urlLang]) {
-        localStorage.setItem('lang', urlLang);
-    }
+    const loadTranslations = async (lang) => {
+        try {
+            const response = await fetch(`./locales/${lang}.json`);
+            if (!response.ok) throw new Error(`Could not load ${lang} translations`);
+            translations[lang] = await response.ok ? await response.json() : null;
+            return true;
+        } catch (error) {
+            console.error('Error loading translations:', error);
+            return false;
+        }
+    };
 
     const applyTranslations = (lang, root = document) => {
         if (!translations[lang]) return;
@@ -70,9 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.i18n = {
-        apply: applyTranslations,
-        getLang: () => currentLang
+    const switchLanguage = async (lang) => {
+        if (!translations[lang]) {
+            const success = await loadTranslations(lang);
+            if (!success) return;
+        }
+
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+
+        // Update URL without reloading
+        const newUrl = new URL(window.location.href);
+        if (lang === defaultLang) {
+            newUrl.searchParams.delete('lang');
+        } else {
+            newUrl.searchParams.set('lang', lang);
+        }
+        window.history.pushState({ lang }, "", newUrl);
+
+        applyTranslations(lang);
+        document.dispatchEvent(new CustomEvent('langChanged', { detail: { lang } }));
     };
 
     const setupLangSwitcher = () => {
@@ -80,29 +105,27 @@ document.addEventListener('DOMContentLoaded', () => {
         switchers.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const lang = e.currentTarget.getAttribute('data-lang');
-                if (lang && translations[lang]) {
-                    currentLang = lang;
-                    localStorage.setItem('lang', lang);
-
-                    // Update URL without reloading
-                    const newUrl = new URL(window.location.href);
-                    if (lang === defaultLang) {
-                        newUrl.searchParams.delete('lang');
-                    } else {
-                        newUrl.searchParams.set('lang', lang);
-                    }
-                    window.history.pushState({ lang }, "", newUrl);
-
-                    applyTranslations(lang);
-                    document.dispatchEvent(new CustomEvent('langChanged', { detail: { lang } }));
+                if (lang) {
+                    switchLanguage(lang);
                 }
             });
         });
     };
 
-    if (typeof translations !== 'undefined') {
+    // Initialize
+    (async () => {
+        // Expose i18n to global scope early
+        window.i18n = {
+            apply: applyTranslations,
+            getLang: () => currentLang,
+            switch: switchLanguage
+        };
+        window.translations = translations; // Backwards compatibility for app.js
+
         setupLangSwitcher();
-        // ALWAYS apply translations on load to ensure dynamic content is filled
+
+        // Load and apply initial language
+        await loadTranslations(currentLang);
         applyTranslations(currentLang);
-    }
+    })();
 });

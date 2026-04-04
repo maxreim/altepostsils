@@ -1,3 +1,20 @@
+/* Local Fonts */
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/lora-regular.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-regular.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --clr-gold: #b3883a;
     --clr-gold-light: #e6c888;
