@@ -378,6 +378,16 @@
 </head>
 
 <body>
+    <noscript>
+      <style>
+        /* Blendet eventuell kaputte Lade-Animationen aus */
+        html.is-translating body { opacity: 1 !important; }
+        .lang-switcher { display: none; } /* Sprachwähler macht ohne JS keinen Sinn */
+      </style>
+      <div style="background: #f8d7da; color: #721c24; padding: 10px; text-align: center; position: relative; z-index: 10000;">
+        Bitte aktivieren Sie JavaScript, um alle Funktionen (wie Sprachauswahl und Kontaktformular) dieser Website zu nutzen.
+      </div>
+    </noscript>
     <nav class="navbar">
         <a href="#home" class="logo">
             <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -716,7 +726,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a> | <a href="datenschutz.html" data-i18n="nav_datenschutz">Datenschutz</a>
+            <p>&copy; <span id="current-year"></span> Ferienhaus Posta Veglia | <a href="impressum.html" data-i18n="nav_impressum">Impressum</a> | <a href="datenschutz.html" data-i18n="nav_datenschutz">Datenschutz</a>
             </p>
         </div>
     </footer>

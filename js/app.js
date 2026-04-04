@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = scrolled + "%";
     };
 
+    // Dynamisches Jahr im Footer setzen
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     const backToTop = document.querySelector('.back-to-top');
@@ -211,7 +215,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const allow = container.getAttribute('data-allow') || '';
 
         container.innerHTML = `
-            <iframe title="${title}" src="${src}" width="100%" height="${height}" style="border:0;" allowfullscreen="" loading="lazy" allow="${allow}"></iframe>
+            <iframe 
+                title="${title}" 
+                src="${src}" 
+                width="100%" 
+                height="${height}" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                allow="${allow}">
+            </iframe>
         `;
 
         container.classList.add('loaded');

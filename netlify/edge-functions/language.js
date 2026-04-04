@@ -46,6 +46,7 @@ export default async (request, context) => {
     `;
     text = text.replace('</head>', foutFix + '</head>');
     
+    response.headers.set("Vary", "Accept-Language, Cookie");
     return new Response(text, response);
   }
 
