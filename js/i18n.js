@@ -63,6 +63,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Update JSON-LD
+        const jsonLdScript = document.getElementById('json-ld');
+        if (jsonLdScript && translations[lang]) {
+            try {
+                let data = JSON.parse(jsonLdScript.textContent);
+                data.description = translations[lang].seo_description || data.description;
+                data.name = translations[lang].haus_title || data.name;
+                // Also update availability aggregate description if needed
+                if (data.offers && data.offers.description) {
+                    // This one isn't clearly indexed in locales, 
+                    // maybe just the description is enough for now
+                }
+                jsonLdScript.textContent = JSON.stringify(data, null, 4);
+            } catch (e) {
+                console.error("Error updating JSON-LD", e);
+            }
+        }
+
         // Update active state in language switchers
         if (root === document) {
             document.documentElement.lang = lang;

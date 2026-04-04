@@ -48,13 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+            const isActive = navLinks.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', isActive);
+            mobileToggle.innerHTML = isActive ? '✕' : '☰';
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
                 mobileToggle.innerHTML = '☰';
             });
         });

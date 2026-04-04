@@ -42,7 +42,7 @@
     <link rel="alternate" hreflang="x-default" href="https://altepostsils.ch/">
 
     <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="json-ld">
 {
     "@context": "https://schema.org",
     "@type": "VacationRental",
@@ -373,7 +373,6 @@
     <noscript>
         <link rel="stylesheet" href="css/main.css">
     </noscript>
-    <script src="js/translations.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/app.js" defer></script>
 </head>
@@ -389,7 +388,7 @@
             </svg>
             <span>Posta Veglia</span>
         </a>
-        <div class="mobile-toggle">☰</div>
+        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
         <ul class="nav-links">
             <li><a href="#home" data-i18n="nav_home">Startseite</a></li>
             <li><a href="#haus" data-i18n="nav_haus">Das Haus</a></li>
