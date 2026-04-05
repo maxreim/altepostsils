@@ -112,7 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const openRoomModal = (roomKey) => {
-            if (!roomContents[roomKey]) return;
+            if (!roomKey || !roomContents[roomKey]) {
+                console.warn(`Room content not found for key: ${roomKey}`);
+                return;
+            }
 
             modalBody.innerHTML = roomContents[roomKey];
 
@@ -306,6 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // --- 2. Math Challenge Setup ---
+        let mathA, mathB, mathAnswer;
+        
         // Use a function that gets translations dynamically in case they aren't loaded yet
         const getTranslation = (key, lang) => {
             return window.translations?.[lang]?.[key] || window.translations?.['de']?.[key] || key;

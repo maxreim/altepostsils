@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loadTranslations = async (lang) => {
         try {
-            const response = await fetch(`./locales/${lang}.json`);
+            const response = await fetch(`./locales/${lang}.json?v=${Date.now()}`);
             if (!response.ok) throw new Error(`Could not load ${lang} translations`);
-            translations[lang] = await response.ok ? await response.json() : null;
+            translations[lang] = await response.json();
             return true;
         } catch (error) {
             console.error('Error loading translations:', error);
@@ -99,7 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchLanguage = async (lang) => {
         if (!translations[lang]) {
             const success = await loadTranslations(lang);
-            if (!success) return;
+            if (!success) {
+                // If loading fails, ensure we still signal that a process finished
+                // and fallback to a default if necessary (currentLang stays what it was)
+                document.dispatchEvent(new CustomEvent('langChanged', { detail: { lang: currentLang, error: true } }));
+                return;
+            }
         }
 
         currentLang = lang;
@@ -143,7 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
         setupLangSwitcher();
 
         // Load and apply initial language
-        await loadTranslations(currentLang);
-        applyTranslations(currentLang);
+        try {
+            await loadTranslations(currentLang);
+            applyTranslations(currentLang);
+        } catch (e) {
+            console.error("Initial translation failed", e);
+            // Ensure we at least remove any loading overlays
+            document.dispatchEvent(new CustomEvent('langChanged', { detail: { lang: currentLang, error: true } }));
+        }
     })();
 });
